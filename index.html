@@ -2,12 +2,12 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>KUMY — Kumpulan Usaha Mahasiswa Yogyakarta</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Open+Sans:wght@800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
@@ -28,10 +28,18 @@
     };
   </script>
   <style>
-    body {
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
       background-color: #FFF3E0;
       color: #2D1E17;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
     .font-display {
       font-family: 'Fraunces', serif;
@@ -42,14 +50,17 @@
       box-shadow: 4px 4px 0px #2D1E17;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
-    .card-warm:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px #2D1E17;
+    @media (hover: hover) {
+      .card-warm:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0px #2D1E17;
+      }
     }
     .btn-brutal {
       border: 2px solid #2D1E17;
       box-shadow: 3px 3px 0px #2D1E17;
       transition: all 0.15s ease;
+      touch-action: manipulation;
     }
     .btn-brutal:active {
       transform: translate(2px, 2px);
@@ -61,29 +72,164 @@
       border-color: #2D1E17 !important;
       box-shadow: 2px 2px 0px #2D1E17;
     }
+    /* Intro Overlay Styling */
+    #intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background-color: #FFF3E0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(16px + env(safe-area-inset-top, 0px)) 16px calc(20px + env(safe-area-inset-bottom, 0px));
+      transition: opacity 0.55s ease, visibility 0.55s ease;
+    }
+    #intro-overlay.intro-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #intro-skip-btn {
+      position: fixed;
+      top: calc(14px + env(safe-area-inset-top, 0px));
+      right: calc(14px + env(safe-area-inset-right, 0px));
+      z-index: 110;
+    }
+    .intro-stage {
+      width: 100%;
+      max-width: 1100px;
+      height: 100%;
+      max-height: 78vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF3E0;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .intro-stage {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        max-height: 82vh;
+        border: 2px solid #2D1E17;
+        box-shadow: 8px 8px 0px #2D1E17;
+      }
+    }
+    .intro-stage svg {
+      width: 100%;
+      height: 100%;
+      max-height: 78vh;
+      display: block;
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-[#D4A857] selection:text-[#2D1E17]">
+<body class="min-h-screen flex flex-col selection:bg-[#D4A857] selection:text-[#2D1E17] overflow-hidden">
+
+  <!-- ==================== INTRO PEMBUKAAN WEBSITE KUMY ==================== -->
+  <div id="intro-overlay" role="dialog" aria-modal="true" aria-label="Animasi Pembuka KUMY">
+    <!-- TOMBOL LEWATI / SKIP DI POJOK KANAN ATAS -->
+    <button id="intro-skip-btn" type="button" onclick="skipIntro()" class="btn-brutal bg-[#B71C1C] hover:bg-[#961515] text-[#FFF3E0] px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-extrabold text-xs sm:text-sm tracking-wide flex items-center gap-1.5 cursor-pointer">
+      <span>Lewati</span>
+      <span aria-hidden="true">✕</span>
+    </button>
+
+    <div class="intro-stage" id="intro-stage">
+      <svg id="intro-svg" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Intro logo KUMY: Kumpulan Usaha Mahasiswa Yogyakarta">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#E6C98A" stop-opacity=".6"/>
+            <stop offset="1" stop-color="#E6C98A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect id="intro-bg-rect" width="1280" height="720" fill="#FFF3E0"/>
+        <g id="root">
+          <g id="lg">
+            <circle id="ring" cx="130" cy="210" r="210" fill="url(#glow)" opacity="0"/>
+            <g id="base">
+              <rect x="4" y="382" width="252" height="14" fill="#B71C1C"/>
+              <rect x="24" y="366" width="212" height="16" fill="#D8B576"/>
+              <rect x="44" y="352" width="172" height="14" fill="#B71C1C"/>
+            </g>
+            <g id="body">
+              <rect x="66" y="250" width="128" height="12" fill="#D8B576"/>
+              <rect x="72" y="262" width="116" height="90" fill="#B71C1C"/>
+              <path d="M112 352V318Q112 294 130 294Q148 294 148 318V352Z" fill="#F3DFB4"/>
+              <path d="M130 300Q137 312 130 326Q123 312 130 300Z" fill="#B71C1C"/>
+            </g>
+            <g id="col">
+              <path d="M84 252L108 104H152L176 252Z" fill="#B71C1C"/>
+              <path d="M113 252L120 112H140L147 252Z" fill="#F3DFB4"/>
+              <path d="M130 140Q140 170 130 200Q120 170 130 140Z" fill="#D8B576"/>
+              <rect x="100" y="86" width="60" height="22" rx="4" fill="#D8B576"/>
+              <rect x="108" y="76" width="44" height="12" rx="3" fill="#E9CF98"/>
+            </g>
+            <path id="gl1" d="M40 283C30 262 0 240 -41 224C-30 262 -5 292 40 283Z" fill="#D8B576" opacity="0"/>
+            <path id="gl2" d="M34 272C24 252 34 238 54 229C62 250 54 268 34 272Z" fill="#D8B576" opacity="0"/>
+            <path id="cl" d="M60 380C28 352 20 305 44 284C70 262 120 248 158 230C188 216 206 202 212 178" fill="none"/>
+            <path id="vine" fill="#388E3C"/>
+            <circle id="vc0" fill="#388E3C" opacity="0"/>
+            <circle id="vc1" fill="#388E3C" opacity="0"/>
+            <path id="leaf" d="M212 178C212 148 245 126 292 120C294 160 260 187 212 178Z" fill="#388E3C" opacity="0"/>
+            <path id="rib" d="M216 175C238 152 262 136 284 126" fill="none" stroke="#FFF3E0" stroke-opacity=".45" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+            <g id="toga" opacity="0">
+              <path d="M96 56V84Q130 102 164 84V56Z" fill="#8E1414"/>
+              <path d="M52 52L130 14L208 52L130 78Z" fill="#B71C1C"/>
+              <path d="M130 78L208 52L208 57L130 83Z" fill="#8E1414"/>
+              <path d="M62 53L130 21L196 53" fill="none" stroke="#D8B576" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="130" cy="46" r="4" fill="#D8B576"/>
+              <g id="tassel">
+                <path d="M196 54V92" stroke="#D8B576" stroke-width="3" stroke-linecap="round"/>
+                <path d="M196 90L190 112H202Z" fill="#B71C1C"/>
+              </g>
+            </g>
+            <circle id="shine" cx="130" cy="48" r="90" fill="url(#glow)" opacity="0"/>
+            <path class="st" d="M60 30l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="#D8B576" opacity="0"/>
+            <path class="st" d="M214 20l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z" fill="#D8B576" opacity="0"/>
+            <path class="st" d="M128 -6l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#B71C1C" opacity="0"/>
+          </g>
+          <g id="tx-group" font-family="'Open Sans',Arial,sans-serif" font-weight="800" font-size="62" fill="#B71C1C">
+            <text class="tx" x="590" y="318" opacity="0">KUMPULAN</text>
+            <text class="tx" x="590" y="392" opacity="0">USAHA MAHASISWA</text>
+            <text class="tx" x="590" y="466" opacity="0">YOGYAKARTA</text>
+            <text class="tx" id="tx-kumy" x="590" y="566" font-size="76" fill="#388E3C" letter-spacing="3" opacity="0">KUMY</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- PROGRESS BAR HALUS DI BAGIAN BAWAH INTRO -->
+    <div class="w-full max-w-md mt-3 px-4">
+      <div class="w-full h-1.5 bg-[#2D1E17]/15 rounded-full overflow-hidden">
+        <div id="intro-progress-bar" class="h-full bg-[#B71C1C] w-0 transition-none"></div>
+      </div>
+      <p class="text-center text-[11px] font-bold text-[#2D1E17]/65 mt-1.5">Memuat Ekosistem Wirausaha Mahasiswa Jogja...</p>
+    </div>
+  </div>
 
   <!-- TOP BAR -->
-  <div class="bg-[#2D1E17] text-[#FFF3E0] text-xs sm:text-sm py-2 px-4 border-b-2 border-[#D4A857]">
+  <div class="bg-[#2D1E17] text-[#FFF3E0] text-xs sm:text-sm py-2 px-3 sm:px-4 border-b-2 border-[#D4A857]">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center gap-2 font-medium">
-        <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#388E3C] animate-pulse"></span>
-        <span>Direktori Kuliner &amp; Usaha Mahasiswa DIY • 100% Tervalidasi KTM Aktif</span>
+      <div class="flex items-center gap-2 font-medium min-w-0">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#388E3C] animate-pulse shrink-0"></span>
+        <span class="truncate">Direktori Kuliner &amp; Usaha Mahasiswa DIY • 100% Tervalidasi KTM Aktif</span>
       </div>
-      <div class="flex items-center gap-4 text-xs">
-        <span class="text-[#D4A857] font-semibold">Ekosistem Wirausaha Mahasiswa Jogja</span>
+      <div class="flex items-center gap-3 text-xs shrink-0">
+        <span class="text-[#D4A857] font-semibold hidden md:inline">Ekosistem Wirausaha Mahasiswa Jogja</span>
+        <button type="button" onclick="replayIntro()" class="px-2.5 py-0.5 rounded-full bg-[#FFF3E0]/15 hover:bg-[#D4A857] hover:text-[#2D1E17] text-[#FFF3E0] font-bold text-[11px] transition">
+          ▶ Intro
+        </button>
       </div>
     </div>
   </div>
 
   <!-- HEADER & NAVBAR -->
   <header class="sticky top-0 z-40 bg-[#FFF3E0]/95 backdrop-blur-md border-b-2 border-[#2D1E17]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
-      <button type="button" onclick="navigateTo('beranda')" class="flex items-center gap-3 text-left group focus:outline-none">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
+      <button type="button" onclick="navigateTo('beranda')" class="flex items-center gap-2.5 sm:gap-3 text-left group focus:outline-none min-w-0">
         <!-- LOGO KUMY TUGU BERTOGA & DAUN HIJAU -->
-        <div class="w-12 h-12 rounded-xl bg-[#FFF3E0] border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17] flex items-center justify-center shrink-0 group-hover:rotate-2 transition-transform p-1">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FFF3E0] border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17] flex items-center justify-center shrink-0 group-hover:rotate-2 transition-transform p-1">
           <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M35 66 C26 60, 22 50, 24 41 C31 44, 36 52, 36 63" fill="#D4A857"/>
             <path d="M34 65 C22 63, 14 57, 12 49 C20 48, 28 53, 35 63" fill="#E2BE79"/>
@@ -110,12 +256,12 @@
             <path d="M73 33 C79 27, 85 21, 90 17" stroke="#FFF3E0" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
         </div>
-        <div>
+        <div class="min-w-0">
           <div class="flex items-center gap-1.5">
-            <span class="font-display font-extrabold text-xl tracking-tight text-[#B71C1C]">KUMY</span>
+            <span class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#B71C1C]">KUMY</span>
             <span class="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-[#388E3C] text-white border border-[#2D1E17]">JOGJA</span>
           </div>
-          <p class="text-[11px] font-semibold text-[#2D1E17]/80 leading-tight hidden sm:block">Kumpulan Usaha Mahasiswa Yogyakarta</p>
+          <p class="text-[11px] font-semibold text-[#2D1E17]/80 leading-tight truncate hidden sm:block">Kumpulan Usaha Mahasiswa Yogyakarta</p>
         </div>
       </button>
 
@@ -129,25 +275,25 @@
         <button type="button" data-nav="admin" onclick="navigateTo('admin')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Admin</button>
       </nav>
 
-      <div class="flex items-center gap-2.5">
-        <button type="button" onclick="toggleCart(true)" class="btn-brutal bg-[#388E3C] text-white px-3.5 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
+      <div class="flex items-center gap-2 shrink-0">
+        <button type="button" onclick="toggleCart(true)" class="btn-brutal bg-[#388E3C] text-white px-3 sm:px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 min-h-[40px]">
           <span>🛒</span>
           <span class="hidden sm:inline">Keranjang</span>
           <span id="cart-badge" class="bg-[#D4A857] text-[#2D1E17] text-xs font-extrabold px-2 py-0.5 rounded-full border border-[#2D1E17]">0</span>
         </button>
 
-        <button type="button" onclick="toggleMobileMenu()" class="xl:hidden btn-brutal bg-white p-2 rounded-xl font-bold text-sm" aria-label="Menu">☰</button>
+        <button type="button" id="mobile-menu-btn" onclick="toggleMobileMenu()" class="xl:hidden btn-brutal bg-white px-3 py-2 rounded-xl font-bold text-base min-w-[42px] min-h-[40px] flex items-center justify-center" aria-label="Menu" aria-expanded="false">☰</button>
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden xl:hidden bg-white border-t-2 border-[#2D1E17] px-4 py-3 space-y-1.5">
-      <button type="button" data-nav="beranda" onclick="navigateTo('beranda'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Beranda</button>
-      <button type="button" data-nav="etalase" onclick="navigateTo('etalase'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Etalase Kuliner</button>
-      <button type="button" data-nav="tutorial" onclick="navigateTo('tutorial'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Tutorial</button>
-      <button type="button" data-nav="kritik" onclick="navigateTo('kritik'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Kritik &amp; Saran</button>
-      <button type="button" data-nav="daftar" onclick="navigateTo('daftar'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Daftar Tenant</button>
-      <button type="button" data-nav="tenant-login" onclick="navigateTo('tenant-login'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Login Tenant (Kelola Lapak)</button>
-      <button type="button" data-nav="admin" onclick="navigateTo('admin'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Dashboard Admin</button>
+    <div id="mobile-menu" class="hidden xl:hidden bg-white border-t-2 border-[#2D1E17] px-3 sm:px-4 py-3 space-y-1.5 shadow-lg">
+      <button type="button" data-nav="beranda" onclick="navigateTo('beranda'); toggleMobileMenu(false)" class="nav-btn block w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold">🏠 Beranda</button>
+      <button type="button" data-nav="etalase" onclick="navigateTo('etalase'); toggleMobileMenu(false)" class="nav-btn block w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold">🍜 Etalase Kuliner</button>
+      <button type="button" data-nav="tutorial" onclick="navigateTo('tutorial'); toggleMobileMenu(false)" class="nav-btn block w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold">📖 Tutorial</button>
+      <button type="button" data-nav="kritik" onclick="navigateTo('kritik'); toggleMobileMenu(false)" class="nav-btn block w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold">💬 Kritik &amp; Saran</button>
+      <button type="button" data-nav="daftar" onclick="navigateTo('daftar'); toggleMobileMenu(false)" class="nav-btn block w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold">📝 Daftar Tenant</button>
+      <button type="button" data-nav="tenant-login" onclick="navigateTo('tenant-login'); toggleMobileMenu(false)" class="nav-btn block w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold">🔑 Login Tenant (Kelola Lapak)</button>
+      <button type="button" data-nav="admin" onclick="navigateTo('admin'); toggleMobileMenu(false)" class="nav-btn block w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold">🛡️ Dashboard Admin</button>
     </div>
   </header>
 
@@ -155,48 +301,48 @@
   <main class="flex-grow">
 
     <!-- 1. BERANDA -->
-    <section id="page-beranda" class="page-section max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-12">
-      <div class="grid lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-5">
-          <div class="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border-2 border-[#2D1E17] shadow-[3px_3px_0px_#D4A857] text-xs font-bold">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#B71C1C]"></span>
+    <section id="page-beranda" class="page-section max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-10 sm:space-y-12">
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4 sm:space-y-5">
+          <div class="inline-flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border-2 border-[#2D1E17] shadow-[3px_3px_0px_#D4A857] text-[11px] sm:text-xs font-bold">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#B71C1C] shrink-0"></span>
             <span>Ekosistem Wirausaha Mahasiswa Daerah Istimewa Yogyakarta</span>
           </div>
 
-          <h1 class="font-display font-extrabold text-3xl sm:text-5xl leading-tight text-[#2D1E17]">
-            <span class="underline decoration-[#B71C1C] decoration-[6px] underline-offset-8">Food Court Digital Mahasiswa Jogja</span>
+          <h1 class="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl leading-tight text-[#2D1E17]">
+            <span class="underline decoration-[#B71C1C] decoration-[4px] sm:decoration-[6px] underline-offset-4 sm:underline-offset-8">Food Court Digital Mahasiswa Jogja</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-[#2D1E17]/85 leading-relaxed max-w-2xl">
+          <p class="text-sm sm:text-lg text-[#2D1E17]/85 leading-relaxed max-w-2xl">
             Temukan jajanan, kopi, katering kos, hingga usaha kreatif milik mahasiswa aktif di Yogyakarta. Semua tenant tervalidasi KTM, harga ramah kantong mahasiswa, dan bisa langsung ambil di titik temu kampus.
           </p>
 
-          <div class="flex flex-wrap gap-3 pt-1">
-            <button type="button" onclick="navigateTo('etalase')" class="btn-brutal bg-[#B71C1C] text-[#FFF3E0] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
+          <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
+            <button type="button" onclick="navigateTo('etalase')" class="btn-brutal bg-[#B71C1C] text-[#FFF3E0] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base w-full sm:w-auto text-center">
               Jelajahi Etalase →
             </button>
-            <button type="button" onclick="navigateTo('daftar')" class="btn-brutal bg-[#D4A857] text-[#2D1E17] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
+            <button type="button" onclick="navigateTo('daftar')" class="btn-brutal bg-[#D4A857] text-[#2D1E17] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base w-full sm:w-auto text-center">
               + Daftarkan Usahamu
             </button>
-            <button type="button" onclick="navigateTo('tenant-login')" class="btn-brutal bg-white text-[#2D1E17] px-5 py-3 rounded-2xl font-bold text-sm sm:text-base">
+            <button type="button" onclick="navigateTo('tenant-login')" class="btn-brutal bg-white text-[#2D1E17] px-5 py-3 rounded-2xl font-bold text-sm sm:text-base w-full sm:w-auto text-center">
               Login Tenant
             </button>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 sm:pt-3">
             <div class="bg-white p-3.5 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#B71C1C]">
-              <p class="text-xs font-bold uppercase text-[#B71C1C]">Perguruan Tinggi DIY</p>
-              <p class="font-display font-extrabold text-xl sm:text-2xl mt-0.5">108–130+</p>
+              <p class="text-[11px] sm:text-xs font-bold uppercase text-[#B71C1C]">Perguruan Tinggi DIY</p>
+              <p class="font-display font-extrabold text-lg sm:text-2xl mt-0.5">108–130+</p>
               <p class="text-[11px] text-[#2D1E17]/70">Kampus Negeri &amp; Swasta</p>
             </div>
             <div class="bg-white p-3.5 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#388E3C]">
-              <p class="text-xs font-bold uppercase text-[#388E3C]">Mahasiswa di DIY</p>
-              <p class="font-display font-extrabold text-xl sm:text-2xl mt-0.5">439.236</p>
+              <p class="text-[11px] sm:text-xs font-bold uppercase text-[#388E3C]">Mahasiswa di DIY</p>
+              <p class="font-display font-extrabold text-lg sm:text-2xl mt-0.5">439.236</p>
               <p class="text-[11px] text-[#2D1E17]/70">Sumber: GoodStats Data</p>
             </div>
             <div class="col-span-2 sm:col-span-1 bg-white p-3.5 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#D4A857]">
-              <p class="text-xs font-bold uppercase text-[#2D1E17]">Jaminan Keaslian</p>
-              <p class="font-display font-extrabold text-xl sm:text-2xl mt-0.5">100% KTM</p>
+              <p class="text-[11px] sm:text-xs font-bold uppercase text-[#2D1E17]">Jaminan Keaslian</p>
+              <p class="font-display font-extrabold text-lg sm:text-2xl mt-0.5">100% KTM</p>
               <p class="text-[11px] text-[#2D1E17]/70">Tervalidasi Mahasiswa Aktif</p>
             </div>
           </div>
@@ -204,17 +350,17 @@
 
         <!-- GACHA MENU -->
         <div class="lg:col-span-5">
-          <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
-            <div class="flex items-center justify-between gap-2">
+          <div class="card-warm rounded-3xl p-5 sm:p-6 bg-white space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
               <span class="px-3 py-1 rounded-full bg-[#D4A857]/30 border border-[#2D1E17] text-xs font-extrabold">🎲 GACHA KULINER KAMPUS</span>
               <span class="text-xs font-bold text-[#388E3C]">Antikrisis Ide Makan</span>
             </div>
-            <h2 class="font-display font-bold text-2xl">Bingung Mau Makan Apa Hari Ini?</h2>
-            <p class="text-sm text-[#2D1E17]/75">Putar acak menu dari tenant mahasiswa Jogja yang sedang buka di sekitar kampusmu.</p>
+            <h2 class="font-display font-bold text-xl sm:text-2xl">Bingung Mau Makan Apa Hari Ini?</h2>
+            <p class="text-xs sm:text-sm text-[#2D1E17]/75">Putar acak menu dari tenant mahasiswa Jogja yang sedang buka di sekitar kampusmu.</p>
 
             <div id="gacha-result" class="bg-[#FFF3E0] border-2 border-dashed border-[#2D1E17] rounded-2xl p-4 text-center">
               <p class="text-xs font-bold text-[#B71C1C] uppercase">Rekomendasi Acak</p>
-              <p id="gacha-title" class="font-display font-extrabold text-lg mt-1">Klik tombol di bawah untuk mengacak menu!</p>
+              <p id="gacha-title" class="font-display font-extrabold text-base sm:text-lg mt-1">Klik tombol di bawah untuk mengacak menu!</p>
               <p id="gacha-meta" class="text-xs text-[#2D1E17]/75 mt-1">Siap memilihkan jajanan terbaik sekitar kampus</p>
               <div id="gacha-action" class="mt-3 hidden"></div>
             </div>
@@ -227,23 +373,23 @@
       </div>
 
       <!-- GOOGLE MAPS KAWASAN KAMPUS -->
-      <div class="card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div class="card-warm rounded-3xl p-5 sm:p-8 bg-white space-y-5 sm:space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4">
           <div>
             <span class="text-xs font-extrabold uppercase tracking-wider text-[#B71C1C]">Pemetaan Zonasi Kampus DIY</span>
-            <h2 class="font-display font-extrabold text-2xl sm:text-3xl mt-1">Titik Kumpul &amp; Kawasan Kampus Jogja</h2>
+            <h2 class="font-display font-extrabold text-xl sm:text-3xl mt-1">Titik Kumpul &amp; Kawasan Kampus Jogja</h2>
           </div>
-          <p class="text-sm text-[#2D1E17]/75 max-w-md">Pilih kawasan kampus terdekat untuk melihat titik ambil pesanan dan tenant mahasiswa yang beroperasi.</p>
+          <p class="text-xs sm:text-sm text-[#2D1E17]/75 max-w-md">Pilih kawasan kampus terdekat untuk melihat titik ambil pesanan dan tenant mahasiswa yang beroperasi.</p>
         </div>
 
         <div id="home-zone-pills" class="flex flex-wrap gap-2"></div>
 
-        <div class="grid lg:grid-cols-12 gap-6 items-stretch">
-          <div class="lg:col-span-5 bg-[#FFF3E0] p-5 rounded-2xl border-2 border-[#2D1E17] flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
+        <div class="grid lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
+          <div class="lg:col-span-5 bg-[#FFF3E0] p-4 sm:p-5 rounded-2xl border-2 border-[#2D1E17] flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5 sm:space-y-3">
               <span class="inline-block px-3 py-1 rounded-lg bg-[#B71C1C] text-white text-xs font-bold">Kawasan Terpilih</span>
-              <h3 class="font-display font-bold text-xl" id="map-zone-title">Bulaksumur &amp; Karangmalang</h3>
-              <p class="text-sm font-semibold text-[#388E3C]" id="map-zone-campuses">UGM • UNY • Poltekkes</p>
+              <h3 class="font-display font-bold text-lg sm:text-xl" id="map-zone-title">Bulaksumur &amp; Karangmalang</h3>
+              <p class="text-xs sm:text-sm font-semibold text-[#388E3C]" id="map-zone-campuses">UGM • UNY • Poltekkes</p>
               <div class="bg-white p-3.5 rounded-xl border border-[#2D1E17] text-xs space-y-1.5">
                 <p class="font-bold text-[#2D1E17]">📍 Titik COD / Ambil Pesanan:</p>
                 <p id="map-zone-point" class="text-[#2D1E17]/80">Gerbang Lembah UGM / Bundaran Teknik &amp; Plaza UNY</p>
@@ -253,44 +399,44 @@
               Lihat Tenant di Kawasan Ini →
             </button>
           </div>
-          <div class="lg:col-span-7 rounded-2xl overflow-hidden border-2 border-[#2D1E17] min-h-[260px]">
-            <iframe id="campus-map-iframe" class="w-full h-full min-h-[260px]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Universitas%20Gadjah%20Mada%20Yogyakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+          <div class="lg:col-span-7 rounded-2xl overflow-hidden border-2 border-[#2D1E17] min-h-[220px] sm:min-h-[260px]">
+            <iframe id="campus-map-iframe" class="w-full h-full min-h-[220px] sm:min-h-[260px]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Universitas%20Gadjah%20Mada%20Yogyakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
           </div>
         </div>
       </div>
 
       <!-- PRODUK UNGGULAN -->
       <div class="space-y-5">
-        <div class="flex items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
             <span class="text-xs font-extrabold uppercase text-[#388E3C]">Pilihan Favorit Mahasiswa</span>
-            <h2 class="font-display font-extrabold text-2xl sm:text-3xl">Menu Tenant Terverifikasi KTM</h2>
+            <h2 class="font-display font-extrabold text-xl sm:text-3xl">Menu Tenant Terverifikasi KTM</h2>
           </div>
           <button type="button" onclick="navigateTo('etalase')" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">Lihat Semua →</button>
         </div>
-        <div id="featured-tenants-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+        <div id="featured-tenants-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"></div>
       </div>
     </section>
 
     <!-- 2. ETALASE (GRID 4 KE SAMPING x 3 KE BAWAH + PAGINATION) -->
-    <section id="page-etalase" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <section id="page-etalase" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
         <div>
           <span class="text-xs font-extrabold uppercase text-[#B71C1C]">Direktori Lengkap (4 Kolom × 3 Baris per Halaman)</span>
-          <h1 class="font-display font-extrabold text-3xl sm:text-4xl">Etalase Usaha Mahasiswa</h1>
+          <h1 class="font-display font-extrabold text-2xl sm:text-4xl">Etalase Usaha Mahasiswa</h1>
         </div>
-        <div class="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border-2 border-[#2D1E17] text-xs font-bold">
-          <span class="w-2 h-2 rounded-full bg-[#388E3C]"></span>
+        <div class="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border-2 border-[#2D1E17] text-xs font-bold self-start md:self-auto">
+          <span class="w-2 h-2 rounded-full bg-[#388E3C] shrink-0"></span>
           <span id="etalase-count-label">Menampilkan Produk Tenant Aktif</span>
         </div>
       </div>
 
-      <div class="bg-white p-4 sm:p-5 rounded-2xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17] grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        <input id="filter-search" oninput="onFilterChange()" type="text" placeholder="Cari produk, nama usaha, kampus..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm focus:outline-none focus:bg-[#FFF3E0]" />
-        <select id="filter-zone" onchange="onFilterChange()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+      <div class="bg-white p-4 sm:p-5 rounded-2xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <input id="filter-search" oninput="onFilterChange()" type="text" placeholder="Cari produk, nama usaha, kampus..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm focus:outline-none focus:bg-[#FFF3E0]" />
+        <select id="filter-zone" onchange="onFilterChange()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm font-semibold bg-white">
           <option value="all">Semua Kawasan Kampus</option>
         </select>
-        <select id="filter-category" onchange="onFilterChange()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+        <select id="filter-category" onchange="onFilterChange()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm font-semibold bg-white">
           <option value="all">Semua Kategori</option>
           <option value="Makanan Berat">Makanan Berat</option>
           <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
@@ -301,35 +447,35 @@
       </div>
 
       <!-- GRID 4 KE SAMPING & MAKSIMAL 3 KE BAWAH (12 ITEM PER HALAMAN) -->
-      <div id="etalase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+      <div id="etalase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"></div>
 
       <!-- NAVIGASI HALAMAN / PAGINATION -->
-      <div id="etalase-pagination" class="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17]"></div>
+      <div id="etalase-pagination" class="flex flex-col sm:flex-row flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17]"></div>
     </section>
 
     <!-- 3. TUTORIAL -->
-    <section id="page-tutorial" class="page-section hidden max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-8">
+    <section id="page-tutorial" class="page-section hidden max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-6 sm:space-y-8">
       <div class="text-center max-w-2xl mx-auto space-y-2">
         <span class="px-3 py-1 rounded-full bg-[#D4A857] border border-[#2D1E17] text-xs font-extrabold">PANDUAN PENGGUNAAN</span>
-        <h1 class="font-display font-extrabold text-3xl sm:text-4xl">Cara Kerja Ekosistem KUMY</h1>
+        <h1 class="font-display font-extrabold text-2xl sm:text-4xl">Cara Kerja Ekosistem KUMY</h1>
         <p class="text-sm sm:text-base text-[#2D1E17]/80">Praktis untuk mahasiswa pembeli maupun mahasiswa pelaku usaha di Yogyakarta.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
+      <div class="grid md:grid-cols-2 gap-5 sm:gap-6">
+        <div class="card-warm rounded-3xl p-5 sm:p-6 bg-white space-y-4">
           <div class="inline-block px-3.5 py-1 rounded-xl bg-[#388E3C] text-white font-bold text-xs">UNTUK PEMBELI (MAHASISWA &amp; UMUM)</div>
-          <h2 class="font-display font-bold text-2xl">Pesan Langsung ke Penjual Tenant</h2>
-          <ol class="space-y-3 text-sm">
+          <h2 class="font-display font-bold text-xl sm:text-2xl">Pesan Langsung ke Penjual Tenant</h2>
+          <ol class="space-y-3 text-sm leading-relaxed">
             <li><strong>1. Pilih Kawasan Kampus:</strong> Saring menu berdasarkan area kampus terdekat (UGM/UNY, Seturan, Gejayan, Tamansiswa, atau Kasihan).</li>
             <li><strong>2. Masukkan ke Keranjang:</strong> Pilih menu yang diinginkan sesuai harga tertera dan tentukan metode pengambilan atau pengantaran.</li>
             <li><strong>3. Checkout Langsung ke Penjual:</strong> Pesanan otomatis tercatat dan diteruskan langsung ke nomor WhatsApp penjual tenant terkait untuk konfirmasi.</li>
           </ol>
         </div>
 
-        <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
+        <div class="card-warm rounded-3xl p-5 sm:p-6 bg-white space-y-4">
           <div class="inline-block px-3.5 py-1 rounded-xl bg-[#B71C1C] text-white font-bold text-xs">UNTUK PENJUAL (TENANT MAHASISWA)</div>
-          <h2 class="font-display font-bold text-2xl">Buka Lapak Terverifikasi KTM (Berbayar)</h2>
-          <ol class="space-y-3 text-sm">
+          <h2 class="font-display font-bold text-xl sm:text-2xl">Buka Lapak Terverifikasi KTM (Berbayar)</h2>
+          <ol class="space-y-3 text-sm leading-relaxed">
             <li><strong>1. Isi Formulir Usaha:</strong> Lengkapi nama usaha, NIM, asal kampus DIY, nomor WhatsApp penjual, kawasan, dan detail menu.</li>
             <li><strong>2. Unggah Foto KTM &amp; Biaya Pendaftaran:</strong> Lampirkan foto KTM aktif dan selesaikan biaya pendaftaran tenant berbayar untuk mendukung operasional serta pemeliharaan website KUMY.</li>
             <li><strong>3. Login Akun Tenant:</strong> Masuk ke menu <strong>Login Tenant</strong> untuk memantau profil lapak, menambah produk baru, serta memperbarui stok tersedia dan jumlah terjual harian.</li>
@@ -340,23 +486,23 @@
     </section>
 
     <!-- 4. KRITIK & SARAN -->
-    <section id="page-kritik" class="page-section hidden max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
-      <div class="card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-6">
+    <section id="page-kritik" class="page-section hidden max-w-3xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-6">
+      <div class="card-warm rounded-3xl p-5 sm:p-8 bg-white space-y-6">
         <div>
           <span class="text-xs font-extrabold uppercase text-[#388E3C]">Suara Mahasiswa Jogja</span>
-          <h1 class="font-display font-extrabold text-3xl mt-1">Kritik, Saran &amp; Usulan Kampus</h1>
-          <p class="text-sm text-[#2D1E17]/75 mt-1">Punya masukan fitur, usulan titik COD kampus baru, atau kendala transaksi? Sampaikan langsung ke tim KUMY.</p>
+          <h1 class="font-display font-extrabold text-2xl sm:text-3xl mt-1">Kritik, Saran &amp; Usulan Kampus</h1>
+          <p class="text-xs sm:text-sm text-[#2D1E17]/75 mt-1">Punya masukan fitur, usulan titik COD kampus baru, atau kendala transaksi? Sampaikan langsung ke tim KUMY.</p>
         </div>
 
         <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-4">
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold uppercase mb-1.5">Nama / Asal Kampus</label>
-              <input id="fb-nama" type="text" required placeholder="Contoh: Raka - UGM" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              <input id="fb-nama" type="text" required placeholder="Contoh: Raka - UGM" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
             </div>
             <div>
               <label class="block text-xs font-bold uppercase mb-1.5">Topik Masukan</label>
-              <select id="fb-kategori" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+              <select id="fb-kategori" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm font-semibold bg-white">
                 <option value="Saran Fitur Website">Saran Fitur Website</option>
                 <option value="Usulan Titik COD Kampus">Usulan Titik COD Kampus</option>
                 <option value="Laporan Kendala Pesanan">Laporan Kendala Pesanan</option>
@@ -367,14 +513,14 @@
 
           <div>
             <label class="block text-xs font-bold uppercase mb-1.5">Pesan Lengkap</label>
-            <textarea id="fb-pesan" rows="4" required placeholder="Tuliskan saran atau masukanmu secara detail..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm"></textarea>
+            <textarea id="fb-pesan" rows="4" required placeholder="Tuliskan saran atau masukanmu secara detail..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm"></textarea>
           </div>
 
-          <div class="flex flex-wrap gap-3 pt-1">
-            <button type="submit" class="btn-brutal bg-[#B71C1C] text-white px-6 py-3 rounded-xl font-bold text-sm">
+          <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
+            <button type="submit" class="btn-brutal bg-[#B71C1C] text-white px-6 py-3 rounded-xl font-bold text-sm w-full sm:w-auto text-center">
               Kirim ke Database KUMY
             </button>
-            <a href="https://wa.me/6281345991170?text=Halo%20Admin%20KUMY%2C%20saya%20ingin%20menyampaikan%20saran%3A%20" target="_blank" class="btn-brutal bg-[#388E3C] text-white px-5 py-3 rounded-xl font-bold text-sm">
+            <a href="https://wa.me/6281345991170?text=Halo%20Admin%20KUMY%2C%20saya%20ingin%20menyampaikan%20saran%3A%20" target="_blank" class="btn-brutal bg-[#388E3C] text-white px-5 py-3 rounded-xl font-bold text-sm w-full sm:w-auto text-center">
               Chat WA Admin (0813-4599-1170)
             </a>
           </div>
@@ -383,57 +529,57 @@
     </section>
 
     <!-- 5. DAFTAR TENANT -->
-    <section id="page-daftar" class="page-section hidden max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-8">
-      <div class="grid lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-7 card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-5">
+    <section id="page-daftar" class="page-section hidden max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-6 sm:space-y-8">
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+        <div class="lg:col-span-7 card-warm rounded-3xl p-5 sm:p-8 bg-white space-y-5">
           <div>
-            <span class="px-3 py-1 rounded-full bg-[#B71C1C] text-white text-xs font-extrabold">WAJIB VALIDASI KTM • TENANT BERBAYAR</span>
+            <span class="px-3 py-1 rounded-full bg-[#B71C1C] text-white text-[11px] sm:text-xs font-extrabold">WAJIB VALIDASI KTM • TENANT BERBAYAR</span>
             <h1 class="font-display font-extrabold text-2xl sm:text-3xl mt-2">Pendaftaran Tenant Mahasiswa</h1>
-            <p class="text-sm text-[#2D1E17]/75 mt-1">Khusus mahasiswa aktif perguruan tinggi di DIY. Pendaftaran lapak dikenakan biaya kontribusi operasional website KUMY.</p>
+            <p class="text-xs sm:text-sm text-[#2D1E17]/75 mt-1">Khusus mahasiswa aktif perguruan tinggi di DIY. Pendaftaran lapak dikenakan biaya kontribusi operasional website KUMY.</p>
           </div>
 
           <form id="tenant-form" onsubmit="submitTenantRegistration(event)" class="space-y-4">
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Nama Usaha / Brand *</label>
-                <input id="reg-usaha" type="text" required placeholder="Contoh: Nasi Kulit Mas Bagas" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-usaha" type="text" required placeholder="Contoh: Nasi Kulit Mas Bagas" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Nama Pemilik (Sesuai KTM) *</label>
-                <input id="reg-pemilik" type="text" required placeholder="Nama lengkap mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-pemilik" type="text" required placeholder="Nama lengkap mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
             </div>
 
             <div class="grid sm:grid-cols-3 gap-4">
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">NIM (Untuk Login) *</label>
-                <input id="reg-nim" type="text" required placeholder="Nomor Induk Mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-nim" type="text" required placeholder="Nomor Induk Mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Asal Kampus DIY *</label>
-                <input id="reg-kampus" type="text" required placeholder="UGM / UNY / UPN / UAD / UMY" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-kampus" type="text" required placeholder="UGM / UNY / UPN / UAD / UMY" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Nomor WhatsApp Penjual *</label>
-                <input id="reg-wa" type="tel" required placeholder="0812xxxxxxxx" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-wa" type="tel" required placeholder="0812xxxxxxxx" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Kata Sandi Akun Tenant *</label>
-                <input id="reg-password" type="password" required placeholder="Buat kata sandi akun" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-password" type="password" required placeholder="Buat kata sandi akun" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Kawasan Operasional *</label>
-                <select id="reg-kawasan" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white"></select>
+                <select id="reg-kawasan" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm font-semibold bg-white"></select>
               </div>
             </div>
 
             <div class="grid sm:grid-cols-3 gap-4">
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Kategori Produk Utama *</label>
-                <select id="reg-kategori" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+                <select id="reg-kategori" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm font-semibold bg-white">
                   <option value="Makanan Berat">Makanan Berat</option>
                   <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
                   <option value="Camilan & Dessert">Camilan &amp; Dessert</option>
@@ -442,22 +588,22 @@
               </div>
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Harga Menu (Rp) *</label>
-                <input id="reg-harga" type="number" min="1000" required placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-harga" type="number" min="1000" required placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Stok Tersedia Hari Ini *</label>
-                <input id="reg-qty" type="number" min="1" value="20" required placeholder="20" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="reg-qty" type="number" min="1" value="20" required placeholder="20" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-bold uppercase mb-1">Nama Menu Utama *</label>
-              <input id="reg-menu" type="text" required placeholder="Contoh: Paket Nasi Kulit Krispi + Sambal Korek" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              <input id="reg-menu" type="text" required placeholder="Contoh: Paket Nasi Kulit Krispi + Sambal Korek" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
             </div>
 
             <div>
               <label class="block text-xs font-bold uppercase mb-1">Deskripsi Singkat &amp; Jam Buka *</label>
-              <textarea id="reg-deskripsi" rows="2" required placeholder="Jelaskan porsi, varian rasa, dan jam operasional..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm"></textarea>
+              <textarea id="reg-deskripsi" rows="2" required placeholder="Jelaskan porsi, varian rasa, dan jam operasional..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm"></textarea>
             </div>
 
             <div class="bg-[#FFF3E0] p-4 rounded-2xl border-2 border-dashed border-[#B71C1C] space-y-2.5">
@@ -468,29 +614,29 @@
               </div>
             </div>
 
-            <button type="submit" id="reg-submit-btn" class="w-full btn-brutal bg-[#B71C1C] text-white py-3.5 rounded-2xl font-bold text-base">
+            <button type="submit" id="reg-submit-btn" class="w-full btn-brutal bg-[#B71C1C] text-white py-3.5 rounded-2xl font-bold text-sm sm:text-base">
               Kirim Pendaftaran &amp; Validasi KTM
             </button>
           </form>
         </div>
 
-        <div class="lg:col-span-5 space-y-6">
-          <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
+        <div class="lg:col-span-5 space-y-5 sm:space-y-6">
+          <div class="card-warm rounded-3xl p-5 sm:p-6 bg-white space-y-4">
             <span class="px-3 py-1 rounded-full bg-[#388E3C] text-white text-xs font-bold">PORTAL CALON TENANT</span>
-            <h2 class="font-display font-bold text-2xl">Cek Status Verifikasi</h2>
-            <p class="text-sm text-[#2D1E17]/75">Masukkan <strong>NIM</strong> atau <strong>Nama Usaha</strong> untuk melihat status kurasi KTM.</p>
-            <div class="flex gap-2">
-              <input id="status-query" type="text" placeholder="Ketik NIM atau Nama Usaha..." class="flex-grow px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
-              <button type="button" onclick="checkTenantStatus()" class="btn-brutal bg-[#D4A857] px-4 py-2.5 rounded-xl font-bold text-sm shrink-0">Cek</button>
+            <h2 class="font-display font-bold text-xl sm:text-2xl">Cek Status Verifikasi</h2>
+            <p class="text-xs sm:text-sm text-[#2D1E17]/75">Masukkan <strong>NIM</strong> atau <strong>Nama Usaha</strong> untuk melihat status kurasi KTM.</p>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input id="status-query" type="text" placeholder="Ketik NIM atau Nama Usaha..." class="flex-grow px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
+              <button type="button" onclick="checkTenantStatus()" class="btn-brutal bg-[#D4A857] px-5 py-2.5 rounded-xl font-bold text-sm shrink-0">Cek</button>
             </div>
             <div id="status-result-box" class="hidden p-4 rounded-2xl border-2 border-[#2D1E17] bg-[#FFF3E0] text-sm space-y-1"></div>
           </div>
 
-          <div class="card-warm rounded-3xl p-6 bg-[#FFF3E0] space-y-3">
+          <div class="card-warm rounded-3xl p-5 sm:p-6 bg-[#FFF3E0] space-y-3">
             <span class="px-3 py-1 rounded-full bg-[#D4A857] border border-[#2D1E17] text-xs font-extrabold">SUDAH PUNYA AKUN TENANT?</span>
-            <h3 class="font-display font-bold text-xl">Kelola Lapak &amp; Tambah Produk</h3>
-            <p class="text-xs text-[#2D1E17]/80">Masuk ke portal tenant untuk menambahkan menu baru, memperbarui stok tersedia hari ini, serta mencatat jumlah produk terjual.</p>
-            <button type="button" onclick="navigateTo('tenant-login')" class="btn-brutal bg-[#388E3C] text-white px-4 py-2.5 rounded-xl font-bold text-xs">
+            <h3 class="font-display font-bold text-lg sm:text-xl">Kelola Lapak &amp; Tambah Produk</h3>
+            <p class="text-xs text-[#2D1E17]/80 leading-relaxed">Masuk ke portal tenant untuk menambahkan menu baru, memperbarui stok tersedia hari ini, serta mencatat jumlah produk terjual.</p>
+            <button type="button" onclick="navigateTo('tenant-login')" class="btn-brutal bg-[#388E3C] text-white px-4 py-2.5 rounded-xl font-bold text-xs w-full sm:w-auto text-center">
               Masuk ke Akun Tenant →
             </button>
           </div>
@@ -499,9 +645,9 @@
     </section>
 
     <!-- 6. LOGIN & PORTAL AKUN TENANT -->
-    <section id="page-tenant-login" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-8">
+    <section id="page-tenant-login" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-8">
       <!-- FORM LOGIN TENANT -->
-      <div id="tenant-login-box" class="max-w-lg mx-auto card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-5">
+      <div id="tenant-login-box" class="max-w-lg mx-auto card-warm rounded-3xl p-5 sm:p-8 bg-white space-y-5">
         <div class="text-center space-y-1.5">
           <span class="px-3 py-1 rounded-full bg-[#388E3C] text-white text-xs font-bold">PORTAL MITRA TENANT</span>
           <h1 class="font-display font-extrabold text-2xl sm:text-3xl pt-2">Login Akun Tenant</h1>
@@ -511,11 +657,11 @@
         <div class="space-y-3.5">
           <div>
             <label class="block text-xs font-bold uppercase mb-1">NIM atau Nomor WhatsApp Terdaftar</label>
-            <input id="tenant-login-id" type="text" placeholder="Contoh: 22/498120/TK/54321 atau 081227001101" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+            <input id="tenant-login-id" type="text" placeholder="Contoh: 22/498120/TK/54321 atau 081227001101" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
           </div>
           <div>
             <label class="block text-xs font-bold uppercase mb-1">Kata Sandi Akun Tenant</label>
-            <input id="tenant-login-pass" type="password" onkeydown="if(event.key==='Enter') loginTenant()" placeholder="Masukkan kata sandi akun" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+            <input id="tenant-login-pass" type="password" onkeydown="if(event.key==='Enter') loginTenant()" placeholder="Masukkan kata sandi akun" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
           </div>
           <button type="button" onclick="loginTenant()" class="w-full btn-brutal bg-[#B71C1C] text-white py-3 rounded-xl font-bold text-sm">
             Masuk ke Akun Tenant
@@ -530,73 +676,73 @@
       </div>
 
       <!-- DASHBOARD AKUN TENANT (SETELAH LOGIN) -->
-      <div id="tenant-dashboard-box" class="hidden space-y-8">
+      <div id="tenant-dashboard-box" class="hidden space-y-6 sm:space-y-8">
         <!-- PROFIL AKUN TENANT -->
-        <div class="card-warm rounded-3xl p-6 sm:p-8 bg-white flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="card-warm rounded-3xl p-5 sm:p-8 bg-white flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
           <div class="space-y-2">
             <div class="flex flex-wrap items-center gap-2">
               <span id="td-status-badge" class="px-3 py-1 rounded-full bg-[#388E3C] text-white text-xs font-extrabold">✓ AKUN TERVERIFIKASI KTM</span>
               <span id="td-campus-badge" class="px-3 py-1 rounded-full bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">UGM</span>
             </div>
-            <h1 id="td-business-name" class="font-display font-extrabold text-2xl sm:text-3xl text-[#B71C1C]">Nama Usaha Tenant</h1>
-            <p id="td-owner-info" class="text-sm font-semibold text-[#2D1E17]/80">Pemilik • NIM • Kawasan</p>
+            <h1 id="td-business-name" class="font-display font-extrabold text-xl sm:text-3xl text-[#B71C1C]">Nama Usaha Tenant</h1>
+            <p id="td-owner-info" class="text-xs sm:text-sm font-semibold text-[#2D1E17]/80">Pemilik • NIM • Kawasan</p>
             <p id="td-wa-info" class="text-xs font-bold text-[#388E3C]">WhatsApp Pesanan: 62812...</p>
           </div>
 
-          <div class="flex flex-wrap items-center gap-3">
-            <div class="bg-[#FFF3E0] px-4 py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
-              <p class="text-[11px] font-bold uppercase text-[#2D1E17]/70">Total Produk</p>
-              <p id="td-stat-products" class="font-display font-extrabold text-xl">0</p>
+          <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3">
+            <div class="bg-[#FFF3E0] px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
+              <p class="text-[10px] sm:text-[11px] font-bold uppercase text-[#2D1E17]/70">Total Produk</p>
+              <p id="td-stat-products" class="font-display font-extrabold text-lg sm:text-xl">0</p>
             </div>
-            <div class="bg-[#FFF3E0] px-4 py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
-              <p class="text-[11px] font-bold uppercase text-[#2D1E17]/70">Tersedia Hari Ini</p>
-              <p id="td-stat-available" class="font-display font-extrabold text-xl text-[#388E3C]">0</p>
+            <div class="bg-[#FFF3E0] px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
+              <p class="text-[10px] sm:text-[11px] font-bold uppercase text-[#2D1E17]/70">Tersedia</p>
+              <p id="td-stat-available" class="font-display font-extrabold text-lg sm:text-xl text-[#388E3C]">0</p>
             </div>
-            <div class="bg-[#FFF3E0] px-4 py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
-              <p class="text-[11px] font-bold uppercase text-[#2D1E17]/70">Total Terjual</p>
-              <p id="td-stat-sold" class="font-display font-extrabold text-xl text-[#B71C1C]">0</p>
+            <div class="bg-[#FFF3E0] px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
+              <p class="text-[10px] sm:text-[11px] font-bold uppercase text-[#2D1E17]/70">Terjual</p>
+              <p id="td-stat-sold" class="font-display font-extrabold text-lg sm:text-xl text-[#B71C1C]">0</p>
             </div>
-            <button type="button" onclick="logoutTenant()" class="btn-brutal bg-white px-4 py-3 rounded-2xl font-bold text-xs">
+            <button type="button" onclick="logoutTenant()" class="btn-brutal bg-white px-4 py-3 rounded-2xl font-bold text-xs col-span-2 sm:col-span-1">
               Keluar Akun
             </button>
           </div>
         </div>
 
         <!-- GRID TAMBAH PRODUK & DAFTAR PRODUK TENANT -->
-        <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           <!-- FORM TAMBAH PRODUK BARU -->
-          <div class="lg:col-span-5 card-warm rounded-3xl p-6 bg-white space-y-4">
+          <div class="lg:col-span-5 card-warm rounded-3xl p-5 sm:p-6 bg-white space-y-4">
             <div>
               <span class="px-3 py-1 rounded-full bg-[#D4A857] border border-[#2D1E17] text-xs font-extrabold">+ ETALASE TENANT</span>
-              <h2 class="font-display font-bold text-2xl mt-2">Tambah Produk Dijual</h2>
+              <h2 class="font-display font-bold text-xl sm:text-2xl mt-2">Tambah Produk Dijual</h2>
               <p class="text-xs text-[#2D1E17]/75">Produk yang ditambahkan akan langsung tersimpan ke database dan muncul di etalase utama KUMY.</p>
             </div>
 
             <form id="tenant-add-product-form" onsubmit="submitTenantProduct(event)" class="space-y-3.5">
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Nama Produk *</label>
-                <input id="tp-name" type="text" required placeholder="Contoh: Es Kopi Susu Caramel 16oz" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                <input id="tp-name" type="text" required placeholder="Contoh: Es Kopi Susu Caramel 16oz" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
               </div>
 
               <div class="grid grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-xs font-bold uppercase mb-1">Qty Tersedia Hari Ini *</label>
-                  <input id="tp-qty-avail" type="number" min="0" required placeholder="25" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                  <label class="block text-xs font-bold uppercase mb-1">Qty Tersedia *</label>
+                  <input id="tp-qty-avail" type="number" min="0" required placeholder="25" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
                 </div>
                 <div>
                   <label class="block text-xs font-bold uppercase mb-1">Qty Terjual *</label>
-                  <input id="tp-qty-sold" type="number" min="0" value="0" required placeholder="0" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                  <input id="tp-qty-sold" type="number" min="0" value="0" required placeholder="0" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-bold uppercase mb-1">Harga Produk (Rp) *</label>
-                  <input id="tp-price" type="number" min="500" required placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                  <input id="tp-price" type="number" min="500" required placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
                 </div>
                 <div>
                   <label class="block text-xs font-bold uppercase mb-1">Kategori *</label>
-                  <select id="tp-category" class="w-full px-3 py-2.5 rounded-xl border-2 border-[#2D1E17] text-xs font-bold bg-white">
+                  <select id="tp-category" class="w-full px-3 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-xs font-bold bg-white">
                     <option value="Makanan Berat">Makanan Berat</option>
                     <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
                     <option value="Camilan & Dessert">Camilan &amp; Dessert</option>
@@ -607,7 +753,7 @@
 
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Deskripsi Singkat Produk</label>
-                <textarea id="tp-desc" rows="2" placeholder="Keterangan rasa, porsi, atau topping..." class="w-full px-3.5 py-2 rounded-xl border-2 border-[#2D1E17] text-sm"></textarea>
+                <textarea id="tp-desc" rows="2" placeholder="Keterangan rasa, porsi, atau topping..." class="w-full px-3.5 py-2 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm"></textarea>
               </div>
 
               <div class="bg-[#FFF3E0] p-3.5 rounded-2xl border-2 border-dashed border-[#388E3C] space-y-2">
@@ -626,34 +772,34 @@
 
           <!-- DAFTAR PRODUK MILIK TENANT -->
           <div class="lg:col-span-7 space-y-4">
-            <div class="flex items-center justify-between">
-              <h2 class="font-display font-bold text-2xl">Daftar Produk Lapak Saya</h2>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2 class="font-display font-bold text-xl sm:text-2xl">Daftar Produk Lapak Saya</h2>
               <span class="text-xs font-bold text-[#2D1E17]/70">Ubah stok harian &amp; terjual langsung di kartu</span>
             </div>
-            <div id="tenant-products-list" class="grid sm:grid-cols-2 gap-4"></div>
+            <div id="tenant-products-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 7. ADMIN DASHBOARD -->
-    <section id="page-admin" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
-      <div id="admin-login-box" class="max-w-md mx-auto card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-5">
+    <section id="page-admin" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-12 space-y-6">
+      <div id="admin-login-box" class="max-w-md mx-auto card-warm rounded-3xl p-5 sm:p-8 bg-white space-y-5">
         <div class="text-center space-y-1">
           <span class="px-3 py-1 rounded-full bg-[#2D1E17] text-[#D4A857] text-xs font-bold">PANEL KURATOR KUMY</span>
           <h1 class="font-display font-extrabold text-2xl pt-2">Login Dashboard Admin</h1>
           <p class="text-xs text-[#2D1E17]/75">Verifikasi foto KTM pendaftar, kelola etalase tenant, dan pantau pesanan masuk.</p>
         </div>
         <div class="space-y-3">
-          <input id="admin-pass-input" type="password" onkeydown="if(event.key==='Enter') loginAdmin()" placeholder="Masukkan kata sandi admin" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+          <input id="admin-pass-input" type="password" onkeydown="if(event.key==='Enter') loginAdmin()" placeholder="Masukkan kata sandi admin" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-base sm:text-sm" />
           <button type="button" onclick="loginAdmin()" class="w-full btn-brutal bg-[#B71C1C] text-white py-2.5 rounded-xl font-bold text-sm">Masuk Dashboard</button>
         </div>
       </div>
 
       <div id="admin-panel-box" class="hidden space-y-6">
-        <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-5 rounded-3xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17]">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-3xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17]">
           <div>
-            <h1 class="font-display font-extrabold text-2xl sm:text-3xl">Dashboard Kurasi &amp; Database KUMY</h1>
+            <h1 class="font-display font-extrabold text-xl sm:text-3xl">Dashboard Kurasi &amp; Database KUMY</h1>
             <p class="text-xs font-semibold text-[#388E3C]" id="db-connection-status">Terhubung ke Google Sheets DB_KUMY ✓</p>
           </div>
           <div class="flex flex-wrap gap-2">
@@ -662,29 +808,29 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
             <p class="text-xs font-bold text-[#2D1E17]/70">Total Tenant</p>
-            <p id="stat-total-tenants" class="font-display font-extrabold text-2xl mt-1">0</p>
+            <p id="stat-total-tenants" class="font-display font-extrabold text-xl sm:text-2xl mt-1">0</p>
           </div>
           <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
             <p class="text-xs font-bold text-[#B71C1C]">Menunggu Validasi KTM</p>
-            <p id="stat-pending-tenants" class="font-display font-extrabold text-2xl text-[#B71C1C] mt-1">0</p>
+            <p id="stat-pending-tenants" class="font-display font-extrabold text-xl sm:text-2xl text-[#B71C1C] mt-1">0</p>
           </div>
           <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
             <p class="text-xs font-bold text-[#388E3C]">Total Pesanan</p>
-            <p id="stat-total-orders" class="font-display font-extrabold text-2xl text-[#388E3C] mt-1">0</p>
+            <p id="stat-total-orders" class="font-display font-extrabold text-xl sm:text-2xl text-[#388E3C] mt-1">0</p>
           </div>
           <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
             <p class="text-xs font-bold text-[#2D1E17]/70">Kritik &amp; Saran</p>
-            <p id="stat-total-feedback" class="font-display font-extrabold text-2xl mt-1">0</p>
+            <p id="stat-total-feedback" class="font-display font-extrabold text-xl sm:text-2xl mt-1">0</p>
           </div>
         </div>
 
-        <div class="card-warm rounded-3xl p-5 sm:p-6 bg-white space-y-4">
-          <h2 class="font-display font-bold text-xl">Daftar Tenant &amp; Validasi KTM</h2>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse text-sm">
+        <div class="card-warm rounded-3xl p-4 sm:p-6 bg-white space-y-4">
+          <h2 class="font-display font-bold text-lg sm:text-xl">Daftar Tenant &amp; Validasi KTM</h2>
+          <div class="overflow-x-auto -mx-2 px-2">
+            <table class="w-full min-w-[640px] text-left border-collapse text-sm">
               <thead>
                 <tr class="border-b-2 border-[#2D1E17] text-xs uppercase bg-[#FFF3E0]">
                   <th class="p-3">Usaha &amp; Produk</th>
@@ -700,13 +846,13 @@
           </div>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-6">
-          <div class="card-warm rounded-3xl p-5 bg-white space-y-3">
-            <h2 class="font-display font-bold text-xl">Riwayat Pesanan Masuk</h2>
+        <div class="grid lg:grid-cols-2 gap-5 sm:gap-6">
+          <div class="card-warm rounded-3xl p-4 sm:p-5 bg-white space-y-3">
+            <h2 class="font-display font-bold text-lg sm:text-xl">Riwayat Pesanan Masuk</h2>
             <div id="admin-orders-list" class="space-y-2.5 max-h-80 overflow-y-auto text-xs"></div>
           </div>
-          <div class="card-warm rounded-3xl p-5 bg-white space-y-3">
-            <h2 class="font-display font-bold text-xl">Kotak Kritik &amp; Saran</h2>
+          <div class="card-warm rounded-3xl p-4 sm:p-5 bg-white space-y-3">
+            <h2 class="font-display font-bold text-lg sm:text-xl">Kotak Kritik &amp; Saran</h2>
             <div id="admin-feedback-list" class="space-y-2.5 max-h-80 overflow-y-auto text-xs"></div>
           </div>
         </div>
@@ -718,7 +864,7 @@
   <!-- FOOTER BERWARNA & GELOMBANG BERLAPIS -->
   <footer class="mt-12 relative">
     <div class="w-full overflow-hidden leading-none">
-      <svg viewBox="0 0 1440 120" class="w-full h-16 sm:h-24 block" preserveAspectRatio="none">
+      <svg viewBox="0 0 1440 120" class="w-full h-14 sm:h-24 block" preserveAspectRatio="none">
         <path d="M0,32 C320,110 520,0 880,64 C1140,110 1320,30 1440,56 L1440,120 L0,120 Z" fill="#D4A857"></path>
         <path d="M0,58 C280,10 620,125 980,52 C1200,10 1350,75 1440,68 L1440,120 L0,120 Z" fill="#388E3C"></path>
         <path d="M0,82 C360,130 740,35 1120,88 C1290,112 1380,75 1440,86 L1440,120 L0,120 Z" fill="#B71C1C"></path>
@@ -727,10 +873,10 @@
     </div>
 
     <div class="bg-[#2D1E17] text-[#FFF3E0] pt-8 pb-12 px-4 sm:px-6">
-      <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-start">
-        <div class="md:col-span-5 bg-[#FFF3E0] text-[#2D1E17] p-6 rounded-3xl border-2 border-[#D4A857] shadow-[5px_5px_0px_#B71C1C] space-y-4">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-6 sm:gap-8 items-start">
+        <div class="md:col-span-5 bg-[#FFF3E0] text-[#2D1E17] p-5 sm:p-6 rounded-3xl border-2 border-[#D4A857] shadow-[5px_5px_0px_#B71C1C] space-y-4">
           <div class="flex items-center gap-3">
-            <div class="w-14 h-14 rounded-2xl bg-[#FFF3E0] border-2 border-[#2D1E17] flex items-center justify-center shrink-0 p-1">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FFF3E0] border-2 border-[#2D1E17] flex items-center justify-center shrink-0 p-1">
               <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M35 66 C26 60, 22 50, 24 41 C31 44, 36 52, 36 63" fill="#D4A857"/>
                 <path d="M34 65 C22 63, 14 57, 12 49 C20 48, 28 53, 35 63" fill="#E2BE79"/>
@@ -758,7 +904,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="font-display font-extrabold text-xl text-[#B71C1C]">KUMY Yogyakarta</h3>
+              <h3 class="font-display font-extrabold text-lg sm:text-xl text-[#B71C1C]">KUMY Yogyakarta</h3>
               <p class="text-xs font-semibold text-[#2D1E17]/75">Kumpulan Usaha Mahasiswa Yogyakarta</p>
             </div>
           </div>
@@ -776,7 +922,7 @@
 
         <div class="md:col-span-4 space-y-3">
           <h4 class="font-display font-bold text-lg text-[#D4A857]">Kawasan Kampus Jogja</h4>
-          <ul class="space-y-2 text-sm">
+          <ul class="space-y-2.5 text-xs sm:text-sm">
             <li><button type="button" onclick="jumpZoneFromFooter('bulaksumur')" class="hover:text-[#D4A857] transition text-left">• Bulaksumur &amp; Karangmalang (UGM, UNY)</button></li>
             <li><button type="button" onclick="jumpZoneFromFooter('seturan')" class="hover:text-[#D4A857] transition text-left">• Seturan &amp; Babarsari (UPN, Atma Jaya, Amikom)</button></li>
             <li><button type="button" onclick="jumpZoneFromFooter('gejayan')" class="hover:text-[#D4A857] transition text-left">• Gejayan &amp; Condongcatur (Sanata Dharma, Mercu Buana)</button></li>
@@ -788,7 +934,7 @@
         <div class="md:col-span-3 space-y-4">
           <div class="bg-[#388E3C] text-white p-5 rounded-3xl border-2 border-[#FFF3E0] shadow-[4px_4px_0px_#D4A857] space-y-3">
             <span class="inline-block px-2.5 py-0.5 rounded bg-[#2D1E17] text-[#D4A857] text-[11px] font-bold">Layanan Admin KUMY</span>
-            <h4 class="font-display font-bold text-lg leading-snug">Butuh Bantuan Pendaftaran atau Validasi KTM?</h4>
+            <h4 class="font-display font-bold text-base sm:text-lg leading-snug">Butuh Bantuan Pendaftaran atau Validasi KTM?</h4>
             <p class="text-xs text-white/90">Hubungi admin langsung untuk konfirmasi pendaftaran lapak tenant baru.</p>
             <a href="https://wa.me/6281345991170" target="_blank" class="block text-center bg-[#FFF3E0] text-[#2D1E17] font-extrabold text-sm py-2.5 px-4 rounded-xl border-2 border-[#2D1E17] hover:bg-[#D4A857] transition">
               WA Admin: 0813-4599-1170
@@ -797,9 +943,9 @@
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-[#FFF3E0]/15 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#FFF3E0]/70">
+      <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-[#FFF3E0]/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#FFF3E0]/70 text-center sm:text-left">
         <p>© 2026 KUMY — Kumpulan Usaha Mahasiswa Yogyakarta. Data populasi mahasiswa DIY mengacu pada publikasi GoodStats.</p>
-        <div class="flex gap-4">
+        <div class="flex flex-wrap justify-center gap-4">
           <button type="button" onclick="navigateTo('etalase')" class="hover:text-[#D4A857]">Etalase</button>
           <button type="button" onclick="navigateTo('tenant-login')" class="hover:text-[#D4A857]">Login Tenant</button>
           <button type="button" onclick="navigateTo('admin')" class="hover:text-[#D4A857]">Admin</button>
@@ -811,36 +957,36 @@
   <!-- CART DRAWER -->
   <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
     <div onclick="toggleCart(false)" class="absolute inset-0 bg-[#2D1E17]/60"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-[#FFF3E0] border-l-2 border-[#2D1E17] flex flex-col shadow-2xl">
-      <div class="p-5 bg-white border-b-2 border-[#2D1E17] flex items-center justify-between">
+    <div class="absolute right-0 top-0 bottom-0 w-full sm:max-w-md bg-[#FFF3E0] border-l-0 sm:border-l-2 border-[#2D1E17] flex flex-col shadow-2xl">
+      <div class="p-4 sm:p-5 bg-white border-b-2 border-[#2D1E17] flex items-center justify-between">
         <div>
-          <h2 class="font-display font-extrabold text-xl">Keranjang Pesanan</h2>
+          <h2 class="font-display font-extrabold text-lg sm:text-xl">Keranjang Pesanan</h2>
           <p class="text-xs text-[#2D1E17]/70">Pesanan diteruskan langsung ke WhatsApp penjual</p>
         </div>
-        <button type="button" onclick="toggleCart(false)" class="btn-brutal bg-[#FFF3E0] w-9 h-9 rounded-xl font-bold">✕</button>
+        <button type="button" onclick="toggleCart(false)" class="btn-brutal bg-[#FFF3E0] w-9 h-9 rounded-xl font-bold flex items-center justify-center">✕</button>
       </div>
 
-      <div id="cart-items-container" class="flex-grow overflow-y-auto p-5 space-y-3"></div>
+      <div id="cart-items-container" class="flex-grow overflow-y-auto p-4 sm:p-5 space-y-3"></div>
 
-      <div class="p-5 bg-white border-t-2 border-[#2D1E17] space-y-3">
-        <div class="grid grid-cols-2 gap-2">
+      <div class="p-4 sm:p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] bg-white border-t-2 border-[#2D1E17] space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <div>
             <label class="block text-[11px] font-bold uppercase mb-1">Metode Ambil/Antar</label>
-            <select id="cart-method" class="w-full px-2.5 py-2 rounded-xl border-2 border-[#2D1E17] text-xs font-bold bg-[#FFF3E0]">
+            <select id="cart-method" class="w-full px-2.5 py-2 rounded-xl border-2 border-[#2D1E17] text-base sm:text-xs font-bold bg-[#FFF3E0]">
               <option value="Ambil di Titik Kampus">Ambil di Titik Kampus</option>
               <option value="Antar Area Kos Terdekat">Antar Area Kos Terdekat</option>
             </select>
           </div>
           <div>
             <label class="block text-[11px] font-bold uppercase mb-1">Nama &amp; Kampus</label>
-            <input id="cart-buyer-name" type="text" placeholder="Dina - UNY" class="w-full px-2.5 py-2 rounded-xl border-2 border-[#2D1E17] text-xs" />
+            <input id="cart-buyer-name" type="text" placeholder="Dina - UNY" class="w-full px-2.5 py-2 rounded-xl border-2 border-[#2D1E17] text-base sm:text-xs" />
           </div>
         </div>
 
-        <input id="cart-buyer-wa" type="tel" placeholder="Nomor WhatsApp Pembeli (08xxxxxxxxxx)" class="w-full px-3 py-2 rounded-xl border-2 border-[#2D1E17] text-xs" />
+        <input id="cart-buyer-wa" type="tel" placeholder="Nomor WhatsApp Pembeli (08xxxxxxxxxx)" class="w-full px-3 py-2 rounded-xl border-2 border-[#2D1E17] text-base sm:text-xs" />
 
         <div class="space-y-1 text-xs pt-1">
-          <div class="flex justify-between font-display font-extrabold text-lg pt-1 border-t border-[#2D1E17]/20">
+          <div class="flex justify-between font-display font-extrabold text-base sm:text-lg pt-1 border-t border-[#2D1E17]/20">
             <span>Total Bayar</span>
             <span id="cart-total">Rp 0</span>
           </div>
@@ -855,9 +1001,9 @@
 
   <!-- MODAL MULTI-SELLER WA CHECKOUT -->
   <div id="multi-wa-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D1E17]/70">
-    <div class="bg-white border-2 border-[#2D1E17] rounded-3xl max-w-md w-full p-6 space-y-4 shadow-[6px_6px_0px_#D4A857]">
+    <div class="bg-white border-2 border-[#2D1E17] rounded-3xl max-w-md w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 space-y-4 shadow-[6px_6px_0px_#D4A857]">
       <div class="flex items-center justify-between">
-        <h3 class="font-display font-bold text-xl">Kirim Pesanan ke Penjual</h3>
+        <h3 class="font-display font-bold text-lg sm:text-xl">Kirim Pesanan ke Penjual</h3>
         <button type="button" onclick="closeMultiWaModal()" class="btn-brutal bg-[#FFF3E0] w-8 h-8 rounded-lg font-bold">✕</button>
       </div>
       <p class="text-xs text-[#2D1E17]/80">Kamu memesan dari beberapa lapak berbeda. Klik tombol di bawah untuk mengirim rincian pesanan ke masing-masing WhatsApp penjual:</p>
@@ -867,9 +1013,9 @@
 
   <!-- MODAL KTM -->
   <div id="ktm-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D1E17]/70">
-    <div class="bg-white border-2 border-[#2D1E17] rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-[6px_6px_0px_#D4A857]">
+    <div class="bg-white border-2 border-[#2D1E17] rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 space-y-4 shadow-[6px_6px_0px_#D4A857]">
       <div class="flex items-center justify-between">
-        <h3 class="font-display font-bold text-xl" id="ktm-modal-title">Validasi Foto KTM</h3>
+        <h3 class="font-display font-bold text-lg sm:text-xl" id="ktm-modal-title">Validasi Foto KTM</h3>
         <button type="button" onclick="closeKtmModal()" class="btn-brutal bg-[#FFF3E0] w-8 h-8 rounded-lg font-bold">✕</button>
       </div>
       <div id="ktm-modal-body" class="bg-[#FFF3E0] p-4 rounded-2xl border-2 border-[#2D1E17] text-center"></div>
@@ -877,8 +1023,192 @@
   </div>
 
   <!-- TOAST -->
-  <div id="toast-box" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-[#2D1E17] text-[#FFF3E0] px-5 py-3 rounded-2xl border-2 border-[#D4A857] shadow-xl text-xs sm:text-sm font-bold"></div>
+  <div id="toast-box" class="fixed bottom-5 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 hidden bg-[#2D1E17] text-[#FFF3E0] px-4 sm:px-5 py-3 rounded-2xl border-2 border-[#D4A857] shadow-xl text-xs sm:text-sm font-bold text-center"></div>
 
+  <!-- SCRIPT ANIMASI INTRO PEMBUKAAN -->
+  <script>
+    (function () {
+      var $ = function (i) { return document.getElementById(i); };
+      var clamp = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
+      var P = function (t, a, d) { return clamp((t - a) / d); };
+      var oc = function (u) { return 1 - Math.pow(1 - u, 3); };
+      var oq = function (u) { return 1 - Math.pow(1 - u, 4); };
+      var io = function (u) { return u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; };
+      var ob = function (u) { var c = 1.15; return 1 + (c + 1) * Math.pow(u - 1, 3) + c * Math.pow(u - 1, 2); };
+      var spr = function (u) { return u >= 1 ? 1 : 1 - Math.exp(-4 * u) * Math.cos(5 * u); };
+
+      function T(el, o) {
+        var ox = o.ox || 0, oy = o.oy || 0;
+        el.setAttribute('transform', 'translate(' + (o.x || 0) + ' ' + (o.y || 0) + ') translate(' + ox + ' ' + oy + ') rotate(' + (o.r || 0) + ') scale(' + (o.s == null ? 1 : o.s) + ') translate(' + (-ox) + ' ' + (-oy) + ')');
+        if (o.o != null) el.setAttribute('opacity', o.o);
+      }
+
+      var overlay = $('intro-overlay');
+      var svgEl = $('intro-svg');
+      var bgRect = $('intro-bg-rect');
+      var lg = $('lg'), root = $('root'), cl = $('cl'), vine = $('vine'), vc0 = $('vc0'), vc1 = $('vc1');
+      var txGroup = $('tx-group');
+      var txKumy = $('tx-kumy');
+      var progressBar = $('intro-progress-bar');
+
+      var N = 140, L = cl.getTotalLength(), C = [], Lf = [], Rt = [], Rad = [];
+      for (var i = 0; i <= N; i++) {
+        var a = cl.getPointAtLength(L * Math.max(0, i - 1) / N);
+        var b = cl.getPointAtLength(L * Math.min(N, i + 1) / N);
+        var p = cl.getPointAtLength(L * i / N);
+        var dx = b.x - a.x, dy = b.y - a.y, m = Math.hypot(dx, dy) || 1, r = 7.6 - 4.4 * Math.pow(i / N, 0.8);
+        C.push([p.x, p.y]); Rad.push(r); Lf.push([p.x - dy / m * r, p.y + dx / m * r]); Rt.push([p.x + dy / m * r, p.y - dx / m * r]);
+      }
+
+      function lp(A, B, f) { return [A[0] + (B[0] - A[0]) * f, A[1] + (B[1] - A[1]) * f]; }
+      function buildVine(v) {
+        if (v <= 0) { vine.setAttribute('d', ''); vc0.setAttribute('opacity', 0); vc1.setAttribute('opacity', 0); return; }
+        var k = v * N, n = Math.min(N - 1, Math.floor(k)), f = k - n, l = [], r = [], j;
+        for (j = 0; j <= n; j++) { l.push(Lf[j]); r.push(Rt[j]); }
+        var tl = lp(Lf[n], Lf[n + 1], f), tr = lp(Rt[n], Rt[n + 1], f), tc = lp(C[n], C[n + 1], f), tradius = Rad[n] + (Rad[n + 1] - Rad[n]) * f;
+        l.push(tl); r.push(tr);
+        var d = 'M' + l.map(function (q) { return q[0].toFixed(2) + ' ' + q[1].toFixed(2); }).join('L') + 'L' + r.reverse().map(function (q) { return q[0].toFixed(2) + ' ' + q[1].toFixed(2); }).join('L') + 'Z';
+        vine.setAttribute('d', d);
+        vc0.setAttribute('cx', C[0][0]); vc0.setAttribute('cy', C[0][1]); vc0.setAttribute('r', Rad[0]); vc0.setAttribute('opacity', 1);
+        vc1.setAttribute('cx', tc[0]); vc1.setAttribute('cy', tc[1]); vc1.setAttribute('r', tradius); vc1.setAttribute('opacity', 1);
+      }
+
+      var parts = [[$('base'), 0.3, 396], [$('body'), 0.55, 352], [$('col'), 0.8, 252]];
+      var tx = document.querySelectorAll('.tx'), txS = [4.7, 4.95, 5.2, 5.6];
+      var st = [].slice.call(document.querySelectorAll('.st')), stS = [6.5, 6.65, 6.8], stC = st.map(function (e) { var b = e.getBBox(); return [b.x + b.width / 2, b.y + b.height / 2]; });
+      var END = 9.2;
+      var isPortraitMode = false;
+
+      function applyResponsiveSvgLayout() {
+        isPortraitMode = window.innerWidth < 640 && window.innerHeight > window.innerWidth;
+        if (isPortraitMode) {
+          svgEl.setAttribute('viewBox', '0 0 720 1120');
+          bgRect.setAttribute('width', '720');
+          bgRect.setAttribute('height', '1120');
+          txGroup.setAttribute('text-anchor', 'middle');
+          txGroup.setAttribute('font-size', '46');
+          var yPositions = [725, 788, 851, 955];
+          for (var i = 0; i < tx.length; i++) {
+            tx[i].setAttribute('x', '360');
+            tx[i].setAttribute('y', yPositions[i]);
+          }
+          txKumy.setAttribute('font-size', '68');
+        } else {
+          svgEl.setAttribute('viewBox', '0 0 1280 720');
+          bgRect.setAttribute('width', '1280');
+          bgRect.setAttribute('height', '720');
+          txGroup.setAttribute('text-anchor', 'start');
+          txGroup.setAttribute('font-size', '62');
+          var desktopY = [318, 392, 466, 566];
+          for (var j = 0; j < tx.length; j++) {
+            tx[j].setAttribute('x', '590');
+            tx[j].setAttribute('y', desktopY[j]);
+          }
+          txKumy.setAttribute('font-size', '76');
+        }
+      }
+
+      function render(t) {
+        if (progressBar) {
+          progressBar.style.width = Math.min(100, (t / END) * 100).toFixed(1) + '%';
+        }
+        if (isPortraitMode) {
+          T(root, { s: 1.04 - 0.04 * oc(P(t, 0, 9)), ox: 360, oy: 560 });
+          var ySlide = 260 - 155 * io(P(t, 4.2, 1.4));
+          lg.setAttribute('transform', 'translate(184.5 ' + ySlide + ') scale(1.35)');
+        } else {
+          T(root, { s: 1.05 - 0.05 * oc(P(t, 0, 9)), ox: 640, oy: 360 });
+          lg.setAttribute('transform', 'translate(' + (215 + 275 * (1 - io(P(t, 4.2, 1.4)))) + ' 150) scale(1.15)');
+        }
+
+        var u = P(t, 0.3, 1.8);
+        T($('ring'), { s: 0.3 + 1.2 * oc(u), ox: 130, oy: 210, o: u > 0 && u < 1 ? 0.7 * (1 - u) : 0 });
+        parts.forEach(function (p) {
+          var q = P(t, p[1], 1);
+          T(p[0], { y: 26 * (1 - oc(q)), s: 0.25 + 0.75 * ob(q), ox: 130, oy: p[2], o: clamp(q * 3.5) });
+        });
+        buildVine(io(P(t, 1.7, 2.2)));
+        u = P(t, 2.5, 1.1); T($('gl1'), { s: ob(u), r: 25 * (1 - oc(u)), ox: 40, oy: 283, o: clamp(u * 5) });
+        u = P(t, 2.8, 1.1); T($('gl2'), { s: ob(u), r: 25 * (1 - oc(u)), ox: 34, oy: 272, o: clamp(u * 5) });
+        u = P(t, 3.3, 1.2); T($('leaf'), { s: ob(u), r: -30 * (1 - oc(u)), ox: 212, oy: 178, o: clamp(u * 5) });
+        u = P(t, 3.6, 1.2); T($('rib'), { s: ob(u), r: -30 * (1 - oc(u)), ox: 212, oy: 178, o: clamp(u * 4) });
+        for (var i = 0; i < tx.length; i++) {
+          u = oq(P(t, txS[i], 1.1));
+          T(tx[i], { y: 34 * (1 - u), o: u });
+        }
+        u = P(t, 6, 1.6); var s = spr(u);
+        T($('toga'), { y: -280 * (1 - s), r: -14 * (1 - s), ox: 130, oy: 50, o: clamp(u * 8) });
+        var ts = t - 6.5;
+        T($('tassel'), { r: ts > 0 ? 16 * Math.exp(-2.2 * ts) * Math.sin(7 * ts) : 0, ox: 196, oy: 54 });
+        u = P(t, 6.4, 1.5);
+        T($('shine'), { s: 0.2 + 1.4 * oc(u), ox: 130, oy: 48, o: u > 0 && u < 1 ? 0.55 * (1 - u) : 0 });
+        st.forEach(function (e, i) {
+          var q = P(t, stS[i], 0.9);
+          T(e, { s: Math.sin(Math.PI * q) * 1.2, r: 90 * q, ox: stC[i][0], oy: stC[i][1], o: Math.sin(Math.PI * q) });
+        });
+      }
+
+      var t0 = 0, raf = 0, autoCloseTimer = 0, dismissed = false;
+      var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+      window.skipIntro = function () {
+        if (dismissed) return;
+        dismissed = true;
+        cancelAnimationFrame(raf);
+        clearTimeout(autoCloseTimer);
+        overlay.classList.add('intro-hidden');
+        document.body.classList.remove('overflow-hidden');
+      };
+
+      window.replayIntro = function () {
+        dismissed = false;
+        clearTimeout(autoCloseTimer);
+        applyResponsiveSvgLayout();
+        overlay.classList.remove('intro-hidden');
+        document.body.classList.add('overflow-hidden');
+        play();
+      };
+
+      function loop(now) {
+        if (dismissed) return;
+        var t = (now - t0) / 1000;
+        if (t >= END) {
+          render(END);
+          autoCloseTimer = setTimeout(window.skipIntro, 750);
+          return;
+        }
+        render(t);
+        raf = requestAnimationFrame(loop);
+      }
+
+      function play() {
+        cancelAnimationFrame(raf);
+        clearTimeout(autoCloseTimer);
+        applyResponsiveSvgLayout();
+        if (reduce) {
+          render(END);
+          autoCloseTimer = setTimeout(window.skipIntro, 1800);
+          return;
+        }
+        t0 = performance.now();
+        raf = requestAnimationFrame(loop);
+      }
+
+      window.addEventListener('resize', function () {
+        if (!dismissed) applyResponsiveSvgLayout();
+      });
+
+      applyResponsiveSvgLayout();
+      render(0);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(play);
+      } else {
+        play();
+      }
+    })();
+  </script>
+
+  <!-- SCRIPT UTAMA WEBSITE KUMY -->
   <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRBedJEfmxBNJ4KRyYUhhHZN-r000N2RDku3S7gsVjkpl1uQLHbkmFoa_KgPj_xQmF/exec";
     const ADMIN_WA = "6281345991170";
@@ -1135,7 +1465,13 @@
       }
     });
 
-    function toggleMobileMenu() { document.getElementById("mobile-menu").classList.toggle("hidden"); }
+    function toggleMobileMenu(forceState) {
+      const menu = document.getElementById("mobile-menu");
+      const btn = document.getElementById("mobile-menu-btn");
+      const isHidden = typeof forceState === "boolean" ? !forceState : !menu.classList.contains("hidden");
+      menu.classList.toggle("hidden", isHidden);
+      if (btn) btn.setAttribute("aria-expanded", String(!isHidden));
+    }
 
     function populateZoneSelectors() {
       const filterSelect = document.getElementById("filter-zone");
@@ -1196,7 +1532,7 @@
       return `
         <article class="card-warm rounded-3xl overflow-hidden flex flex-col justify-between bg-white">
           <div>
-            <div class="relative h-40 bg-[#FFF3E0] border-b-2 border-[#2D1E17] overflow-hidden">
+            <div class="relative h-44 sm:h-40 bg-[#FFF3E0] border-b-2 border-[#2D1E17] overflow-hidden">
               <img src="${imgUrl}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" alt="${p.nama_produk}" class="w-full h-full object-cover" />
               <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-lg bg-[#388E3C] text-white text-[10px] font-extrabold border border-[#2D1E17]">✓ KTM</span>
               <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-lg bg-[#FFF3E0] text-[#2D1E17] text-[10px] font-bold border border-[#2D1E17]">${p.kategori}</span>
@@ -1204,7 +1540,7 @@
             <div class="p-4 space-y-1.5">
               <div class="flex items-center justify-between gap-1 text-[11px] font-bold text-[#B71C1C]">
                 <span class="truncate">${p.kampus}</span>
-                <span class="text-[#2D1E17]/65 truncate max-w-[120px]">${zoneLabel}</span>
+                <span class="text-[#2D1E17]/65 truncate max-w-[130px]">${zoneLabel}</span>
               </div>
               <h3 class="font-display font-bold text-base leading-snug line-clamp-2">${p.nama_produk}</h3>
               <p class="text-[11px] font-bold text-[#2D1E17]/80 truncate">Lapak: ${p.nama_usaha}</p>
@@ -1220,7 +1556,7 @@
               <span class="block text-[9px] uppercase font-bold text-[#2D1E17]/60">Harga</span>
               <span class="font-display font-extrabold text-base text-[#2D1E17]">${formatRupiah(p.harga)}</span>
             </div>
-            <button type="button" ${isSoldOut ? 'disabled' : ''} onclick="addToCart('${p.productId}')" class="btn-brutal ${isSoldOut ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-[#D4A857] hover:bg-[#B71C1C] hover:text-white text-[#2D1E17]'} px-3 py-1.5 rounded-xl font-bold text-xs">
+            <button type="button" ${isSoldOut ? 'disabled' : ''} onclick="addToCart('${p.productId}')" class="btn-brutal ${isSoldOut ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-[#D4A857] hover:bg-[#B71C1C] hover:text-white text-[#2D1E17]'} px-3.5 py-2 rounded-xl font-bold text-xs min-h-[36px]">
               ${isSoldOut ? 'Habis' : '+ Keranjang'}
             </button>
           </div>
@@ -1280,21 +1616,21 @@
       let pageButtons = "";
       for (let i = 1; i <= totalPages; i++) {
         const isCurrent = i === state.etalasePage;
-        pageButtons += `<button type="button" onclick="changeEtalasePage(${i})" class="px-3.5 py-1.5 rounded-xl font-bold text-xs border-2 border-[#2D1E17] transition ${
+        pageButtons += `<button type="button" onclick="changeEtalasePage(${i})" class="px-3.5 py-2 rounded-xl font-bold text-xs border-2 border-[#2D1E17] transition min-w-[36px] ${
           isCurrent ? "bg-[#B71C1C] text-white shadow-[2px_2px_0px_#2D1E17]" : "bg-[#FFF3E0] text-[#2D1E17] hover:bg-[#D4A857]"
         }">${i}</button>`;
       }
 
       paginationEl.innerHTML = `
-        <div class="text-xs font-bold text-[#2D1E17]/80">
+        <div class="text-xs font-bold text-[#2D1E17]/80 text-center sm:text-left">
           Halaman <span class="text-[#B71C1C] font-extrabold">${state.etalasePage}</span> dari <span class="font-extrabold">${totalPages}</span> • Maksimal 12 produk per halaman (4 × 3)
         </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <button type="button" ${state.etalasePage <= 1 ? "disabled" : ""} onclick="changeEtalasePage(${state.etalasePage - 1})" class="btn-brutal px-3.5 py-1.5 rounded-xl font-bold text-xs ${
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <button type="button" ${state.etalasePage <= 1 ? "disabled" : ""} onclick="changeEtalasePage(${state.etalasePage - 1})" class="btn-brutal px-3.5 py-2 rounded-xl font-bold text-xs ${
             state.etalasePage <= 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-white text-[#2D1E17]"
           }">← Sebelumnya</button>
           ${pageButtons}
-          <button type="button" ${state.etalasePage >= totalPages ? "disabled" : ""} onclick="changeEtalasePage(${state.etalasePage + 1})" class="btn-brutal px-3.5 py-1.5 rounded-xl font-bold text-xs ${
+          <button type="button" ${state.etalasePage >= totalPages ? "disabled" : ""} onclick="changeEtalasePage(${state.etalasePage + 1})" class="btn-brutal px-3.5 py-2 rounded-xl font-bold text-xs ${
             state.etalasePage >= totalPages ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-[#388E3C] text-white"
           }">Halaman Selanjutnya →</button>
         </div>
@@ -1363,9 +1699,9 @@
             <p class="text-xs font-semibold text-[#388E3C]">${formatRupiah(item.harga)} / porsi</p>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <button type="button" onclick="updateCartQty('${item.productId}', -1)" class="w-7 h-7 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] font-bold text-sm">-</button>
+            <button type="button" onclick="updateCartQty('${item.productId}', -1)" class="w-8 h-8 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] font-bold text-sm">-</button>
             <span class="w-6 text-center text-xs font-extrabold">${item.qty}</span>
-            <button type="button" onclick="updateCartQty('${item.productId}', 1)" class="w-7 h-7 rounded-lg bg-[#D4A857] border border-[#2D1E17] font-bold text-sm">+</button>
+            <button type="button" onclick="updateCartQty('${item.productId}', 1)" class="w-8 h-8 rounded-lg bg-[#D4A857] border border-[#2D1E17] font-bold text-sm">+</button>
           </div>
         </div>`).join("") :
         `<div class="bg-white p-6 rounded-2xl border-2 border-dashed border-[#2D1E17] text-center text-sm"><p class="font-bold">Keranjang masih kosong</p></div>`;
@@ -1389,7 +1725,6 @@
       const itemSummary = state.cart.map(i => `${i.qty}x ${i.menu_utama} (${i.nama_usaha})`).join("; ");
       const orderId = "ORD-" + Date.now();
 
-      // Perbarui qty_tersedia & qty_terjual produk tenant saat checkout dan sinkron ke Sheets
       state.cart.forEach(cartItem => {
         const tenantObj = state.tenants.find(t => t.id === cartItem.tenantId);
         if (tenantObj && Array.isArray(tenantObj.products)) {
@@ -1420,7 +1755,6 @@
       if (state.loggedInTenantId) renderTenantDashboard();
       postToSheets(orderPayload);
 
-      // Kelompokkan pesanan berdasarkan penjual tenant
       const groupedBySeller = {};
       state.cart.forEach(item => {
         const tenantObj = state.tenants.find(t => t.id === item.tenantId);
@@ -1555,7 +1889,6 @@
       box.innerHTML = `<p class="font-bold">${found.nama_usaha}</p><p class="text-xs">${found.pemilik} (${found.kampus} • ${found.nim})</p><p class="text-xs font-extrabold text-[#388E3C] pt-1">Status: ${labels[found.status] || found.status}</p>`;
     }
 
-    // ==================== PORTAL LOGIN & KELOLA PRODUK TENANT ====================
     function loginTenant() {
       const rawId = document.getElementById("tenant-login-id").value.trim();
       const pass = document.getElementById("tenant-login-pass").value.trim();
@@ -1754,24 +2087,24 @@
                 <div class="bg-[#FFF3E0] p-2 rounded-xl border border-[#2D1E17]">
                   <span class="block text-[10px] font-bold uppercase text-[#388E3C]">Tersedia Hari Ini</span>
                   <div class="flex items-center justify-between mt-1">
-                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_tersedia', -1)" class="w-6 h-6 rounded bg-white border border-[#2D1E17] font-bold text-xs">-</button>
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_tersedia', -1)" class="w-7 h-7 rounded bg-white border border-[#2D1E17] font-bold text-xs">-</button>
                     <span class="font-extrabold text-sm">${p.qty_tersedia}</span>
-                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_tersedia', 1)" class="w-6 h-6 rounded bg-[#388E3C] text-white border border-[#2D1E17] font-bold text-xs">+</button>
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_tersedia', 1)" class="w-7 h-7 rounded bg-[#388E3C] text-white border border-[#2D1E17] font-bold text-xs">+</button>
                   </div>
                 </div>
                 <div class="bg-[#FFF3E0] p-2 rounded-xl border border-[#2D1E17]">
                   <span class="block text-[10px] font-bold uppercase text-[#B71C1C]">Qty Terjual</span>
                   <div class="flex items-center justify-between mt-1">
-                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_terjual', -1)" class="w-6 h-6 rounded bg-white border border-[#2D1E17] font-bold text-xs">-</button>
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_terjual', -1)" class="w-7 h-7 rounded bg-white border border-[#2D1E17] font-bold text-xs">-</button>
                     <span class="font-extrabold text-sm">${p.qty_terjual}</span>
-                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_terjual', 1)" class="w-6 h-6 rounded bg-[#D4A857] border border-[#2D1E17] font-bold text-xs">+</button>
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_terjual', 1)" class="w-7 h-7 rounded bg-[#D4A857] border border-[#2D1E17] font-bold text-xs">+</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="px-4 pb-4 pt-2 border-t border-[#2D1E17]/15 flex justify-end">
-            <button type="button" onclick="deleteTenantProduct('${p.id}')" class="text-xs font-bold text-[#B71C1C] hover:underline">Hapus Produk</button>
+            <button type="button" onclick="deleteTenantProduct('${p.id}')" class="text-xs font-bold text-[#B71C1C] hover:underline py-1">Hapus Produk</button>
           </div>
         </div>
       `).join("") : `
@@ -1896,11 +2229,11 @@
           <td class="p-3"><p class="font-bold">${t.nama_usaha}</p><p class="text-xs">${firstProd} (${prodCount} produk)</p></td>
           <td class="p-3"><p class="font-semibold">${t.pemilik}</p><p class="text-xs">${t.kampus} • ${t.nim}</p></td>
           <td class="p-3 text-xs font-semibold">${t.kawasan}</td>
-          <td class="p-3"><button type="button" onclick="openKtmModal('${t.id}')" class="px-2.5 py-1 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">Lihat KTM</button></td>
+          <td class="p-3"><button type="button" onclick="openKtmModal('${t.id}')" class="px-2.5 py-1.5 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">Lihat KTM</button></td>
           <td class="p-3"><span class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase ${badgeColor}">${t.status}</span></td>
           <td class="p-3 flex gap-1.5">
-            <button type="button" onclick="updateTenantStatus('${t.id}', 'approved')" class="px-2.5 py-1 rounded-lg bg-[#388E3C] text-white text-xs font-bold">Setujui</button>
-            <button type="button" onclick="updateTenantStatus('${t.id}', 'rejected')" class="px-2.5 py-1 rounded-lg bg-[#B71C1C] text-white text-xs font-bold">Tolak</button>
+            <button type="button" onclick="updateTenantStatus('${t.id}', 'approved')" class="px-2.5 py-1.5 rounded-lg bg-[#388E3C] text-white text-xs font-bold">Setujui</button>
+            <button type="button" onclick="updateTenantStatus('${t.id}', 'rejected')" class="px-2.5 py-1.5 rounded-lg bg-[#B71C1C] text-white text-xs font-bold">Tolak</button>
           </td>
         </tr>`;
       }).join("");
