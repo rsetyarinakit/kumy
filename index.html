@@ -85,37 +85,27 @@
         <!-- LOGO KUMY TUGU BERTOGA & DAUN HIJAU -->
         <div class="w-12 h-12 rounded-xl bg-[#FFF3E0] border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17] flex items-center justify-center shrink-0 group-hover:rotate-2 transition-transform p-1">
           <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Daun krem kiri -->
             <path d="M35 66 C26 60, 22 50, 24 41 C31 44, 36 52, 36 63" fill="#D4A857"/>
             <path d="M34 65 C22 63, 14 57, 12 49 C20 48, 28 53, 35 63" fill="#E2BE79"/>
-            <!-- Alas Tugu -->
             <rect x="24" y="86" width="52" height="5" rx="1.5" fill="#B71C1C"/>
             <rect x="28" y="81" width="44" height="5" rx="1" fill="#D4A857"/>
-            <!-- Badan bawah Tugu -->
             <rect x="33" y="64" width="34" height="17" fill="#B71C1C"/>
             <path d="M43 81 V71 C43 67.5, 57 67.5, 57 71 V81 Z" fill="#FFF3E0"/>
-            <!-- Mahkota tengah Tugu -->
             <path d="M31 64 L36 58 H64 L69 64 Z" fill="#B71C1C"/>
             <path d="M35 58 L39 54 H61 L65 58 Z" fill="#D4A857"/>
-            <!-- Tiang utama Tugu -->
             <polygon points="41,28 59,28 62,54 38,54" fill="#E6C78B"/>
             <polygon points="41,28 45,28 43,54 38,54" fill="#B71C1C"/>
             <polygon points="55,28 59,28 62,54 57,54" fill="#B71C1C"/>
             <path d="M47 54 L50 45 L53 54 Z" fill="#B71C1C"/>
-            <!-- Kepala tiang -->
             <rect x="39" y="23" width="22" height="5" rx="2" fill="#D4A857"/>
-            <!-- Topi Toga Merah di atas Tugu -->
             <rect x="38" y="16" width="24" height="7" rx="1" fill="#B71C1C"/>
             <line x1="38" y1="20" x2="62" y2="20" stroke="#D4A857" stroke-width="1.5"/>
             <polygon points="50,4 74,13 50,21 26,13" fill="#B71C1C"/>
             <polygon points="50,4 74,13 50,17 26,13" fill="#C62828"/>
-            <!-- Tali & Rumbai Toga -->
             <path d="M50 13 L68 17 V26" stroke="#B71C1C" stroke-width="2" stroke-linecap="round"/>
             <circle cx="68" cy="27" r="2.2" fill="#B71C1C"/>
             <path d="M66 28 L65 34 H71 L70 28 Z" fill="#B71C1C"/>
-            <!-- Sulur Hijau Melilit Tugu -->
             <path d="M34 86 C26 74, 30 61, 47 56 C63 51, 70 42, 74 31" stroke="#388E3C" stroke-width="5" stroke-linecap="round" fill="none"/>
-            <!-- Daun Hijau Besar Kanan -->
             <path d="M72 34 C72 22, 81 15, 92 15 C91 27, 83 35, 72 34 Z" fill="#388E3C"/>
             <path d="M73 33 C79 27, 85 21, 90 17" stroke="#FFF3E0" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
@@ -129,13 +119,14 @@
         </div>
       </button>
 
-      <nav class="hidden lg:flex items-center gap-1.5 bg-white/80 p-1.5 rounded-2xl border-2 border-[#2D1E17]">
-        <button type="button" data-nav="beranda" onclick="navigateTo('beranda')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Beranda</button>
-        <button type="button" data-nav="etalase" onclick="navigateTo('etalase')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Etalase</button>
-        <button type="button" data-nav="tutorial" onclick="navigateTo('tutorial')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Tutorial</button>
-        <button type="button" data-nav="kritik" onclick="navigateTo('kritik')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Kritik &amp; Saran</button>
-        <button type="button" data-nav="daftar" onclick="navigateTo('daftar')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Daftar Tenant</button>
-        <button type="button" data-nav="admin" onclick="navigateTo('admin')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Admin</button>
+      <nav class="hidden xl:flex items-center gap-1 bg-white/80 p-1.5 rounded-2xl border-2 border-[#2D1E17]">
+        <button type="button" data-nav="beranda" onclick="navigateTo('beranda')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Beranda</button>
+        <button type="button" data-nav="etalase" onclick="navigateTo('etalase')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Etalase</button>
+        <button type="button" data-nav="tutorial" onclick="navigateTo('tutorial')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Tutorial</button>
+        <button type="button" data-nav="kritik" onclick="navigateTo('kritik')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Kritik &amp; Saran</button>
+        <button type="button" data-nav="daftar" onclick="navigateTo('daftar')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Daftar Tenant</button>
+        <button type="button" data-nav="tenant-login" onclick="navigateTo('tenant-login')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Login Tenant</button>
+        <button type="button" data-nav="admin" onclick="navigateTo('admin')" class="nav-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-transparent hover:bg-[#FFF3E0] transition">Admin</button>
       </nav>
 
       <div class="flex items-center gap-2.5">
@@ -145,16 +136,17 @@
           <span id="cart-badge" class="bg-[#D4A857] text-[#2D1E17] text-xs font-extrabold px-2 py-0.5 rounded-full border border-[#2D1E17]">0</span>
         </button>
 
-        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden btn-brutal bg-white p-2 rounded-xl font-bold text-sm" aria-label="Menu">☰</button>
+        <button type="button" onclick="toggleMobileMenu()" class="xl:hidden btn-brutal bg-white p-2 rounded-xl font-bold text-sm" aria-label="Menu">☰</button>
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t-2 border-[#2D1E17] px-4 py-3 space-y-1.5">
+    <div id="mobile-menu" class="hidden xl:hidden bg-white border-t-2 border-[#2D1E17] px-4 py-3 space-y-1.5">
       <button type="button" data-nav="beranda" onclick="navigateTo('beranda'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Beranda</button>
       <button type="button" data-nav="etalase" onclick="navigateTo('etalase'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Etalase Kuliner</button>
       <button type="button" data-nav="tutorial" onclick="navigateTo('tutorial'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Tutorial</button>
       <button type="button" data-nav="kritik" onclick="navigateTo('kritik'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Kritik &amp; Saran</button>
       <button type="button" data-nav="daftar" onclick="navigateTo('daftar'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Daftar Tenant</button>
+      <button type="button" data-nav="tenant-login" onclick="navigateTo('tenant-login'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Login Tenant (Kelola Lapak)</button>
       <button type="button" data-nav="admin" onclick="navigateTo('admin'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Dashboard Admin</button>
     </div>
   </header>
@@ -185,6 +177,9 @@
             </button>
             <button type="button" onclick="navigateTo('daftar')" class="btn-brutal bg-[#D4A857] text-[#2D1E17] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
               + Daftarkan Usahamu
+            </button>
+            <button type="button" onclick="navigateTo('tenant-login')" class="btn-brutal bg-white text-[#2D1E17] px-5 py-3 rounded-2xl font-bold text-sm sm:text-base">
+              Login Tenant
             </button>
           </div>
 
@@ -264,38 +259,38 @@
         </div>
       </div>
 
-      <!-- TENANT UNGGULAN -->
+      <!-- PRODUK UNGGULAN -->
       <div class="space-y-5">
         <div class="flex items-center justify-between gap-4">
           <div>
             <span class="text-xs font-extrabold uppercase text-[#388E3C]">Pilihan Favorit Mahasiswa</span>
-            <h2 class="font-display font-extrabold text-2xl sm:text-3xl">Tenant Terverifikasi KTM</h2>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl">Menu Tenant Terverifikasi KTM</h2>
           </div>
           <button type="button" onclick="navigateTo('etalase')" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">Lihat Semua →</button>
         </div>
-        <div id="featured-tenants-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="featured-tenants-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
       </div>
     </section>
 
-    <!-- 2. ETALASE -->
+    <!-- 2. ETALASE (GRID 4 KE SAMPING x 3 KE BAWAH + PAGINATION) -->
     <section id="page-etalase" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <span class="text-xs font-extrabold uppercase text-[#B71C1C]">Direktori Lengkap</span>
+          <span class="text-xs font-extrabold uppercase text-[#B71C1C]">Direktori Lengkap (4 Kolom × 3 Baris per Halaman)</span>
           <h1 class="font-display font-extrabold text-3xl sm:text-4xl">Etalase Usaha Mahasiswa</h1>
         </div>
         <div class="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border-2 border-[#2D1E17] text-xs font-bold">
           <span class="w-2 h-2 rounded-full bg-[#388E3C]"></span>
-          <span>Menampilkan Tenant Aktif &amp; Tervalidasi</span>
+          <span id="etalase-count-label">Menampilkan Produk Tenant Aktif</span>
         </div>
       </div>
 
       <div class="bg-white p-4 sm:p-5 rounded-2xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17] grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        <input id="filter-search" oninput="renderEtalase()" type="text" placeholder="Cari menu, nama usaha, kampus..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm focus:outline-none focus:bg-[#FFF3E0]" />
-        <select id="filter-zone" onchange="renderEtalase()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+        <input id="filter-search" oninput="onFilterChange()" type="text" placeholder="Cari produk, nama usaha, kampus..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm focus:outline-none focus:bg-[#FFF3E0]" />
+        <select id="filter-zone" onchange="onFilterChange()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
           <option value="all">Semua Kawasan Kampus</option>
         </select>
-        <select id="filter-category" onchange="renderEtalase()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+        <select id="filter-category" onchange="onFilterChange()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
           <option value="all">Semua Kategori</option>
           <option value="Makanan Berat">Makanan Berat</option>
           <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
@@ -305,7 +300,11 @@
         <button type="button" onclick="resetEtalaseFilters()" class="btn-brutal bg-[#FFF3E0] px-4 py-2.5 rounded-xl font-bold text-sm">Reset Filter</button>
       </div>
 
-      <div id="etalase-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <!-- GRID 4 KE SAMPING & MAKSIMAL 3 KE BAWAH (12 ITEM PER HALAMAN) -->
+      <div id="etalase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+
+      <!-- NAVIGASI HALAMAN / PAGINATION -->
+      <div id="etalase-pagination" class="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17]"></div>
     </section>
 
     <!-- 3. TUTORIAL -->
@@ -333,7 +332,7 @@
           <ol class="space-y-3 text-sm">
             <li><strong>1. Isi Formulir Usaha:</strong> Lengkapi nama usaha, NIM, asal kampus DIY, nomor WhatsApp penjual, kawasan, dan detail menu.</li>
             <li><strong>2. Unggah Foto KTM &amp; Biaya Pendaftaran:</strong> Lampirkan foto KTM aktif dan selesaikan biaya pendaftaran tenant berbayar untuk mendukung operasional serta pemeliharaan website KUMY.</li>
-            <li><strong>3. Cek Status Kurasi:</strong> Pantau status verifikasi secara mandiri melalui kolom Cek Status Pendaftaran.</li>
+            <li><strong>3. Login Akun Tenant:</strong> Masuk ke menu <strong>Login Tenant</strong> untuk memantau profil lapak, menambah produk baru, serta memperbarui stok tersedia dan jumlah terjual harian.</li>
             <li><strong>4. Tayang di Etalase:</strong> Setelah disetujui Admin, produkmu tayang di etalase dan pesanan pembeli masuk langsung ke WhatsApp-mu.</li>
           </ol>
         </div>
@@ -407,7 +406,7 @@
 
             <div class="grid sm:grid-cols-3 gap-4">
               <div>
-                <label class="block text-xs font-bold uppercase mb-1">NIM *</label>
+                <label class="block text-xs font-bold uppercase mb-1">NIM (Untuk Login) *</label>
                 <input id="reg-nim" type="text" required placeholder="Nomor Induk Mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
               </div>
               <div>
@@ -420,13 +419,20 @@
               </div>
             </div>
 
-            <div class="grid sm:grid-cols-3 gap-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Kata Sandi Akun Tenant *</label>
+                <input id="reg-password" type="password" required placeholder="Buat kata sandi akun" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Kawasan Operasional *</label>
                 <select id="reg-kawasan" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white"></select>
               </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
               <div>
-                <label class="block text-xs font-bold uppercase mb-1">Kategori Produk *</label>
+                <label class="block text-xs font-bold uppercase mb-1">Kategori Produk Utama *</label>
                 <select id="reg-kategori" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
                   <option value="Makanan Berat">Makanan Berat</option>
                   <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
@@ -437,6 +443,10 @@
               <div>
                 <label class="block text-xs font-bold uppercase mb-1">Harga Menu (Rp) *</label>
                 <input id="reg-harga" type="number" min="1000" required placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Stok Tersedia Hari Ini *</label>
+                <input id="reg-qty" type="number" min="1" value="20" required placeholder="20" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
               </div>
             </div>
 
@@ -475,11 +485,158 @@
             </div>
             <div id="status-result-box" class="hidden p-4 rounded-2xl border-2 border-[#2D1E17] bg-[#FFF3E0] text-sm space-y-1"></div>
           </div>
+
+          <div class="card-warm rounded-3xl p-6 bg-[#FFF3E0] space-y-3">
+            <span class="px-3 py-1 rounded-full bg-[#D4A857] border border-[#2D1E17] text-xs font-extrabold">SUDAH PUNYA AKUN TENANT?</span>
+            <h3 class="font-display font-bold text-xl">Kelola Lapak &amp; Tambah Produk</h3>
+            <p class="text-xs text-[#2D1E17]/80">Masuk ke portal tenant untuk menambahkan menu baru, memperbarui stok tersedia hari ini, serta mencatat jumlah produk terjual.</p>
+            <button type="button" onclick="navigateTo('tenant-login')" class="btn-brutal bg-[#388E3C] text-white px-4 py-2.5 rounded-xl font-bold text-xs">
+              Masuk ke Akun Tenant →
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. ADMIN DASHBOARD -->
+    <!-- 6. LOGIN & PORTAL AKUN TENANT -->
+    <section id="page-tenant-login" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-8">
+      <!-- FORM LOGIN TENANT -->
+      <div id="tenant-login-box" class="max-w-lg mx-auto card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-5">
+        <div class="text-center space-y-1.5">
+          <span class="px-3 py-1 rounded-full bg-[#388E3C] text-white text-xs font-bold">PORTAL MITRA TENANT</span>
+          <h1 class="font-display font-extrabold text-2xl sm:text-3xl pt-2">Login Akun Tenant</h1>
+          <p class="text-xs text-[#2D1E17]/75">Masuk untuk melihat profil usaha, menambah produk baru, serta mengatur stok harian dan jumlah terjual.</p>
+        </div>
+
+        <div class="space-y-3.5">
+          <div>
+            <label class="block text-xs font-bold uppercase mb-1">NIM atau Nomor WhatsApp Terdaftar</label>
+            <input id="tenant-login-id" type="text" placeholder="Contoh: 22/498120/TK/54321 atau 081227001101" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase mb-1">Kata Sandi Akun Tenant</label>
+            <input id="tenant-login-pass" type="password" onkeydown="if(event.key==='Enter') loginTenant()" placeholder="Masukkan kata sandi akun" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+          </div>
+          <button type="button" onclick="loginTenant()" class="w-full btn-brutal bg-[#B71C1C] text-white py-3 rounded-xl font-bold text-sm">
+            Masuk ke Akun Tenant
+          </button>
+        </div>
+
+        <div class="bg-[#FFF3E0] p-4 rounded-2xl border-2 border-dashed border-[#2D1E17] text-xs space-y-1.5">
+          <p class="font-extrabold text-[#2D1E17]">Akun Uji Coba Tenant Terdaftar:</p>
+          <p>• NIM: <code class="font-bold">22/498120/TK/54321</code> | Sandi: <code class="font-bold">123456</code> (Nasi Kulit Mas Bagas)</p>
+          <p>• NIM: <code class="font-bold">21402241088</code> | Sandi: <code class="font-bold">123456</code> (Kopi Susu Tugu &amp; Aren)</p>
+        </div>
+      </div>
+
+      <!-- DASHBOARD AKUN TENANT (SETELAH LOGIN) -->
+      <div id="tenant-dashboard-box" class="hidden space-y-8">
+        <!-- PROFIL AKUN TENANT -->
+        <div class="card-warm rounded-3xl p-6 sm:p-8 bg-white flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2">
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="td-status-badge" class="px-3 py-1 rounded-full bg-[#388E3C] text-white text-xs font-extrabold">✓ AKUN TERVERIFIKASI KTM</span>
+              <span id="td-campus-badge" class="px-3 py-1 rounded-full bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">UGM</span>
+            </div>
+            <h1 id="td-business-name" class="font-display font-extrabold text-2xl sm:text-3xl text-[#B71C1C]">Nama Usaha Tenant</h1>
+            <p id="td-owner-info" class="text-sm font-semibold text-[#2D1E17]/80">Pemilik • NIM • Kawasan</p>
+            <p id="td-wa-info" class="text-xs font-bold text-[#388E3C]">WhatsApp Pesanan: 62812...</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="bg-[#FFF3E0] px-4 py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
+              <p class="text-[11px] font-bold uppercase text-[#2D1E17]/70">Total Produk</p>
+              <p id="td-stat-products" class="font-display font-extrabold text-xl">0</p>
+            </div>
+            <div class="bg-[#FFF3E0] px-4 py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
+              <p class="text-[11px] font-bold uppercase text-[#2D1E17]/70">Tersedia Hari Ini</p>
+              <p id="td-stat-available" class="font-display font-extrabold text-xl text-[#388E3C]">0</p>
+            </div>
+            <div class="bg-[#FFF3E0] px-4 py-3 rounded-2xl border-2 border-[#2D1E17] text-center">
+              <p class="text-[11px] font-bold uppercase text-[#2D1E17]/70">Total Terjual</p>
+              <p id="td-stat-sold" class="font-display font-extrabold text-xl text-[#B71C1C]">0</p>
+            </div>
+            <button type="button" onclick="logoutTenant()" class="btn-brutal bg-white px-4 py-3 rounded-2xl font-bold text-xs">
+              Keluar Akun
+            </button>
+          </div>
+        </div>
+
+        <!-- GRID TAMBAH PRODUK & DAFTAR PRODUK TENANT -->
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- FORM TAMBAH PRODUK BARU -->
+          <div class="lg:col-span-5 card-warm rounded-3xl p-6 bg-white space-y-4">
+            <div>
+              <span class="px-3 py-1 rounded-full bg-[#D4A857] border border-[#2D1E17] text-xs font-extrabold">+ ETALASE TENANT</span>
+              <h2 class="font-display font-bold text-2xl mt-2">Tambah Produk Dijual</h2>
+              <p class="text-xs text-[#2D1E17]/75">Produk yang ditambahkan akan langsung muncul di etalase utama KUMY.</p>
+            </div>
+
+            <form id="tenant-add-product-form" onsubmit="submitTenantProduct(event)" class="space-y-3.5">
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Nama Produk *</label>
+                <input id="tp-name" type="text" required placeholder="Contoh: Es Kopi Susu Caramel 16oz" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold uppercase mb-1">Qty Tersedia Hari Ini *</label>
+                  <input id="tp-qty-avail" type="number" min="0" required placeholder="25" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase mb-1">Qty Terjual *</label>
+                  <input id="tp-qty-sold" type="number" min="0" value="0" required placeholder="0" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold uppercase mb-1">Harga Produk (Rp) *</label>
+                  <input id="tp-price" type="number" min="500" required placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase mb-1">Kategori *</label>
+                  <select id="tp-category" class="w-full px-3 py-2.5 rounded-xl border-2 border-[#2D1E17] text-xs font-bold bg-white">
+                    <option value="Makanan Berat">Makanan Berat</option>
+                    <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
+                    <option value="Camilan & Dessert">Camilan &amp; Dessert</option>
+                    <option value="Paket Hemat Kos">Paket Hemat Kos</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Deskripsi Singkat Produk</label>
+                <textarea id="tp-desc" rows="2" placeholder="Keterangan rasa, porsi, atau topping..." class="w-full px-3.5 py-2 rounded-xl border-2 border-[#2D1E17] text-sm"></textarea>
+              </div>
+
+              <div class="bg-[#FFF3E0] p-3.5 rounded-2xl border-2 border-dashed border-[#388E3C] space-y-2">
+                <label class="block text-xs font-extrabold uppercase text-[#388E3C]">Foto Produk * (Wajib)</label>
+                <input id="tp-photo" type="file" accept="image/*" required onchange="handleProductPhotoPreview(event)" class="block w-full text-xs text-[#2D1E17] file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-2 file:border-[#2D1E17] file:text-xs file:font-bold file:bg-[#D4A857] cursor-pointer" />
+                <div id="tp-photo-preview-box" class="hidden pt-1">
+                  <img id="tp-photo-preview-img" src="" alt="Preview Produk" class="max-h-36 rounded-xl border-2 border-[#2D1E17] object-cover bg-white" />
+                </div>
+              </div>
+
+              <button type="submit" class="w-full btn-brutal bg-[#388E3C] text-white py-3 rounded-2xl font-bold text-sm">
+                + Simpan &amp; Tayangkan Produk
+              </button>
+            </form>
+          </div>
+
+          <!-- DAFTAR PRODUK MILIK TENANT -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="font-display font-bold text-2xl">Daftar Produk Lapak Saya</h2>
+              <span class="text-xs font-bold text-[#2D1E17]/70">Ubah stok harian &amp; terjual langsung di kartu</span>
+            </div>
+            <div id="tenant-products-list" class="grid sm:grid-cols-2 gap-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ADMIN DASHBOARD -->
     <section id="page-admin" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
       <div id="admin-login-box" class="max-w-md mx-auto card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-5">
         <div class="text-center space-y-1">
@@ -530,7 +687,7 @@
             <table class="w-full text-left border-collapse text-sm">
               <thead>
                 <tr class="border-b-2 border-[#2D1E17] text-xs uppercase bg-[#FFF3E0]">
-                  <th class="p-3">Usaha &amp; Menu</th>
+                  <th class="p-3">Usaha &amp; Produk</th>
                   <th class="p-3">Mahasiswa &amp; NIM</th>
                   <th class="p-3">Kawasan</th>
                   <th class="p-3">Foto KTM</th>
@@ -573,7 +730,6 @@
       <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-start">
         <div class="md:col-span-5 bg-[#FFF3E0] text-[#2D1E17] p-6 rounded-3xl border-2 border-[#D4A857] shadow-[5px_5px_0px_#B71C1C] space-y-4">
           <div class="flex items-center gap-3">
-            <!-- LOGO KUMY TUGU BERTOGA DI FOOTER -->
             <div class="w-14 h-14 rounded-2xl bg-[#FFF3E0] border-2 border-[#2D1E17] flex items-center justify-center shrink-0 p-1">
               <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M35 66 C26 60, 22 50, 24 41 C31 44, 36 52, 36 63" fill="#D4A857"/>
@@ -645,7 +801,7 @@
         <p>© 2026 KUMY — Kumpulan Usaha Mahasiswa Yogyakarta. Data populasi mahasiswa DIY mengacu pada publikasi GoodStats.</p>
         <div class="flex gap-4">
           <button type="button" onclick="navigateTo('etalase')" class="hover:text-[#D4A857]">Etalase</button>
-          <button type="button" onclick="navigateTo('daftar')" class="hover:text-[#D4A857]">Daftar Tenant</button>
+          <button type="button" onclick="navigateTo('tenant-login')" class="hover:text-[#D4A857]">Login Tenant</button>
           <button type="button" onclick="navigateTo('admin')" class="hover:text-[#D4A857]">Admin</button>
         </div>
       </div>
@@ -724,9 +880,9 @@
   <div id="toast-box" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-[#2D1E17] text-[#FFF3E0] px-5 py-3 rounded-2xl border-2 border-[#D4A857] shadow-xl text-xs sm:text-sm font-bold"></div>
 
   <script>
-    // TEMPELKAN URL WEB APP (/exec) GOOGLE APPS SCRIPT DI BAWAH INI:
     const APPS_SCRIPT_URL = "";
     const ADMIN_WA = "6281345991170";
+    const ETALASE_PAGE_SIZE = 12; // 4 kolom ke samping x 3 baris ke bawah
 
     const CAMPUS_ZONES = [
       { id: "bulaksumur", name: "Bulaksumur & Karangmalang", campuses: "UGM • UNY • Poltekkes", meetingPoint: "Gerbang Lembah UGM / Bundaran Teknik & Plaza UNY", mapQuery: "Universitas Gadjah Mada Yogyakarta" },
@@ -742,8 +898,8 @@
           <rect width="600" height="360" fill="${bg}"/>
           <circle cx="300" cy="155" r="64" fill="#FFF3E0" stroke="#2D1E17" stroke-width="5"/>
           <text x="300" y="175" font-size="56" text-anchor="middle">${emoji}</text>
-          <rect x="130" y="245" width="340" height="44" rx="14" fill="#FFF3E0" stroke="#2D1E17" stroke-width="4"/>
-          <text x="300" y="273" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle" fill="#2D1E17">${label}</text>
+          <rect x="110" y="245" width="380" height="44" rx="14" fill="#FFF3E0" stroke="#2D1E17" stroke-width="4"/>
+          <text x="300" y="273" font-family="sans-serif" font-weight="bold" font-size="17" text-anchor="middle" fill="#2D1E17">${label}</text>
         </svg>`
       );
     }
@@ -753,43 +909,74 @@
     const DEFAULT_TENANTS = [
       {
         id: "TNT-101", nama_usaha: "Nasi Kulit Sambal Korek Mas Bagas", pemilik: "Bagas Prakoso", nim: "22/498120/TK/54321",
-        kampus: "UGM", kawasan: "bulaksumur", wa: "6281227001101", menu_utama: "Nasi Kulit Krispi + Ayam Suwir Sambal Korek",
-        kategori: "Makanan Berat", harga: 15000, deskripsi: "Kulit ayam goreng renyah bebas minyak berlebih, lengkap dengan serundeng dan sambal korek pedas.",
-        foto_ktm: "KTM_TERVERIFIKASI_UGM", img: makeFoodIllustration("🍗", "#B71C1C", "Nasi Kulit Sambal Korek"), status: "approved", aktif: true
+        kampus: "UGM", kawasan: "bulaksumur", wa: "6281227001101", password: "123456",
+        foto_ktm: "KTM_TERVERIFIKASI_UGM", status: "approved", aktif: true,
+        products: [
+          { id: "PRD-101-1", nama_produk: "Nasi Kulit Krispi + Ayam Suwir Sambal Korek", kategori: "Makanan Berat", harga: 15000, qty_tersedia: 25, qty_terjual: 42, deskripsi: "Kulit ayam goreng renyah bebas minyak berlebih, lengkap dengan serundeng dan sambal korek pedas.", img: makeFoodIllustration("🍗", "#B71C1C", "Nasi Kulit Sambal Korek") },
+          { id: "PRD-101-2", nama_produk: "Nasi Kulit Paru Balado + Serundeng", kategori: "Makanan Berat", harga: 17000, qty_tersedia: 15, qty_terjual: 28, deskripsi: "Perpaduan kulit ayam krispi dan paru goreng empuk dengan bumbu balado pedas manis.", img: makeFoodIllustration("🍖", "#D4A857", "Nasi Kulit Paru Balado") },
+          { id: "PRD-101-3", nama_produk: "Paket Hemat Kos Nasi Kulit + Es Teh", kategori: "Paket Hemat Kos", harga: 13000, qty_tersedia: 30, qty_terjual: 65, deskripsi: "Paket kenyang ramah tanggal tua lengkap dengan nasi hangat dan es teh manis.", img: makeFoodIllustration("🍱", "#388E3C", "Paket Hemat Nasi Kulit") }
+        ]
       },
       {
         id: "TNT-102", nama_usaha: "Kopi Susu Tugu & Aren Karangmalang", pemilik: "Nadia Putri", nim: "21402241088",
-        kampus: "UNY", kawasan: "bulaksumur", wa: "6281227001102", menu_utama: "Es Kopi Susu Gula Aren Cup 16oz",
-        kategori: "Minuman & Kopi", harga: 12000, deskripsi: "Racikan arabika-robusta dengan gula aren murni Kulon Progo. Teman nugas malam.",
-        foto_ktm: "KTM_TERVERIFIKASI_UNY", img: makeFoodIllustration("🧋", "#D4A857", "Es Kopi Susu Gula Aren"), status: "approved", aktif: true
+        kampus: "UNY", kawasan: "bulaksumur", wa: "6281227001102", password: "123456",
+        foto_ktm: "KTM_TERVERIFIKASI_UNY", status: "approved", aktif: true,
+        products: [
+          { id: "PRD-102-1", nama_produk: "Es Kopi Susu Gula Aren Cup 16oz", kategori: "Minuman & Kopi", harga: 12000, qty_tersedia: 35, qty_terjual: 84, deskripsi: "Racikan arabika-robusta dengan gula aren murni Kulon Progo. Teman nugas malam.", img: makeFoodIllustration("🧋", "#D4A857", "Es Kopi Susu Gula Aren") },
+          { id: "PRD-102-2", nama_produk: "Matcha Latte Creamy Karangmalang", kategori: "Minuman & Kopi", harga: 14000, qty_tersedia: 20, qty_terjual: 39, deskripsi: "Pure matcha grade pilihan dengan susu segar UHT dan sedikit manis alami.", img: makeFoodIllustration("🍵", "#388E3C", "Matcha Latte Creamy") },
+          { id: "PRD-102-3", nama_produk: "Cold Brew Jeruk Nipis Segar", kategori: "Minuman & Kopi", harga: 13000, qty_tersedia: 18, qty_terjual: 24, deskripsi: "Kopi seduh dingin 12 jam berpadu perasan jeruk nipis segar anti ngantuk.", img: makeFoodIllustration("🍹", "#2D1E17", "Cold Brew Citrus") }
+        ]
       },
       {
         id: "TNT-103", nama_usaha: "Dimsum Mentai Lumer Babarsari", pemilik: "Rizky Ramadhan", nim: "123210094",
-        kampus: "UPN Veteran Yogyakarta", kawasan: "seturan", wa: "6281227001103", menu_utama: "Dimsum Ayam Udang Saus Mentai Torch (Isi 6)",
-        kategori: "Camilan & Dessert", harga: 18000, deskripsi: "Dimsum padat daging ayam udang disiram saus mentai gurih lalu di-torch hangat saat dipesan.",
-        foto_ktm: "KTM_TERVERIFIKASI_UPN", img: makeFoodIllustration("🥟", "#388E3C", "Dimsum Mentai Torch"), status: "approved", aktif: true
+        kampus: "UPN Veteran Yogyakarta", kawasan: "seturan", wa: "6281227001103", password: "123456",
+        foto_ktm: "KTM_TERVERIFIKASI_UPN", status: "approved", aktif: true,
+        products: [
+          { id: "PRD-103-1", nama_produk: "Dimsum Ayam Udang Saus Mentai Torch (Isi 6)", kategori: "Camilan & Dessert", harga: 18000, qty_tersedia: 22, qty_terjual: 53, deskripsi: "Dimsum padat daging ayam udang disiram saus mentai gurih lalu di-torch hangat saat dipesan.", img: makeFoodIllustration("🥟", "#388E3C", "Dimsum Mentai Torch") },
+          { id: "PRD-103-2", nama_produk: "Gyoza Ayam Panggang Chili Oil (Isi 5)", kategori: "Camilan & Dessert", harga: 15000, qty_tersedia: 20, qty_terjual: 31, deskripsi: "Gyoza kulit tipis renyah di bawah lembut di atas, disajikan dengan chili oil buatan sendiri.", img: makeFoodIllustration("🥠", "#B71C1C", "Gyoza Chili Oil") }
+        ]
       },
       {
         id: "TNT-104", nama_usaha: "Ayam Geprek Sambal Matah Mrican", pemilik: "Clara Sinta", nim: "221114045",
-        kampus: "Universitas Sanata Dharma", kawasan: "gejayan", wa: "6281227001104", menu_utama: "Paket Geprek Dada/Paha + Sambal Matah",
-        kategori: "Paket Hemat Kos", harga: 13000, deskripsi: "Nasi pulen hangat dengan ayam geprek krispi dan irisan sambal matah segar.",
-        foto_ktm: "KTM_TERVERIFIKASI_USD", img: makeFoodIllustration("🍛", "#B71C1C", "Ayam Geprek Sambal Matah"), status: "approved", aktif: true
+        kampus: "Universitas Sanata Dharma", kawasan: "gejayan", wa: "6281227001104", password: "123456",
+        foto_ktm: "KTM_TERVERIFIKASI_USD", status: "approved", aktif: true,
+        products: [
+          { id: "PRD-104-1", nama_produk: "Paket Geprek Dada/Paha + Sambal Matah", kategori: "Paket Hemat Kos", harga: 13000, qty_tersedia: 28, qty_terjual: 71, deskripsi: "Nasi pulen hangat dengan ayam geprek krispi dan irisan sambal matah segar.", img: makeFoodIllustration("🍛", "#B71C1C", "Ayam Geprek Sambal Matah") },
+          { id: "PRD-104-2", nama_produk: "Ayam Geprek Keju Mozzarella Lumer", kategori: "Makanan Berat", harga: 17000, qty_tersedia: 16, qty_terjual: 44, deskripsi: "Ayam geprek pedas level pilihan dengan lelehan keju mozzarella di atasnya.", img: makeFoodIllustration("🧀", "#D4A857", "Geprek Mozzarella") }
+        ]
       },
       {
         id: "TNT-105", nama_usaha: "Es Coklat Panjang Umur Tamansiswa", pemilik: "Fajar Nugroho", nim: "2100018211",
-        kampus: "UAD", kawasan: "tamansiswa", wa: "6281227001105", menu_utama: "Es Coklat Kental + Roti Sobek Panggang",
-        kategori: "Minuman & Kopi", harga: 10000, deskripsi: "Coklat pekat tidak bikin enek, disajikan dingin lengkap dengan roti lembut untuk cocolan.",
-        foto_ktm: "KTM_TERVERIFIKASI_UAD", img: makeFoodIllustration("🍫", "#2D1E17", "Es Coklat + Roti Sobek"), status: "approved", aktif: true
+        kampus: "UAD", kawasan: "tamansiswa", wa: "6281227001105", password: "123456",
+        foto_ktm: "KTM_TERVERIFIKASI_UAD", status: "approved", aktif: true,
+        products: [
+          { id: "PRD-105-1", nama_produk: "Es Coklat Kental + Roti Sobek Panggang", kategori: "Minuman & Kopi", harga: 10000, qty_tersedia: 40, qty_terjual: 96, deskripsi: "Coklat pekat tidak bikin enek, disajikan dingin lengkap dengan roti lembut untuk cocolan.", img: makeFoodIllustration("🍫", "#2D1E17", "Es Coklat + Roti Sobek") },
+          { id: "PRD-105-2", nama_produk: "Roti Bakar Coklat Keju Lumer", kategori: "Camilan & Dessert", harga: 12000, qty_tersedia: 24, qty_terjual: 37, deskripsi: "Roti tebal dipanggang mentega wisman dengan isian meses coklat dan parutan keju melimpah.", img: makeFoodIllustration("🥪", "#D4A857", "Roti Bakar Coklat Keju") }
+        ]
       },
       {
         id: "TNT-106", nama_usaha: "Mie Nyemek Spesial Tamantirto", pemilik: "Aulia Rahma", nim: "20220510112",
-        kampus: "UMY", kawasan: "kasihan", wa: "6281227001106", menu_utama: "Mie Nyemek Telur Bebek + Sosis Bakar",
-        kategori: "Makanan Berat", harga: 14000, deskripsi: "Bumbu rempah racikan sendiri, kuah kental gurih manis khas Jogja, porsi mengenyangkan.",
-        foto_ktm: "KTM_TERVERIFIKASI_UMY", img: makeFoodIllustration("🍝", "#388E3C", "Mie Nyemek Telur Bebek"), status: "approved", aktif: true
+        kampus: "UMY", kawasan: "kasihan", wa: "6281227001106", password: "123456",
+        foto_ktm: "KTM_TERVERIFIKASI_UMY", status: "approved", aktif: true,
+        products: [
+          { id: "PRD-106-1", nama_produk: "Mie Nyemek Telur Bebek + Sosis Bakar", kategori: "Makanan Berat", harga: 14000, qty_tersedia: 25, qty_terjual: 62, deskripsi: "Bumbu rempah racikan sendiri, kuah kental gurih manis khas Jogja, porsi mengenyangkan.", img: makeFoodIllustration("🍝", "#388E3C", "Mie Nyemek Telur Bebek") },
+          { id: "PRD-106-2", nama_produk: "Nasi Goreng Magelangan Spesial Kos", kategori: "Paket Hemat Kos", harga: 14000, qty_tersedia: 20, qty_terjual: 48, deskripsi: "Perpaduan nasi goreng dan mie kuning bumbu Jawa dengan suwiran ayam dan acar segar.", img: makeFoodIllustration("🍲", "#B71C1C", "Magelangan Spesial Kos") }
+        ]
       }
     ];
 
-    let state = { tenants: [], orders: [], feedback: [], cart: [], selectedZone: "bulaksumur", isAdminLoggedIn: false, uploadedKtmBase64: "" };
+    let state = {
+      tenants: [],
+      orders: [],
+      feedback: [],
+      cart: [],
+      selectedZone: "bulaksumur",
+      etalasePage: 1,
+      isAdminLoggedIn: false,
+      loggedInTenantId: null,
+      uploadedKtmBase64: "",
+      uploadedProductPhotoBase64: ""
+    };
 
     function formatRupiah(num) { return "Rp " + Number(num || 0).toLocaleString("id-ID"); }
 
@@ -809,16 +996,80 @@
       window._toastTimer = setTimeout(() => box.classList.add("hidden"), 3400);
     }
 
-    function initApp() {
-      const savedTenants = localStorage.getItem("kumy_tenants_v3");
-      const savedOrders = localStorage.getItem("kumy_orders_v3");
-      const savedFeedback = localStorage.getItem("kumy_feedback_v3");
-      const savedCart = localStorage.getItem("kumy_cart_v3");
+    // Helper: migrasi data tenant lama jika belum memiliki array products
+    function normalizeTenantStructure(tenantList) {
+      return tenantList.map(t => {
+        if (Array.isArray(t.products) && t.products.length > 0) {
+          return {
+            ...t,
+            password: t.password || "123456",
+            products: t.products.map(p => ({
+              ...p,
+              harga: Number(p.harga) || 10000,
+              qty_tersedia: Number(p.qty_tersedia ?? 20),
+              qty_terjual: Number(p.qty_terjual ?? 0),
+              img: p.img || FALLBACK_IMG
+            }))
+          };
+        }
+        return {
+          ...t,
+          password: t.password || "123456",
+          products: [
+            {
+              id: "PRD-" + t.id + "-1",
+              nama_produk: t.menu_utama || "Menu Spesial " + t.nama_usaha,
+              kategori: t.kategori || "Makanan Berat",
+              harga: Number(t.harga) || 15000,
+              qty_tersedia: Number(t.qty_tersedia ?? 20),
+              qty_terjual: Number(t.qty_terjual ?? 0),
+              deskripsi: t.deskripsi || "Produk wirausaha mahasiswa tervalidasi KTM.",
+              img: t.img || FALLBACK_IMG
+            }
+          ]
+        };
+      });
+    }
 
-      state.tenants = savedTenants ? JSON.parse(savedTenants) : [...DEFAULT_TENANTS];
+    // Menggabungkan seluruh produk dari tenant yang disetujui & aktif
+    function getAllApprovedProducts() {
+      const list = [];
+      state.tenants.forEach(t => {
+        if (t.status !== "approved" || t.aktif === false) return;
+        (t.products || []).forEach(p => {
+          list.push({
+            productId: p.id,
+            tenantId: t.id,
+            nama_usaha: t.nama_usaha,
+            pemilik: t.pemilik,
+            kampus: t.kampus,
+            kawasan: t.kawasan,
+            wa: t.wa,
+            nama_produk: p.nama_produk,
+            kategori: p.kategori || "Makanan Berat",
+            harga: Number(p.harga) || 0,
+            qty_tersedia: Number(p.qty_tersedia ?? 0),
+            qty_terjual: Number(p.qty_terjual ?? 0),
+            deskripsi: p.deskripsi || "",
+            img: p.img || FALLBACK_IMG
+          });
+        });
+      });
+      return list;
+    }
+
+    function initApp() {
+      const savedTenants = localStorage.getItem("kumy_tenants_v4");
+      const savedOrders = localStorage.getItem("kumy_orders_v4");
+      const savedFeedback = localStorage.getItem("kumy_feedback_v4");
+      const savedCart = localStorage.getItem("kumy_cart_v4");
+      const savedTenantSession = localStorage.getItem("kumy_logged_tenant_id");
+
+      state.tenants = savedTenants ? normalizeTenantStructure(JSON.parse(savedTenants)) : normalizeTenantStructure([...DEFAULT_TENANTS]);
       state.orders = savedOrders ? JSON.parse(savedOrders) : [];
       state.feedback = savedFeedback ? JSON.parse(savedFeedback) : [];
       state.cart = savedCart ? JSON.parse(savedCart) : [];
+      state.loggedInTenantId = savedTenantSession || null;
 
       populateZoneSelectors();
       renderHomeZones();
@@ -827,17 +1078,17 @@
       renderCart();
 
       const initialHash = window.location.hash.replace("#", "");
-      const validPages = ["beranda", "etalase", "tutorial", "kritik", "daftar", "admin"];
+      const validPages = ["beranda", "etalase", "tutorial", "kritik", "daftar", "tenant-login", "admin"];
       navigateTo(validPages.includes(initialHash) ? initialHash : "beranda", false);
 
       if (APPS_SCRIPT_URL) syncFromGoogleSheets();
     }
 
     function saveLocalState() {
-      localStorage.setItem("kumy_tenants_v3", JSON.stringify(state.tenants));
-      localStorage.setItem("kumy_orders_v3", JSON.stringify(state.orders));
-      localStorage.setItem("kumy_feedback_v3", JSON.stringify(state.feedback));
-      localStorage.setItem("kumy_cart_v3", JSON.stringify(state.cart));
+      localStorage.setItem("kumy_tenants_v4", JSON.stringify(state.tenants));
+      localStorage.setItem("kumy_orders_v4", JSON.stringify(state.orders));
+      localStorage.setItem("kumy_feedback_v4", JSON.stringify(state.feedback));
+      localStorage.setItem("kumy_cart_v4", JSON.stringify(state.cart));
     }
 
     function navigateTo(pageId, updateHash = true) {
@@ -851,6 +1102,7 @@
         history.replaceState(null, "", "#" + pageId);
       }
       if (pageId === "etalase") renderEtalase();
+      if (pageId === "tenant-login") renderTenantPortalState();
       if (pageId === "admin" && state.isAdminLoggedIn) renderAdminDashboard();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -891,107 +1143,187 @@
     }
 
     function selectHomeZone(zoneId) { state.selectedZone = zoneId; renderHomeZones(); }
-    function goToEtalaseWithZone() { document.getElementById("filter-zone").value = state.selectedZone; navigateTo("etalase"); }
-    function jumpZoneFromFooter(zoneId) { state.selectedZone = zoneId; document.getElementById("filter-zone").value = zoneId; navigateTo("etalase"); }
+    function goToEtalaseWithZone() {
+      document.getElementById("filter-zone").value = state.selectedZone;
+      state.etalasePage = 1;
+      navigateTo("etalase");
+    }
+    function jumpZoneFromFooter(zoneId) {
+      state.selectedZone = zoneId;
+      document.getElementById("filter-zone").value = zoneId;
+      state.etalasePage = 1;
+      navigateTo("etalase");
+    }
 
     function spinGachaMenu() {
-      const activeTenants = state.tenants.filter(t => t.status === "approved" && t.aktif !== false);
-      if (!activeTenants.length) return;
-      const pick = activeTenants[Math.floor(Math.random() * activeTenants.length)];
+      const allProducts = getAllApprovedProducts().filter(p => p.qty_tersedia > 0);
+      if (!allProducts.length) return;
+      const pick = allProducts[Math.floor(Math.random() * allProducts.length)];
       const zoneObj = CAMPUS_ZONES.find(z => z.id === pick.kawasan);
-      document.getElementById("gacha-title").textContent = `${pick.menu_utama} (${formatRupiah(pick.harga)})`;
+      document.getElementById("gacha-title").textContent = `${pick.nama_produk} (${formatRupiah(pick.harga)})`;
       document.getElementById("gacha-meta").textContent = `${pick.nama_usaha} • ${pick.kampus} (${zoneObj ? zoneObj.name : pick.kawasan})`;
       const act = document.getElementById("gacha-action");
       act.classList.remove("hidden");
-      act.innerHTML = `<button type="button" onclick="addToCart('${pick.id}')" class="btn-brutal bg-[#B71C1C] text-white px-4 py-2 rounded-xl text-xs font-bold">+ Tambah ke Keranjang</button>`;
+      act.innerHTML = `<button type="button" onclick="addToCart('${pick.productId}')" class="btn-brutal bg-[#B71C1C] text-white px-4 py-2 rounded-xl text-xs font-bold">+ Tambah ke Keranjang</button>`;
     }
 
-    function createTenantCardHTML(t) {
-      const zoneObj = CAMPUS_ZONES.find(z => z.id === t.kawasan);
-      const zoneLabel = zoneObj ? zoneObj.name : t.kawasan;
-      const imgUrl = t.img || FALLBACK_IMG;
+    function createProductCardHTML(p) {
+      const zoneObj = CAMPUS_ZONES.find(z => z.id === p.kawasan);
+      const zoneLabel = zoneObj ? zoneObj.name : p.kawasan;
+      const imgUrl = p.img || FALLBACK_IMG;
+      const isSoldOut = p.qty_tersedia <= 0;
       return `
         <article class="card-warm rounded-3xl overflow-hidden flex flex-col justify-between bg-white">
           <div>
-            <div class="relative h-44 bg-[#FFF3E0] border-b-2 border-[#2D1E17] overflow-hidden">
-              <img src="${imgUrl}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" alt="${t.menu_utama}" class="w-full h-full object-cover" />
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-[#388E3C] text-white text-[11px] font-extrabold border border-[#2D1E17]">✓ KTM Tervalidasi</span>
-              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-[#FFF3E0] text-[#2D1E17] text-[11px] font-bold border border-[#2D1E17]">${t.kategori}</span>
+            <div class="relative h-40 bg-[#FFF3E0] border-b-2 border-[#2D1E17] overflow-hidden">
+              <img src="${imgUrl}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" alt="${p.nama_produk}" class="w-full h-full object-cover" />
+              <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-lg bg-[#388E3C] text-white text-[10px] font-extrabold border border-[#2D1E17]">✓ KTM</span>
+              <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-lg bg-[#FFF3E0] text-[#2D1E17] text-[10px] font-bold border border-[#2D1E17]">${p.kategori}</span>
             </div>
-            <div class="p-5 space-y-2">
-              <div class="flex items-center justify-between gap-2 text-xs font-bold text-[#B71C1C]">
-                <span>${t.kampus}</span>
-                <span class="text-[#2D1E17]/65 truncate max-w-[160px]">${zoneLabel}</span>
+            <div class="p-4 space-y-1.5">
+              <div class="flex items-center justify-between gap-1 text-[11px] font-bold text-[#B71C1C]">
+                <span class="truncate">${p.kampus}</span>
+                <span class="text-[#2D1E17]/65 truncate max-w-[120px]">${zoneLabel}</span>
               </div>
-              <h3 class="font-display font-bold text-lg leading-snug">${t.menu_utama}</h3>
-              <p class="text-xs font-bold text-[#2D1E17]/80">Lapak: ${t.nama_usaha} (${t.pemilik})</p>
-              <p class="text-xs text-[#2D1E17]/75">${t.deskripsi}</p>
+              <h3 class="font-display font-bold text-base leading-snug line-clamp-2">${p.nama_produk}</h3>
+              <p class="text-[11px] font-bold text-[#2D1E17]/80 truncate">Lapak: ${p.nama_usaha}</p>
+              <p class="text-[11px] text-[#2D1E17]/75 line-clamp-2">${p.deskripsi}</p>
+              <div class="flex items-center justify-between pt-1 text-[11px] font-bold">
+                <span class="${isSoldOut ? 'text-[#B71C1C]' : 'text-[#388E3C]'}">Stok hari ini: ${p.qty_tersedia}</span>
+                <span class="text-[#2D1E17]/65">Terjual: ${p.qty_terjual}</span>
+              </div>
             </div>
           </div>
-          <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-3 border-t border-[#2D1E17]/15">
+          <div class="px-4 pb-4 pt-2 flex items-center justify-between gap-2 border-t border-[#2D1E17]/15">
             <div>
-              <span class="block text-[10px] uppercase font-bold text-[#2D1E17]/60">Harga Menu</span>
-              <span class="font-display font-extrabold text-lg text-[#2D1E17]">${formatRupiah(t.harga)}</span>
+              <span class="block text-[9px] uppercase font-bold text-[#2D1E17]/60">Harga</span>
+              <span class="font-display font-extrabold text-base text-[#2D1E17]">${formatRupiah(p.harga)}</span>
             </div>
-            <button type="button" onclick="addToCart('${t.id}')" class="btn-brutal bg-[#D4A857] hover:bg-[#B71C1C] hover:text-white text-[#2D1E17] px-4 py-2 rounded-xl font-bold text-xs">+ Keranjang</button>
+            <button type="button" ${isSoldOut ? 'disabled' : ''} onclick="addToCart('${p.productId}')" class="btn-brutal ${isSoldOut ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-[#D4A857] hover:bg-[#B71C1C] hover:text-white text-[#2D1E17]'} px-3 py-1.5 rounded-xl font-bold text-xs">
+              ${isSoldOut ? 'Habis' : '+ Keranjang'}
+            </button>
           </div>
         </article>`;
     }
 
     function renderFeaturedTenants() {
-      const approved = state.tenants.filter(t => t.status === "approved" && t.aktif !== false).slice(0, 3);
-      document.getElementById("featured-tenants-grid").innerHTML = approved.map(createTenantCardHTML).join("");
+      const products = getAllApprovedProducts().slice(0, 4);
+      document.getElementById("featured-tenants-grid").innerHTML = products.map(createProductCardHTML).join("");
+    }
+
+    function onFilterChange() {
+      state.etalasePage = 1;
+      renderEtalase();
+    }
+
+    function changeEtalasePage(pageNumber) {
+      state.etalasePage = pageNumber;
+      renderEtalase();
+      const etalaseEl = document.getElementById("page-etalase");
+      if (etalaseEl) etalaseEl.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     function renderEtalase() {
       const q = (document.getElementById("filter-search").value || "").toLowerCase();
       const zone = document.getElementById("filter-zone").value;
       const cat = document.getElementById("filter-category").value;
-      const filtered = state.tenants.filter(t => {
-        if (t.status !== "approved" || t.aktif === false) return false;
-        return (zone === "all" || t.kawasan === zone) &&
-               (cat === "all" || t.kategori === cat) &&
-               (!q || t.nama_usaha.toLowerCase().includes(q) || t.menu_utama.toLowerCase().includes(q) || t.kampus.toLowerCase().includes(q));
+
+      const filtered = getAllApprovedProducts().filter(p => {
+        return (zone === "all" || p.kawasan === zone) &&
+               (cat === "all" || p.kategori === cat) &&
+               (!q || p.nama_usaha.toLowerCase().includes(q) || p.nama_produk.toLowerCase().includes(q) || p.kampus.toLowerCase().includes(q));
       });
+
+      const totalItems = filtered.length;
+      const totalPages = Math.max(1, Math.ceil(totalItems / ETALASE_PAGE_SIZE));
+      if (state.etalasePage > totalPages) state.etalasePage = totalPages;
+      if (state.etalasePage < 1) state.etalasePage = 1;
+
+      const startIdx = (state.etalasePage - 1) * ETALASE_PAGE_SIZE;
+      const pageItems = filtered.slice(startIdx, startIdx + ETALASE_PAGE_SIZE);
+
+      document.getElementById("etalase-count-label").textContent =
+        `Menampilkan ${pageItems.length} dari ${totalItems} produk (Halaman ${state.etalasePage} / ${totalPages})`;
+
       const grid = document.getElementById("etalase-grid");
-      grid.innerHTML = filtered.length ? filtered.map(createTenantCardHTML).join("") :
-        `<div class="col-span-full bg-white p-8 rounded-3xl border-2 border-[#2D1E17] text-center"><p class="font-display font-bold text-xl">Belum ada tenant yang cocok dengan filter ini</p></div>`;
+      grid.innerHTML = pageItems.length ? pageItems.map(createProductCardHTML).join("") :
+        `<div class="col-span-full bg-white p-8 rounded-3xl border-2 border-[#2D1E17] text-center"><p class="font-display font-bold text-xl">Belum ada produk yang cocok dengan filter ini</p></div>`;
+
+      const paginationEl = document.getElementById("etalase-pagination");
+      if (totalItems === 0) {
+        paginationEl.classList.add("hidden");
+        return;
+      }
+      paginationEl.classList.remove("hidden");
+
+      let pageButtons = "";
+      for (let i = 1; i <= totalPages; i++) {
+        const isCurrent = i === state.etalasePage;
+        pageButtons += `<button type="button" onclick="changeEtalasePage(${i})" class="px-3.5 py-1.5 rounded-xl font-bold text-xs border-2 border-[#2D1E17] transition ${
+          isCurrent ? "bg-[#B71C1C] text-white shadow-[2px_2px_0px_#2D1E17]" : "bg-[#FFF3E0] text-[#2D1E17] hover:bg-[#D4A857]"
+        }">${i}</button>`;
+      }
+
+      paginationEl.innerHTML = `
+        <div class="text-xs font-bold text-[#2D1E17]/80">
+          Halaman <span class="text-[#B71C1C] font-extrabold">${state.etalasePage}</span> dari <span class="font-extrabold">${totalPages}</span> • Maksimal 12 produk per halaman (4 × 3)
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" ${state.etalasePage <= 1 ? "disabled" : ""} onclick="changeEtalasePage(${state.etalasePage - 1})" class="btn-brutal px-3.5 py-1.5 rounded-xl font-bold text-xs ${
+            state.etalasePage <= 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-white text-[#2D1E17]"
+          }">← Sebelumnya</button>
+          ${pageButtons}
+          <button type="button" ${state.etalasePage >= totalPages ? "disabled" : ""} onclick="changeEtalasePage(${state.etalasePage + 1})" class="btn-brutal px-3.5 py-1.5 rounded-xl font-bold text-xs ${
+            state.etalasePage >= totalPages ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-[#388E3C] text-white"
+          }">Halaman Selanjutnya →</button>
+        </div>
+      `;
     }
 
     function resetEtalaseFilters() {
       document.getElementById("filter-search").value = "";
       document.getElementById("filter-zone").value = "all";
       document.getElementById("filter-category").value = "all";
+      state.etalasePage = 1;
       renderEtalase();
     }
 
     function toggleCart(open) { document.getElementById("cart-drawer").classList.toggle("hidden", !open); }
 
-    function addToCart(tenantId) {
-      const tenant = state.tenants.find(t => t.id === tenantId);
-      if (!tenant) return;
-      const existing = state.cart.find(item => item.id === tenantId);
+    function addToCart(productId) {
+      const product = getAllApprovedProducts().find(p => p.productId === productId);
+      if (!product) return;
+      if (product.qty_tersedia <= 0) {
+        showToast("Maaf, stok produk ini untuk hari ini sudah habis.");
+        return;
+      }
+      const existing = state.cart.find(item => item.productId === productId);
       if (existing) {
+        if (existing.qty + 1 > product.qty_tersedia) {
+          showToast(`Stok tersedia hari ini hanya ${product.qty_tersedia} porsi.`);
+          return;
+        }
         existing.qty += 1;
-        existing.wa = tenant.wa;
+        existing.wa = product.wa;
       } else {
         state.cart.push({
-          id: tenant.id,
-          nama_usaha: tenant.nama_usaha,
-          menu_utama: tenant.menu_utama,
-          harga: Number(tenant.harga),
-          kampus: tenant.kampus,
-          wa: tenant.wa,
+          productId: product.productId,
+          tenantId: product.tenantId,
+          nama_usaha: product.nama_usaha,
+          menu_utama: product.nama_produk,
+          harga: Number(product.harga),
+          kampus: product.kampus,
+          wa: product.wa,
           qty: 1
         });
       }
       saveLocalState();
       renderCart();
-      showToast(`"${tenant.menu_utama}" masuk ke keranjang!`);
+      showToast(`"${product.nama_produk}" masuk ke keranjang!`);
     }
 
-    function updateCartQty(tenantId, delta) {
-      const idx = state.cart.findIndex(i => i.id === tenantId);
+    function updateCartQty(productId, delta) {
+      const idx = state.cart.findIndex(i => i.productId === productId);
       if (idx === -1) return;
       state.cart[idx].qty += delta;
       if (state.cart[idx].qty <= 0) state.cart.splice(idx, 1);
@@ -1010,9 +1342,9 @@
             <p class="text-xs font-semibold text-[#388E3C]">${formatRupiah(item.harga)} / porsi</p>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <button type="button" onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] font-bold text-sm">-</button>
+            <button type="button" onclick="updateCartQty('${item.productId}', -1)" class="w-7 h-7 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] font-bold text-sm">-</button>
             <span class="w-6 text-center text-xs font-extrabold">${item.qty}</span>
-            <button type="button" onclick="updateCartQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-[#D4A857] border border-[#2D1E17] font-bold text-sm">+</button>
+            <button type="button" onclick="updateCartQty('${item.productId}', 1)" class="w-7 h-7 rounded-lg bg-[#D4A857] border border-[#2D1E17] font-bold text-sm">+</button>
           </div>
         </div>`).join("") :
         `<div class="bg-white p-6 rounded-2xl border-2 border-dashed border-[#2D1E17] text-center text-sm"><p class="font-bold">Keranjang masih kosong</p></div>`;
@@ -1036,6 +1368,18 @@
       const itemSummary = state.cart.map(i => `${i.qty}x ${i.menu_utama} (${i.nama_usaha})`).join("; ");
       const orderId = "ORD-" + Date.now();
 
+      // Perbarui qty_tersedia & qty_terjual produk tenant saat checkout
+      state.cart.forEach(cartItem => {
+        const tenantObj = state.tenants.find(t => t.id === cartItem.tenantId);
+        if (tenantObj && Array.isArray(tenantObj.products)) {
+          const prodObj = tenantObj.products.find(p => p.id === cartItem.productId);
+          if (prodObj) {
+            prodObj.qty_tersedia = Math.max(0, Number(prodObj.qty_tersedia || 0) - cartItem.qty);
+            prodObj.qty_terjual = Number(prodObj.qty_terjual || 0) + cartItem.qty;
+          }
+        }
+      });
+
       const orderPayload = {
         action: "create_order", id_pesanan: orderId, waktu: new Date().toLocaleString("id-ID"),
         nama_pembeli: buyerName, kampus_pembeli: buyerName, wa_pembeli: buyerWa, metode_ambil: method,
@@ -1044,6 +1388,10 @@
 
       state.orders.unshift(orderPayload);
       saveLocalState();
+      renderFeaturedTenants();
+      renderEtalase();
+      if (state.loggedInTenantId) renderTenantDashboard();
+
       if (APPS_SCRIPT_URL) {
         fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(orderPayload) }).catch(() => {});
       }
@@ -1051,7 +1399,7 @@
       // Kelompokkan pesanan berdasarkan penjual tenant
       const groupedBySeller = {};
       state.cart.forEach(item => {
-        const tenantObj = state.tenants.find(t => t.id === item.id);
+        const tenantObj = state.tenants.find(t => t.id === item.tenantId);
         const sellerWa = normalizeWaNumber(item.wa || (tenantObj && tenantObj.wa));
         const key = item.nama_usaha + "_" + sellerWa;
         if (!groupedBySeller[key]) {
@@ -1127,15 +1475,41 @@
     async function submitTenantRegistration(event) {
       event.preventDefault();
       if (!state.uploadedKtmBase64) { showToast("Wajib mengunggah foto KTM!"); return; }
+      const tenantId = "TNT-" + Date.now();
+      const firstMenu = document.getElementById("reg-menu").value.trim();
+      const firstCat = document.getElementById("reg-kategori").value;
+      const firstPrice = Number(document.getElementById("reg-harga").value);
+      const firstQty = Number(document.getElementById("reg-qty").value) || 20;
+      const firstDesc = document.getElementById("reg-deskripsi").value.trim();
+
       const newTenant = {
-        action: "register_tenant", id: "TNT-" + Date.now(), waktu_daftar: new Date().toLocaleString("id-ID"),
-        nama_usaha: document.getElementById("reg-usaha").value.trim(), pemilik: document.getElementById("reg-pemilik").value.trim(),
-        nim: document.getElementById("reg-nim").value.trim(), kampus: document.getElementById("reg-kampus").value.trim(),
-        kawasan: document.getElementById("reg-kawasan").value, wa: normalizeWaNumber(document.getElementById("reg-wa").value.trim()),
-        menu_utama: document.getElementById("reg-menu").value.trim(), kategori: document.getElementById("reg-kategori").value,
-        harga: Number(document.getElementById("reg-harga").value), deskripsi: document.getElementById("reg-deskripsi").value.trim(),
-        foto_ktm: state.uploadedKtmBase64, img: FALLBACK_IMG, status: "pending", aktif: true
+        action: "register_tenant",
+        id: tenantId,
+        waktu_daftar: new Date().toLocaleString("id-ID"),
+        nama_usaha: document.getElementById("reg-usaha").value.trim(),
+        pemilik: document.getElementById("reg-pemilik").value.trim(),
+        nim: document.getElementById("reg-nim").value.trim(),
+        kampus: document.getElementById("reg-kampus").value.trim(),
+        kawasan: document.getElementById("reg-kawasan").value,
+        wa: normalizeWaNumber(document.getElementById("reg-wa").value.trim()),
+        password: document.getElementById("reg-password").value.trim() || "123456",
+        foto_ktm: state.uploadedKtmBase64,
+        status: "pending",
+        aktif: true,
+        products: [
+          {
+            id: "PRD-" + Date.now(),
+            nama_produk: firstMenu,
+            kategori: firstCat,
+            harga: firstPrice,
+            qty_tersedia: firstQty,
+            qty_terjual: 0,
+            deskripsi: firstDesc,
+            img: FALLBACK_IMG
+          }
+        ]
       };
+
       state.tenants.unshift(newTenant);
       saveLocalState();
       if (APPS_SCRIPT_URL) {
@@ -1144,7 +1518,7 @@
       document.getElementById("tenant-form").reset();
       document.getElementById("ktm-preview-box").classList.add("hidden");
       state.uploadedKtmBase64 = "";
-      showToast("Pendaftaran berhasil! Status: Menunggu Validasi KTM & Konfirmasi Admin.");
+      showToast("Pendaftaran berhasil! Kamu bisa langsung Login Tenant menggunakan NIM & sandi yang dibuat.");
     }
 
     function checkTenantStatus() {
@@ -1156,6 +1530,214 @@
       if (!found) { box.innerHTML = `<p class="font-bold text-[#B71C1C]">Data tidak ditemukan</p>`; return; }
       const labels = { approved: "Disetujui & Tayang", pending: "Menunggu Validasi KTM", rejected: "Ditolak" };
       box.innerHTML = `<p class="font-bold">${found.nama_usaha}</p><p class="text-xs">${found.pemilik} (${found.kampus} • ${found.nim})</p><p class="text-xs font-extrabold text-[#388E3C] pt-1">Status: ${labels[found.status] || found.status}</p>`;
+    }
+
+    // ==================== PORTAL LOGIN & KELOLA PRODUK TENANT ====================
+    function loginTenant() {
+      const rawId = document.getElementById("tenant-login-id").value.trim();
+      const pass = document.getElementById("tenant-login-pass").value.trim();
+      if (!rawId || !pass) {
+        showToast("Masukkan NIM/WhatsApp dan kata sandi akun tenant!");
+        return;
+      }
+
+      const normalizedPhone = normalizeWaNumber(rawId);
+      const found = state.tenants.find(t => {
+        const matchId = t.nim.toLowerCase() === rawId.toLowerCase() || normalizeWaNumber(t.wa) === normalizedPhone;
+        const matchPass = (t.password || "123456") === pass;
+        return matchId && matchPass;
+      });
+
+      if (!found) {
+        showToast("NIM/Nomor WA atau kata sandi tenant tidak cocok!");
+        return;
+      }
+
+      state.loggedInTenantId = found.id;
+      localStorage.setItem("kumy_logged_tenant_id", found.id);
+      renderTenantPortalState();
+      showToast(`Selamat datang kembali, ${found.nama_usaha}!`);
+    }
+
+    function logoutTenant() {
+      state.loggedInTenantId = null;
+      localStorage.removeItem("kumy_logged_tenant_id");
+      document.getElementById("tenant-login-id").value = "";
+      document.getElementById("tenant-login-pass").value = "";
+      renderTenantPortalState();
+      showToast("Berhasil keluar dari akun tenant.");
+    }
+
+    function renderTenantPortalState() {
+      const tenant = state.tenants.find(t => t.id === state.loggedInTenantId);
+      const loginBox = document.getElementById("tenant-login-box");
+      const dashBox = document.getElementById("tenant-dashboard-box");
+
+      if (!tenant) {
+        loginBox.classList.remove("hidden");
+        dashBox.classList.add("hidden");
+        return;
+      }
+
+      loginBox.classList.add("hidden");
+      dashBox.classList.remove("hidden");
+      renderTenantDashboard();
+    }
+
+    function handleProductPhotoPreview(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement("canvas");
+          const scale = Math.min(1, 640 / img.width);
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+          state.uploadedProductPhotoBase64 = canvas.toDataURL("image/jpeg", 0.78);
+          document.getElementById("tp-photo-preview-img").src = state.uploadedProductPhotoBase64;
+          document.getElementById("tp-photo-preview-box").classList.remove("hidden");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function submitTenantProduct(event) {
+      event.preventDefault();
+      const tenant = state.tenants.find(t => t.id === state.loggedInTenantId);
+      if (!tenant) return;
+
+      if (!state.uploadedProductPhotoBase64) {
+        showToast("Silakan unggah foto produk terlebih dahulu!");
+        return;
+      }
+
+      const newProduct = {
+        id: "PRD-" + Date.now(),
+        nama_produk: document.getElementById("tp-name").value.trim(),
+        qty_tersedia: Math.max(0, Number(document.getElementById("tp-qty-avail").value)),
+        qty_terjual: Math.max(0, Number(document.getElementById("tp-qty-sold").value)),
+        harga: Math.max(500, Number(document.getElementById("tp-price").value)),
+        kategori: document.getElementById("tp-category").value,
+        deskripsi: document.getElementById("tp-desc").value.trim() || `Produk segar dari ${tenant.nama_usaha}.`,
+        img: state.uploadedProductPhotoBase64
+      };
+
+      if (!Array.isArray(tenant.products)) tenant.products = [];
+      tenant.products.unshift(newProduct);
+
+      saveLocalState();
+      renderTenantDashboard();
+      renderFeaturedTenants();
+      renderEtalase();
+
+      document.getElementById("tenant-add-product-form").reset();
+      document.getElementById("tp-qty-sold").value = 0;
+      document.getElementById("tp-photo-preview-box").classList.add("hidden");
+      state.uploadedProductPhotoBase64 = "";
+
+      showToast(`Produk "${newProduct.nama_produk}" berhasil ditambahkan!`);
+    }
+
+    function adjustTenantProductQty(productId, field, delta) {
+      const tenant = state.tenants.find(t => t.id === state.loggedInTenantId);
+      if (!tenant) return;
+      const prod = (tenant.products || []).find(p => p.id === productId);
+      if (!prod) return;
+
+      prod[field] = Math.max(0, Number(prod[field] || 0) + delta);
+      saveLocalState();
+      renderTenantDashboard();
+      renderFeaturedTenants();
+      renderEtalase();
+    }
+
+    function deleteTenantProduct(productId) {
+      const tenant = state.tenants.find(t => t.id === state.loggedInTenantId);
+      if (!tenant) return;
+      tenant.products = (tenant.products || []).filter(p => p.id !== productId);
+      saveLocalState();
+      renderTenantDashboard();
+      renderFeaturedTenants();
+      renderEtalase();
+      showToast("Produk dihapus dari etalase lapak.");
+    }
+
+    function renderTenantDashboard() {
+      const tenant = state.tenants.find(t => t.id === state.loggedInTenantId);
+      if (!tenant) return;
+
+      const zoneObj = CAMPUS_ZONES.find(z => z.id === tenant.kawasan);
+      const statusBadge = document.getElementById("td-status-badge");
+      if (tenant.status === "approved") {
+        statusBadge.textContent = "✓ AKUN TERVERIFIKASI KTM (TAYANG)";
+        statusBadge.className = "px-3 py-1 rounded-full bg-[#388E3C] text-white text-xs font-extrabold";
+      } else if (tenant.status === "pending") {
+        statusBadge.textContent = "⏳ MENUNGGU VALIDASI KTM ADMIN";
+        statusBadge.className = "px-3 py-1 rounded-full bg-[#D4A857] text-[#2D1E17] border border-[#2D1E17] text-xs font-extrabold";
+      } else {
+        statusBadge.textContent = "✕ DITOLAK KURATOR";
+        statusBadge.className = "px-3 py-1 rounded-full bg-[#B71C1C] text-white text-xs font-extrabold";
+      }
+
+      document.getElementById("td-campus-badge").textContent = tenant.kampus;
+      document.getElementById("td-business-name").textContent = tenant.nama_usaha;
+      document.getElementById("td-owner-info").textContent = `${tenant.pemilik} • NIM: ${tenant.nim} • ${zoneObj ? zoneObj.name : tenant.kawasan}`;
+      document.getElementById("td-wa-info").textContent = `WhatsApp Pesanan: +${tenant.wa}`;
+
+      const products = tenant.products || [];
+      const totalAvail = products.reduce((sum, p) => sum + Number(p.qty_tersedia || 0), 0);
+      const totalSold = products.reduce((sum, p) => sum + Number(p.qty_terjual || 0), 0);
+
+      document.getElementById("td-stat-products").textContent = products.length;
+      document.getElementById("td-stat-available").textContent = totalAvail;
+      document.getElementById("td-stat-sold").textContent = totalSold;
+
+      const listContainer = document.getElementById("tenant-products-list");
+      listContainer.innerHTML = products.length ? products.map(p => `
+        <div class="card-warm rounded-3xl overflow-hidden bg-white flex flex-col justify-between">
+          <div>
+            <div class="relative h-36 bg-[#FFF3E0] border-b-2 border-[#2D1E17]">
+              <img src="${p.img || FALLBACK_IMG}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" alt="${p.nama_produk}" class="w-full h-full object-cover" />
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-[10px] font-bold">${p.kategori}</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h3 class="font-display font-bold text-base leading-snug">${p.nama_produk}</h3>
+              <p class="font-display font-extrabold text-sm text-[#B71C1C]">${formatRupiah(p.harga)}</p>
+              <p class="text-xs text-[#2D1E17]/75 line-clamp-2">${p.deskripsi || ""}</p>
+
+              <div class="grid grid-cols-2 gap-2 pt-2">
+                <div class="bg-[#FFF3E0] p-2 rounded-xl border border-[#2D1E17]">
+                  <span class="block text-[10px] font-bold uppercase text-[#388E3C]">Tersedia Hari Ini</span>
+                  <div class="flex items-center justify-between mt-1">
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_tersedia', -1)" class="w-6 h-6 rounded bg-white border border-[#2D1E17] font-bold text-xs">-</button>
+                    <span class="font-extrabold text-sm">${p.qty_tersedia}</span>
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_tersedia', 1)" class="w-6 h-6 rounded bg-[#388E3C] text-white border border-[#2D1E17] font-bold text-xs">+</button>
+                  </div>
+                </div>
+                <div class="bg-[#FFF3E0] p-2 rounded-xl border border-[#2D1E17]">
+                  <span class="block text-[10px] font-bold uppercase text-[#B71C1C]">Qty Terjual</span>
+                  <div class="flex items-center justify-between mt-1">
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_terjual', -1)" class="w-6 h-6 rounded bg-white border border-[#2D1E17] font-bold text-xs">-</button>
+                    <span class="font-extrabold text-sm">${p.qty_terjual}</span>
+                    <button type="button" onclick="adjustTenantProductQty('${p.id}', 'qty_terjual', 1)" class="w-6 h-6 rounded bg-[#D4A857] border border-[#2D1E17] font-bold text-xs">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-4 pb-4 pt-2 border-t border-[#2D1E17]/15 flex justify-end">
+            <button type="button" onclick="deleteTenantProduct('${p.id}')" class="text-xs font-bold text-[#B71C1C] hover:underline">Hapus Produk</button>
+          </div>
+        </div>
+      `).join("") : `
+        <div class="col-span-full bg-white p-8 rounded-3xl border-2 border-dashed border-[#2D1E17] text-center text-sm">
+          <p class="font-bold">Belum ada produk di lapak ini. Silakan tambahkan produk melalui formulir di samping.</p>
+        </div>
+      `;
     }
 
     async function submitFeedback(event) {
@@ -1200,7 +1782,7 @@
         const json = await res.json();
         if (json.status === "ok") {
           if (Array.isArray(json.tenants) && json.tenants.length) {
-            state.tenants = json.tenants.map(t => ({ ...t, harga: Number(t.harga) || 15000, aktif: String(t.aktif).toUpperCase() !== "FALSE", img: FALLBACK_IMG }));
+            state.tenants = normalizeTenantStructure(json.tenants);
           }
           if (Array.isArray(json.orders)) state.orders = json.orders;
           if (Array.isArray(json.feedback)) state.feedback = json.feedback;
@@ -1256,8 +1838,10 @@
 
       document.getElementById("admin-tenants-tbody").innerHTML = state.tenants.map(t => {
         const badgeColor = t.status === "approved" ? "bg-[#388E3C] text-white" : t.status === "rejected" ? "bg-[#B71C1C] text-white" : "bg-[#D4A857] text-[#2D1E17]";
+        const prodCount = (t.products || []).length;
+        const firstProd = prodCount > 0 ? t.products[0].nama_produk : "-";
         return `<tr class="hover:bg-[#FFF3E0]/50">
-          <td class="p-3"><p class="font-bold">${t.nama_usaha}</p><p class="text-xs">${t.menu_utama} (${formatRupiah(t.harga)})</p></td>
+          <td class="p-3"><p class="font-bold">${t.nama_usaha}</p><p class="text-xs">${firstProd} (${prodCount} produk)</p></td>
           <td class="p-3"><p class="font-semibold">${t.pemilik}</p><p class="text-xs">${t.kampus} • ${t.nim}</p></td>
           <td class="p-3 text-xs font-semibold">${t.kawasan}</td>
           <td class="p-3"><button type="button" onclick="openKtmModal('${t.id}')" class="px-2.5 py-1 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">Lihat KTM</button></td>
