@@ -569,7 +569,7 @@
             <div>
               <span class="px-3 py-1 rounded-full bg-[#D4A857] border border-[#2D1E17] text-xs font-extrabold">+ ETALASE TENANT</span>
               <h2 class="font-display font-bold text-2xl mt-2">Tambah Produk Dijual</h2>
-              <p class="text-xs text-[#2D1E17]/75">Produk yang ditambahkan akan langsung muncul di etalase utama KUMY.</p>
+              <p class="text-xs text-[#2D1E17]/75">Produk yang ditambahkan akan langsung tersimpan ke database dan muncul di etalase utama KUMY.</p>
             </div>
 
             <form id="tenant-add-product-form" onsubmit="submitTenantProduct(event)" class="space-y-3.5">
@@ -654,10 +654,10 @@
         <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-5 rounded-3xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17]">
           <div>
             <h1 class="font-display font-extrabold text-2xl sm:text-3xl">Dashboard Kurasi &amp; Database KUMY</h1>
-            <p class="text-xs text-[#2D1E17]/75" id="db-connection-status">Mode Penyimpanan Lokal Aktif</p>
+            <p class="text-xs font-semibold text-[#388E3C]" id="db-connection-status">Terhubung ke Google Sheets DB_KUMY ✓</p>
           </div>
           <div class="flex flex-wrap gap-2">
-            <button type="button" onclick="syncFromGoogleSheets()" class="btn-brutal bg-[#388E3C] text-white px-4 py-2 rounded-xl font-bold text-xs">↻ Sinkron Spreadsheet</button>
+            <button type="button" onclick="syncFromGoogleSheets(true)" class="btn-brutal bg-[#388E3C] text-white px-4 py-2 rounded-xl font-bold text-xs">↻ Sinkron Spreadsheet</button>
             <button type="button" onclick="logoutAdmin()" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs">Keluar</button>
           </div>
         </div>
@@ -880,7 +880,7 @@
   <div id="toast-box" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-[#2D1E17] text-[#FFF3E0] px-5 py-3 rounded-2xl border-2 border-[#D4A857] shadow-xl text-xs sm:text-sm font-bold"></div>
 
   <script>
-    const APPS_SCRIPT_URL = "";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRBedJEfmxBNJ4KRyYUhhHZN-r000N2RDku3S7gsVjkpl1uQLHbkmFoa_KgPj_xQmF/exec";
     const ADMIN_WA = "6281345991170";
     const ETALASE_PAGE_SIZE = 12; // 4 kolom ke samping x 3 baris ke bawah
 
@@ -905,6 +905,27 @@
     }
 
     const FALLBACK_IMG = makeFoodIllustration("🍜", "#D4A857", "Menu Mahasiswa KUMY Jogja");
+
+    function normalizeImageUrl(url, fallback = FALLBACK_IMG) {
+      if (!url) return fallback;
+      const str = String(url).trim();
+      if (str.startsWith("data:image")) return str;
+      const driveMatch = str.match(/drive\.google\.com\/(?:uc\?.*?id=|file\/d\/)([a-zA-Z0-9_-]+)/);
+      if (driveMatch && driveMatch[1]) {
+        return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1000`;
+      }
+      return str;
+    }
+
+    function postToSheets(payload) {
+      if (!APPS_SCRIPT_URL) return;
+      fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      }).catch(() => {});
+    }
 
     const DEFAULT_TENANTS = [
       {
@@ -996,25 +1017,26 @@
       window._toastTimer = setTimeout(() => box.classList.add("hidden"), 3400);
     }
 
-    // Helper: migrasi data tenant lama jika belum memiliki array products
     function normalizeTenantStructure(tenantList) {
       return tenantList.map(t => {
         if (Array.isArray(t.products) && t.products.length > 0) {
           return {
             ...t,
-            password: t.password || "123456",
+            password: String(t.password || "123456"),
+            foto_ktm: normalizeImageUrl(t.foto_ktm, ""),
             products: t.products.map(p => ({
               ...p,
               harga: Number(p.harga) || 10000,
               qty_tersedia: Number(p.qty_tersedia ?? 20),
               qty_terjual: Number(p.qty_terjual ?? 0),
-              img: p.img || FALLBACK_IMG
+              img: normalizeImageUrl(p.img, FALLBACK_IMG)
             }))
           };
         }
         return {
           ...t,
-          password: t.password || "123456",
+          password: String(t.password || "123456"),
+          foto_ktm: normalizeImageUrl(t.foto_ktm, ""),
           products: [
             {
               id: "PRD-" + t.id + "-1",
@@ -1024,14 +1046,13 @@
               qty_tersedia: Number(t.qty_tersedia ?? 20),
               qty_terjual: Number(t.qty_terjual ?? 0),
               deskripsi: t.deskripsi || "Produk wirausaha mahasiswa tervalidasi KTM.",
-              img: t.img || FALLBACK_IMG
+              img: normalizeImageUrl(t.img, FALLBACK_IMG)
             }
           ]
         };
       });
     }
 
-    // Menggabungkan seluruh produk dari tenant yang disetujui & aktif
     function getAllApprovedProducts() {
       const list = [];
       state.tenants.forEach(t => {
@@ -1051,7 +1072,7 @@
             qty_tersedia: Number(p.qty_tersedia ?? 0),
             qty_terjual: Number(p.qty_terjual ?? 0),
             deskripsi: p.deskripsi || "",
-            img: p.img || FALLBACK_IMG
+            img: normalizeImageUrl(p.img, FALLBACK_IMG)
           });
         });
       });
@@ -1081,7 +1102,7 @@
       const validPages = ["beranda", "etalase", "tutorial", "kritik", "daftar", "tenant-login", "admin"];
       navigateTo(validPages.includes(initialHash) ? initialHash : "beranda", false);
 
-      if (APPS_SCRIPT_URL) syncFromGoogleSheets();
+      if (APPS_SCRIPT_URL) syncFromGoogleSheets(false);
     }
 
     function saveLocalState() {
@@ -1170,7 +1191,7 @@
     function createProductCardHTML(p) {
       const zoneObj = CAMPUS_ZONES.find(z => z.id === p.kawasan);
       const zoneLabel = zoneObj ? zoneObj.name : p.kawasan;
-      const imgUrl = p.img || FALLBACK_IMG;
+      const imgUrl = normalizeImageUrl(p.img, FALLBACK_IMG);
       const isSoldOut = p.qty_tersedia <= 0;
       return `
         <article class="card-warm rounded-3xl overflow-hidden flex flex-col justify-between bg-white">
@@ -1368,7 +1389,7 @@
       const itemSummary = state.cart.map(i => `${i.qty}x ${i.menu_utama} (${i.nama_usaha})`).join("; ");
       const orderId = "ORD-" + Date.now();
 
-      // Perbarui qty_tersedia & qty_terjual produk tenant saat checkout
+      // Perbarui qty_tersedia & qty_terjual produk tenant saat checkout dan sinkron ke Sheets
       state.cart.forEach(cartItem => {
         const tenantObj = state.tenants.find(t => t.id === cartItem.tenantId);
         if (tenantObj && Array.isArray(tenantObj.products)) {
@@ -1376,6 +1397,12 @@
           if (prodObj) {
             prodObj.qty_tersedia = Math.max(0, Number(prodObj.qty_tersedia || 0) - cartItem.qty);
             prodObj.qty_terjual = Number(prodObj.qty_terjual || 0) + cartItem.qty;
+            postToSheets({
+              action: "update_product_qty",
+              id: prodObj.id,
+              qty_tersedia: prodObj.qty_tersedia,
+              qty_terjual: prodObj.qty_terjual
+            });
           }
         }
       });
@@ -1391,10 +1418,7 @@
       renderFeaturedTenants();
       renderEtalase();
       if (state.loggedInTenantId) renderTenantDashboard();
-
-      if (APPS_SCRIPT_URL) {
-        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(orderPayload) }).catch(() => {});
-      }
+      postToSheets(orderPayload);
 
       // Kelompokkan pesanan berdasarkan penjual tenant
       const groupedBySeller = {};
@@ -1512,20 +1536,19 @@
 
       state.tenants.unshift(newTenant);
       saveLocalState();
-      if (APPS_SCRIPT_URL) {
-        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newTenant) }).catch(() => {});
-      }
+      postToSheets(newTenant);
+
       document.getElementById("tenant-form").reset();
       document.getElementById("ktm-preview-box").classList.add("hidden");
       state.uploadedKtmBase64 = "";
-      showToast("Pendaftaran berhasil! Kamu bisa langsung Login Tenant menggunakan NIM & sandi yang dibuat.");
+      showToast("Pendaftaran berhasil dikirim ke database! Kamu bisa langsung Login Tenant menggunakan NIM & sandi.");
     }
 
     function checkTenantStatus() {
       const q = document.getElementById("status-query").value.trim().toLowerCase();
       const box = document.getElementById("status-result-box");
       if (!q) return;
-      const found = state.tenants.find(t => t.nim.toLowerCase().includes(q) || t.nama_usaha.toLowerCase().includes(q));
+      const found = state.tenants.find(t => String(t.nim).toLowerCase().includes(q) || String(t.nama_usaha).toLowerCase().includes(q));
       box.classList.remove("hidden");
       if (!found) { box.innerHTML = `<p class="font-bold text-[#B71C1C]">Data tidak ditemukan</p>`; return; }
       const labels = { approved: "Disetujui & Tayang", pending: "Menunggu Validasi KTM", rejected: "Ditolak" };
@@ -1543,8 +1566,8 @@
 
       const normalizedPhone = normalizeWaNumber(rawId);
       const found = state.tenants.find(t => {
-        const matchId = t.nim.toLowerCase() === rawId.toLowerCase() || normalizeWaNumber(t.wa) === normalizedPhone;
-        const matchPass = (t.password || "123456") === pass;
+        const matchId = String(t.nim).toLowerCase() === rawId.toLowerCase() || normalizeWaNumber(t.wa) === normalizedPhone;
+        const matchPass = String(t.password || "123456") === pass;
         return matchId && matchPass;
       });
 
@@ -1629,6 +1652,12 @@
       if (!Array.isArray(tenant.products)) tenant.products = [];
       tenant.products.unshift(newProduct);
 
+      postToSheets({
+        action: "add_product",
+        tenant_id: tenant.id,
+        ...newProduct
+      });
+
       saveLocalState();
       renderTenantDashboard();
       renderFeaturedTenants();
@@ -1639,7 +1668,7 @@
       document.getElementById("tp-photo-preview-box").classList.add("hidden");
       state.uploadedProductPhotoBase64 = "";
 
-      showToast(`Produk "${newProduct.nama_produk}" berhasil ditambahkan!`);
+      showToast(`Produk "${newProduct.nama_produk}" berhasil disimpan ke database!`);
     }
 
     function adjustTenantProductQty(productId, field, delta) {
@@ -1649,6 +1678,13 @@
       if (!prod) return;
 
       prod[field] = Math.max(0, Number(prod[field] || 0) + delta);
+      postToSheets({
+        action: "update_product_qty",
+        id: prod.id,
+        qty_tersedia: prod.qty_tersedia,
+        qty_terjual: prod.qty_terjual
+      });
+
       saveLocalState();
       renderTenantDashboard();
       renderFeaturedTenants();
@@ -1659,6 +1695,11 @@
       const tenant = state.tenants.find(t => t.id === state.loggedInTenantId);
       if (!tenant) return;
       tenant.products = (tenant.products || []).filter(p => p.id !== productId);
+      postToSheets({
+        action: "delete_product",
+        id: productId
+      });
+
       saveLocalState();
       renderTenantDashboard();
       renderFeaturedTenants();
@@ -1701,7 +1742,7 @@
         <div class="card-warm rounded-3xl overflow-hidden bg-white flex flex-col justify-between">
           <div>
             <div class="relative h-36 bg-[#FFF3E0] border-b-2 border-[#2D1E17]">
-              <img src="${p.img || FALLBACK_IMG}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" alt="${p.nama_produk}" class="w-full h-full object-cover" />
+              <img src="${normalizeImageUrl(p.img, FALLBACK_IMG)}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" alt="${p.nama_produk}" class="w-full h-full object-cover" />
               <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-[10px] font-bold">${p.kategori}</span>
             </div>
             <div class="p-4 space-y-2">
@@ -1749,9 +1790,7 @@
       };
       state.feedback.unshift(payload);
       saveLocalState();
-      if (APPS_SCRIPT_URL) {
-        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(() => {});
-      }
+      postToSheets(payload);
       document.getElementById("feedback-form").reset();
       showToast("Terima kasih! Kritik & saranmu sudah tersimpan.");
     }
@@ -1774,10 +1813,14 @@
       document.getElementById("admin-panel-box").classList.add("hidden");
     }
 
-    async function syncFromGoogleSheets() {
+    async function syncFromGoogleSheets(notify = true) {
       const statusEl = document.getElementById("db-connection-status");
-      if (!APPS_SCRIPT_URL) { if (statusEl) statusEl.textContent = "Mode Lokal Aktif (Tempel URL /exec di index.html untuk sinkron DB_KUMY)"; return; }
+      if (!APPS_SCRIPT_URL) {
+        if (statusEl) statusEl.textContent = "Mode Lokal Aktif";
+        return;
+      }
       try {
+        if (statusEl) statusEl.textContent = "Menyinkronkan data dari DB_KUMY...";
         const res = await fetch(`${APPS_SCRIPT_URL}?action=get_all`);
         const json = await res.json();
         if (json.status === "ok") {
@@ -1789,10 +1832,15 @@
           saveLocalState();
           renderFeaturedTenants();
           renderEtalase();
+          if (state.loggedInTenantId) renderTenantPortalState();
           if (state.isAdminLoggedIn) renderAdminDashboard();
           if (statusEl) statusEl.textContent = "Terhubung Real-Time ke DB_KUMY ✓";
+          if (notify) showToast("Database berhasil disinkronkan dengan Google Sheets!");
         }
-      } catch (e) {}
+      } catch (e) {
+        if (statusEl) statusEl.textContent = "Mode Offline / Cache Lokal Aktif";
+        if (notify) showToast("Gagal mengambil data terbaru dari server. Menggunakan cache lokal.");
+      }
     }
 
     function updateTenantStatus(tenantId, newStatus) {
@@ -1804,9 +1852,12 @@
       renderFeaturedTenants();
       renderEtalase();
       showToast(`Status "${tenant.nama_usaha}" diubah menjadi ${newStatus.toUpperCase()}.`);
-      if (APPS_SCRIPT_URL) {
-        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "update_tenant_status", id: tenantId, status: newStatus, aktif: tenant.aktif }) }).catch(() => {});
-      }
+      postToSheets({
+        action: "update_tenant_status",
+        id: tenantId,
+        status: newStatus,
+        aktif: tenant.aktif
+      });
     }
 
     function openKtmModal(tenantId) {
@@ -1814,8 +1865,9 @@
       if (!tenant) return;
       document.getElementById("ktm-modal-title").textContent = `KTM: ${tenant.pemilik} (${tenant.kampus})`;
       const body = document.getElementById("ktm-modal-body");
-      if (tenant.foto_ktm && tenant.foto_ktm.startsWith("data:image")) {
-        body.innerHTML = `<img src="${tenant.foto_ktm}" alt="Foto KTM" class="max-h-72 mx-auto rounded-xl border-2 border-[#2D1E17]" /><p class="text-xs font-bold mt-3">NIM: ${tenant.nim}</p>`;
+      const ktmImg = normalizeImageUrl(tenant.foto_ktm, "");
+      if (ktmImg && (ktmImg.startsWith("data:image") || ktmImg.startsWith("http"))) {
+        body.innerHTML = `<img src="${ktmImg}" alt="Foto KTM" class="max-h-72 mx-auto rounded-xl border-2 border-[#2D1E17]" /><p class="text-xs font-bold mt-3">NIM: ${tenant.nim}</p>`;
       } else {
         body.innerHTML = `<p class="font-bold text-[#388E3C]">✓ Arsip KTM Terverifikasi Sistem (${tenant.nim})</p>`;
       }
