@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KUMY — Kumpulan Usaha Mahasiswa Yogyakarta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kumyRed: '#B71C1C',
+            kumyGreen: '#388E3C',
+            kumyCream: '#FFF3E0',
+            kumyGold: '#D4A857',
+            kumyCoffee: '#2D1E17',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Fraunces"', 'serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #FFF3E0;
+      color: #2D1E17;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-display {
+      font-family: 'Fraunces', serif;
+    }
+    .card-warm {
+      background: #FFFFFF;
+      border: 2px solid #2D1E17;
+      box-shadow: 4px 4px 0px #2D1E17;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card-warm:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #2D1E17;
+    }
+    .btn-brutal {
+      border: 2px solid #2D1E17;
+      box-shadow: 3px 3px 0px #2D1E17;
+      transition: all 0.15s ease;
+    }
+    .btn-brutal:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #2D1E17;
+    }
+    .nav-pill-active {
+      background-color: #B71C1C !important;
+      color: #FFF3E0 !important;
+      border-color: #2D1E17 !important;
+      box-shadow: 2px 2px 0px #2D1E17;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#D4A857] selection:text-[#2D1E17]">
+
+  <!-- TOP BAR -->
+  <div class="bg-[#2D1E17] text-[#FFF3E0] text-xs sm:text-sm py-2 px-4 border-b-2 border-[#D4A857]">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#388E3C] animate-pulse"></span>
+        <span>Direktori Kuliner &amp; Usaha Mahasiswa DIY • 100% Tervalidasi KTM Aktif</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <span class="text-[#D4A857] font-semibold">Diskon 10% Mahasiswa Jogja</span>
+        <a href="https://wa.me/6281345991170" target="_blank" class="underline hover:text-[#D4A857]">WA Admin: 0813-4599-1170</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER & NAVBAR -->
+  <header class="sticky top-0 z-40 bg-[#FFF3E0]/95 backdrop-blur-md border-b-2 border-[#2D1E17]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+      <button onclick="navigateTo('beranda')" class="flex items-center gap-3 text-left group focus:outline-none">
+        <div class="w-11 h-11 rounded-xl bg-[#B71C1C] border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17] flex items-center justify-center shrink-0 group-hover:rotate-3 transition-transform">
+          <svg viewBox="0 0 64 64" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 6L10 15L32 24L54 15L32 6Z" fill="#2D1E17" stroke="#FFF3E0" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M21 19.5V25.5C21 25.5 26 28.5 32 28.5C38 28.5 43 25.5 43 25.5V19.5" fill="#D4A857" stroke="#2D1E17" stroke-width="1.8"/>
+            <path d="M50 16.5V26" stroke="#D4A857" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="50" cy="27.5" r="2.2" fill="#FFF3E0"/>
+            <rect x="27" y="29" width="10" height="19" rx="1" fill="#FFF3E0" stroke="#2D1E17" stroke-width="2"/>
+            <line x1="32" y1="31" x2="32" y2="46" stroke="#D4A857" stroke-width="2"/>
+            <rect x="22" y="48" width="20" height="5" rx="1" fill="#D4A857" stroke="#2D1E17" stroke-width="2"/>
+            <rect x="17" y="53" width="30" height="5" rx="1.5" fill="#388E3C" stroke="#2D1E17" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-display font-extrabold text-xl tracking-tight text-[#2D1E17]">KUMY</span>
+            <span class="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-[#D4A857] text-[#2D1E17] border border-[#2D1E17]">JOGJA</span>
+          </div>
+          <p class="text-[11px] font-medium text-[#2D1E17]/75 leading-tight hidden sm:block">Kumpulan Usaha Mahasiswa Yogyakarta</p>
+        </div>
+      </button>
+
+      <nav class="hidden lg:flex items-center gap-1.5 bg-white/80 p-1.5 rounded-2xl border-2 border-[#2D1E17]">
+        <button data-nav="beranda" onclick="navigateTo('beranda')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Beranda</button>
+        <button data-nav="etalase" onclick="navigateTo('etalase')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Etalase</button>
+        <button data-nav="tutorial" onclick="navigateTo('tutorial')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Tutorial</button>
+        <button data-nav="kritik" onclick="navigateTo('kritik')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Kritik &amp; Saran</button>
+        <button data-nav="daftar" onclick="navigateTo('daftar')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Daftar Tenant</button>
+        <button data-nav="admin" onclick="navigateTo('admin')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Admin</button>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button onclick="toggleCart(true)" class="btn-brutal bg-[#388E3C] text-white px-3.5 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
+          <span>🛒</span>
+          <span class="hidden sm:inline">Keranjang</span>
+          <span id="cart-badge" class="bg-[#D4A857] text-[#2D1E17] text-xs font-extrabold px-2 py-0.5 rounded-full border border-[#2D1E17]">0</span>
+        </button>
+
+        <button onclick="toggleMobileMenu()" class="lg:hidden btn-brutal bg-white p-2 rounded-xl font-bold text-sm" aria-label="Menu">☰</button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t-2 border-[#2D1E17] px-4 py-3 space-y-1.5">
+      <button data-nav="beranda" onclick="navigateTo('beranda'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Beranda</button>
+      <button data-nav="etalase" onclick="navigateTo('etalase'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Etalase Kuliner</button>
+      <button data-nav="tutorial" onclick="navigateTo('tutorial'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Tutorial</button>
+      <button data-nav="kritik" onclick="navigateTo('kritik'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Kritik &amp; Saran</button>
+      <button data-nav="daftar" onclick="navigateTo('daftar'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Daftar Tenant</button>
+      <button data-nav="admin" onclick="navigateTo('admin'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Dashboard Admin</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow">
+
+    <!-- 1. BERANDA -->
+    <section id="page-beranda" class="page-section max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-12">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border-2 border-[#2D1E17] shadow-[3px_3px_0px_#D4A857] text-xs font-bold">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#B71C1C]"></span>
+            <span>Ekosistem Wirausaha Mahasiswa Daerah Istimewa Yogyakarta</span>
+          </div>
+
+          <h1 class="font-display font-extrabold text-3xl sm:text-5xl leading-tight text-[#2D1E17]">
+            <span class="underline decoration-[#B71C1C] decoration-[6px] underline-offset-8">Food Court Digital Mahasiswa Jogja</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-[#2D1E17]/85 leading-relaxed max-w-2xl">
+            Temukan jajanan, kopi, katering kos, hingga usaha kreatif milik mahasiswa aktif di Yogyakarta. Semua tenant tervalidasi KTM, harga ramah kantong akhir bulan, dan bisa langsung ambil di titik temu kampus.
+          </p>
+
+          <div class="flex flex-wrap gap-3 pt-1">
+            <button onclick="navigateTo('etalase')" class="btn-brutal bg-[#B71C1C] text-[#FFF3E0] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
+              Jelajahi Etalase →
+            </button>
+            <button onclick="navigateTo('daftar')" class="btn-brutal bg-[#D4A857] text-[#2D1E17] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
+              + Daftarkan Usahamu
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3">
+            <div class="bg-white p-3.5 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#B71C1C]">
+              <p class="text-xs font-bold uppercase text-[#B71C1C]">Perguruan Tinggi DIY</p>
+              <p class="font-display font-extrabold text-xl sm:text-2xl mt-0.5">108–130+</p>
+              <p class="text-[11px] text-[#2D1E17]/70">Kampus Negeri &amp; Swasta</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#388E3C]">
+              <p class="text-xs font-bold uppercase text-[#388E3C]">Mahasiswa di DIY</p>
+              <p class="font-display font-extrabold text-xl sm:text-2xl mt-0.5">439.236</p>
+              <p class="text-[11px] text-[#2D1E17]/70">Sumber: GoodStats Data</p>
+            </div>
+            <div class="col-span-2 sm:col-span-1 bg-white p-3.5 rounded-2xl border-2 border-[#2D1E17] shadow-[3px_3px_0px_#D4A857]">
+              <p class="text-xs font-bold uppercase text-[#2D1E17]">Jaminan Keaslian</p>
+              <p class="font-display font-extrabold text-xl sm:text-2xl mt-0.5">100% KTM</p>
+              <p class="text-[11px] text-[#2D1E17]/70">Tervalidasi Mahasiswa Aktif</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- GACHA MENU -->
+        <div class="lg:col-span-5">
+          <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3 py-1 rounded-full bg-[#D4A857]/30 border border-[#2D1E17] text-xs font-extrabold">🎲 GACHA KULINER KAMPUS</span>
+              <span class="text-xs font-bold text-[#388E3C]">Antikrisis Ide Makan</span>
+            </div>
+            <h2 class="font-display font-bold text-2xl">Bingung Mau Makan Apa Hari Ini?</h2>
+            <p class="text-sm text-[#2D1E17]/75">Putar acak menu dari tenant mahasiswa Jogja yang sedang buka di sekitar kampusmu.</p>
+
+            <div id="gacha-result" class="bg-[#FFF3E0] border-2 border-dashed border-[#2D1E17] rounded-2xl p-4 text-center">
+              <p class="text-xs font-bold text-[#B71C1C] uppercase">Rekomendasi Acak</p>
+              <p id="gacha-title" class="font-display font-extrabold text-lg mt-1">Klik tombol di bawah untuk mengacak menu!</p>
+              <p id="gacha-meta" class="text-xs text-[#2D1E17]/75 mt-1">Siap memilihkan jajanan terbaik sekitar kampus</p>
+              <div id="gacha-action" class="mt-3 hidden"></div>
+            </div>
+
+            <button onclick="spinGachaMenu()" class="w-full btn-brutal bg-[#388E3C] text-white py-3 rounded-2xl font-bold text-sm sm:text-base">
+              🎰 Putar Gacha Menu Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOOGLE MAPS KAWASAN KAMPUS -->
+      <div class="card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-[#B71C1C]">Pemetaan Zonasi Kampus DIY</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl mt-1">Titik Kumpul &amp; Kawasan Kampus Jogja</h2>
+          </div>
+          <p class="text-sm text-[#2D1E17]/75 max-w-md">Pilih kawasan kampus terdekat untuk melihat titik ambil pesanan dan tenant mahasiswa yang beroperasi.</p>
+        </div>
+
+        <div id="home-zone-pills" class="flex flex-wrap gap-2"></div>
+
+        <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-5 bg-[#FFF3E0] p-5 rounded-2xl border-2 border-[#2D1E17] flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <span class="inline-block px-3 py-1 rounded-lg bg-[#B71C1C] text-white text-xs font-bold">Kawasan Terpilih</span>
+              <h3 class="font-display font-bold text-xl" id="map-zone-title">Bulaksumur &amp; Karangmalang</h3>
+              <p class="text-sm font-semibold text-[#388E3C]" id="map-zone-campuses">UGM • UNY • Poltekkes</p>
+              <div class="bg-white p-3.5 rounded-xl border border-[#2D1E17] text-xs space-y-1.5">
+                <p class="font-bold text-[#2D1E17]">📍 Titik COD / Ambil Pesanan:</p>
+                <p id="map-zone-point" class="text-[#2D1E17]/80">Gerbang Lembah UGM / Bundaran Teknik &amp; Plaza UNY</p>
+              </div>
+            </div>
+            <button onclick="goToEtalaseWithZone()" class="btn-brutal bg-[#D4A857] text-[#2D1E17] w-full py-2.5 rounded-xl font-bold text-sm">
+              Lihat Tenant di Kawasan Ini →
+            </button>
+          </div>
+          <div class="lg:col-span-7 rounded-2xl overflow-hidden border-2 border-[#2D1E17] min-h-[260px]">
+            <iframe id="campus-map-iframe" class="w-full h-full min-h-[260px]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Universitas%20Gadjah%20Mada%20Yogyakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- TENANT UNGGULAN -->
+      <div class="space-y-5">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-extrabold uppercase text-[#388E3C]">Pilihan Favorit Mahasiswa</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl">Tenant Terverifikasi KTM</h2>
+          </div>
+          <button onclick="navigateTo('etalase')" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">Lihat Semua →</button>
+        </div>
+        <div id="featured-tenants-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- 2. ETALASE -->
+    <section id="page-etalase" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase text-[#B71C1C]">Direktori Lengkap</span>
+          <h1 class="font-display font-extrabold text-3xl sm:text-4xl">Etalase Usaha Mahasiswa</h1>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border-2 border-[#2D1E17] text-xs font-bold">
+          <span class="w-2 h-2 rounded-full bg-[#388E3C]"></span>
+          <span>Menampilkan Tenant Aktif &amp; Tervalidasi</span>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 sm:p-5 rounded-2xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17] grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <input id="filter-search" oninput="renderEtalase()" type="text" placeholder="Cari menu, nama usaha, kampus..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm focus:outline-none focus:bg-[#FFF3E0]" />
+        <select id="filter-zone" onchange="renderEtalase()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+          <option value="all">Semua Kawasan Kampus</option>
+        </select>
+        <select id="filter-category" onchange="renderEtalase()" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+          <option value="all">Semua Kategori</option>
+          <option value="Makanan Berat">Makanan Berat</option>
+          <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
+          <option value="Camilan & Dessert">Camilan &amp; Dessert</option>
+          <option value="Paket Hemat Kos">Paket Hemat Kos</option>
+        </select>
+        <button onclick="resetEtalaseFilters()" class="btn-brutal bg-[#FFF3E0] px-4 py-2.5 rounded-xl font-bold text-sm">Reset Filter</button>
+      </div>
+
+      <div id="etalase-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- 3. TUTORIAL -->
+    <section id="page-tutorial" class="page-section hidden max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="px-3 py-1 rounded-full bg-[#D4A857] border border-[#2D1E17] text-xs font-extrabold">PANDUAN PENGGUNAAN</span>
+        <h1 class="font-display font-extrabold text-3xl sm:text-4xl">Cara Kerja Ekosistem KUMY</h1>
+        <p class="text-sm sm:text-base text-[#2D1E17]/80">Praktis untuk mahasiswa pembeli maupun mahasiswa pelaku usaha di Yogyakarta.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
+          <div class="inline-block px-3.5 py-1 rounded-xl bg-[#388E3C] text-white font-bold text-xs">UNTUK PEMBELI (MAHASISWA &amp; UMUM)</div>
+          <h2 class="font-display font-bold text-2xl">Pesan Lintas Tenant Sekaligus</h2>
+          <ol class="space-y-3 text-sm">
+            <li><strong>1. Pilih Kawasan Kampus:</strong> Saring menu berdasarkan area kampus terdekat (UGM/UNY, Seturan, Gejayan, Tamansiswa, atau Kasihan).</li>
+            <li><strong>2. Masukkan ke Keranjang:</strong> Gabungkan beberapa menu dari tenant berbeda dalam satu kali transaksi.</li>
+            <li><strong>3. Klaim Diskon KTM 10%:</strong> Centang diskon mahasiswa di keranjang dan pilih titik ambil kampus.</li>
+            <li><strong>4. Checkout via WhatsApp:</strong> Pesanan otomatis tercatat ke database dan diteruskan ke Admin KUMY.</li>
+          </ol>
+        </div>
+
+        <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
+          <div class="inline-block px-3.5 py-1 rounded-xl bg-[#B71C1C] text-white font-bold text-xs">UNTUK PENJUAL (TENANT MAHASISWA)</div>
+          <h2 class="font-display font-bold text-2xl">Buka Lapak Gratis dengan KTM</h2>
+          <ol class="space-y-3 text-sm">
+            <li><strong>1. Isi Formulir Usaha:</strong> Lengkapi nama usaha, NIM, asal kampus DIY, kawasan, dan detail menu.</li>
+            <li><strong>2. Unggah Foto KTM:</strong> Wajib melampirkan foto KTM aktif sebagai bukti mahasiswa DIY.</li>
+            <li><strong>3. Cek Status Kurasi:</strong> Pantau status persetujuan secara mandiri melalui kolom Cek Status Pendaftaran.</li>
+            <li><strong>4. Tayang di Etalase:</strong> Setelah disetujui Admin, produkmu langsung bisa dipesan mahasiswa se-Jogja.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. KRITIK & SARAN -->
+    <section id="page-kritik" class="page-section hidden max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
+      <div class="card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-6">
+        <div>
+          <span class="text-xs font-extrabold uppercase text-[#388E3C]">Suara Mahasiswa Jogja</span>
+          <h1 class="font-display font-extrabold text-3xl mt-1">Kritik, Saran &amp; Usulan Kampus</h1>
+          <p class="text-sm text-[#2D1E17]/75 mt-1">Punya masukan fitur, usulan titik COD kampus baru, atau kendala transaksi? Sampaikan langsung ke tim KUMY.</p>
+        </div>
+
+        <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase mb-1.5">Nama / Asal Kampus</label>
+              <input id="fb-nama" type="text" required placeholder="Contoh: Raka - UGM" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase mb-1.5">Topik Masukan</label>
+              <select id="fb-kategori" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+                <option value="Saran Fitur Website">Saran Fitur Website</option>
+                <option value="Usulan Titik COD Kampus">Usulan Titik COD Kampus</option>
+                <option value="Laporan Kendala Pesanan">Laporan Kendala Pesanan</option>
+                <option value="Kemitraan Event Kampus">Kemitraan Event Kampus</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase mb-1.5">Pesan Lengkap</label>
+            <textarea id="fb-pesan" rows="4" required placeholder="Tuliskan saran atau masukanmu secara detail..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm"></textarea>
+          </div>
+
+          <div class="flex flex-wrap gap-3 pt-1">
+            <button type="submit" class="btn-brutal bg-[#B71C1C] text-white px-6 py-3 rounded-xl font-bold text-sm">
+              Kirim ke Database KUMY
+            </button>
+            <a href="https://wa.me/6281345991170?text=Halo%20Admin%20KUMY%2C%20saya%20ingin%20menyampaikan%20saran%3A%20" target="_blank" class="btn-brutal bg-[#388E3C] text-white px-5 py-3 rounded-xl font-bold text-sm">
+              Chat WA Admin (0813-4599-1170)
+            </a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 5. DAFTAR TENANT -->
+    <section id="page-daftar" class="page-section hidden max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-8">
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-5">
+          <div>
+            <span class="px-3 py-1 rounded-full bg-[#B71C1C] text-white text-xs font-extrabold">WAJIB VALIDASI KTM</span>
+            <h1 class="font-display font-extrabold text-2xl sm:text-3xl mt-2">Pendaftaran Tenant Mahasiswa</h1>
+            <p class="text-sm text-[#2D1E17]/75 mt-1">Khusus mahasiswa aktif perguruan tinggi di DIY. Unggah foto KTM untuk verifikasi Admin.</p>
+          </div>
+
+          <form id="tenant-form" onsubmit="submitTenantRegistration(event)" class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Nama Usaha / Brand *</label>
+                <input id="reg-usaha" type="text" required placeholder="Contoh: Nasi Kulit Mas Bagas" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Nama Pemilik (Sesuai KTM) *</label>
+                <input id="reg-pemilik" type="text" required placeholder="Nama lengkap mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">NIM *</label>
+                <input id="reg-nim" type="text" required placeholder="Nomor Induk Mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Asal Kampus DIY *</label>
+                <input id="reg-kampus" type="text" required placeholder="UGM / UNY / UPN / UAD / UMY" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Nomor WhatsApp *</label>
+                <input id="reg-wa" type="tel" required placeholder="0812xxxxxxxx" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Kawasan Operasional *</label>
+                <select id="reg-kawasan" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white"></select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Kategori Produk *</label>
+                <select id="reg-kategori" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm font-semibold bg-white">
+                  <option value="Makanan Berat">Makanan Berat</option>
+                  <option value="Minuman & Kopi">Minuman &amp; Kopi</option>
+                  <option value="Camilan & Dessert">Camilan &amp; Dessert</option>
+                  <option value="Paket Hemat Kos">Paket Hemat Kos</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase mb-1">Harga Menu (Rp) *</label>
+                <input id="reg-harga" type="number" min="1000" required placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase mb-1">Nama Menu Utama *</label>
+              <input id="reg-menu" type="text" required placeholder="Contoh: Paket Nasi Kulit Krispi + Sambal Korek" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase mb-1">Deskripsi Singkat &amp; Jam Buka *</label>
+              <textarea id="reg-deskripsi" rows="2" required placeholder="Jelaskan porsi, varian rasa, dan jam operasional..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm"></textarea>
+            </div>
+
+            <div class="bg-[#FFF3E0] p-4 rounded-2xl border-2 border-dashed border-[#B71C1C] space-y-2.5">
+              <label class="block text-xs font-extrabold uppercase text-[#B71C1C]">Unggah Foto Kartu Tanda Mahasiswa (KTM) * (Wajib)</label>
+              <input id="reg-ktm" type="file" accept="image/*" required onchange="handleKtmPreview(event)" class="block w-full text-xs text-[#2D1E17] file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-2 file:border-[#2D1E17] file:text-xs file:font-bold file:bg-[#D4A857] file:text-[#2D1E17] cursor-pointer" />
+              <div id="ktm-preview-box" class="hidden pt-2">
+                <img id="ktm-preview-img" src="" alt="Preview KTM" class="max-h-40 rounded-xl border-2 border-[#2D1E17] object-contain bg-white p-1" />
+              </div>
+            </div>
+
+            <button type="submit" id="reg-submit-btn" class="w-full btn-brutal bg-[#B71C1C] text-white py-3.5 rounded-2xl font-bold text-base">
+              Kirim Pendaftaran &amp; Validasi KTM
+            </button>
+          </form>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="card-warm rounded-3xl p-6 bg-white space-y-4">
+            <span class="px-3 py-1 rounded-full bg-[#388E3C] text-white text-xs font-bold">PORTAL CALON TENANT</span>
+            <h2 class="font-display font-bold text-2xl">Cek Status Verifikasi</h2>
+            <p class="text-sm text-[#2D1E17]/75">Masukkan <strong>NIM</strong> atau <strong>Nama Usaha</strong> untuk melihat status kurasi KTM.</p>
+            <div class="flex gap-2">
+              <input id="status-query" type="text" placeholder="Ketik NIM atau Nama Usaha..." class="flex-grow px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+              <button onclick="checkTenantStatus()" class="btn-brutal bg-[#D4A857] px-4 py-2.5 rounded-xl font-bold text-sm shrink-0">Cek</button>
+            </div>
+            <div id="status-result-box" class="hidden p-4 rounded-2xl border-2 border-[#2D1E17] bg-[#FFF3E0] text-sm space-y-1"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ADMIN DASHBOARD -->
+    <section id="page-admin" class="page-section hidden max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 space-y-6">
+      <div id="admin-login-box" class="max-w-md mx-auto card-warm rounded-3xl p-6 sm:p-8 bg-white space-y-5">
+        <div class="text-center space-y-1">
+          <span class="px-3 py-1 rounded-full bg-[#2D1E17] text-[#D4A857] text-xs font-bold">PANEL KURATOR KUMY</span>
+          <h1 class="font-display font-extrabold text-2xl pt-2">Login Dashboard Admin</h1>
+          <p class="text-xs text-[#2D1E17]/75">Verifikasi foto KTM pendaftar, kelola etalase tenant, dan pantau pesanan masuk.</p>
+        </div>
+        <div class="space-y-3">
+          <input id="admin-pass-input" type="password" placeholder="Masukkan sandi admin (kumy2026)" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
+          <button onclick="loginAdmin()" class="w-full btn-brutal bg-[#B71C1C] text-white py-2.5 rounded-xl font-bold text-sm">Masuk Dashboard</button>
+          <button onclick="loginAdmin(true)" class="w-full btn-brutal bg-[#FFF3E0] text-[#2D1E17] py-2.5 rounded-xl font-bold text-xs">Masuk Mode Demo Sekali Klik</button>
+        </div>
+      </div>
+
+      <div id="admin-panel-box" class="hidden space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-5 rounded-3xl border-2 border-[#2D1E17] shadow-[4px_4px_0px_#2D1E17]">
+          <div>
+            <h1 class="font-display font-extrabold text-2xl sm:text-3xl">Dashboard Kurasi &amp; Database KUMY</h1>
+            <p class="text-xs text-[#2D1E17]/75" id="db-connection-status">Mode Penyimpanan Lokal Aktif</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="syncFromGoogleSheets()" class="btn-brutal bg-[#388E3C] text-white px-4 py-2 rounded-xl font-bold text-xs">↻ Sinkron Spreadsheet</button>
+            <button onclick="logoutAdmin()" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs">Keluar</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
+            <p class="text-xs font-bold text-[#2D1E17]/70">Total Tenant</p>
+            <p id="stat-total-tenants" class="font-display font-extrabold text-2xl mt-1">0</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
+            <p class="text-xs font-bold text-[#B71C1C]">Menunggu Validasi KTM</p>
+            <p id="stat-pending-tenants" class="font-display font-extrabold text-2xl text-[#B71C1C] mt-1">0</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
+            <p class="text-xs font-bold text-[#388E3C]">Total Pesanan</p>
+            <p id="stat-total-orders" class="font-display font-extrabold text-2xl text-[#388E3C] mt-1">0</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-[#2D1E17]">
+            <p class="text-xs font-bold text-[#2D1E17]/70">Kritik &amp; Saran</p>
+            <p id="stat-total-feedback" class="font-display font-extrabold text-2xl mt-1">0</p>
+          </div>
+        </div>
+
+        <div class="card-warm rounded-3xl p-5 sm:p-6 bg-white space-y-4">
+          <h2 class="font-display font-bold text-xl">Daftar Tenant &amp; Validasi KTM</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b-2 border-[#2D1E17] text-xs uppercase bg-[#FFF3E0]">
+                  <th class="p-3">Usaha &amp; Menu</th>
+                  <th class="p-3">Mahasiswa &amp; NIM</th>
+                  <th class="p-3">Kawasan</th>
+                  <th class="p-3">Foto KTM</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3">Aksi Kurasi</th>
+                </tr>
+              </thead>
+              <tbody id="admin-tenants-tbody" class="divide-y divide-[#2D1E17]/20"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="card-warm rounded-3xl p-5 bg-white space-y-3">
+            <h2 class="font-display font-bold text-xl">Riwayat Pesanan Masuk</h2>
+            <div id="admin-orders-list" class="space-y-2.5 max-h-80 overflow-y-auto text-xs"></div>
+          </div>
+          <div class="card-warm rounded-3xl p-5 bg-white space-y-3">
+            <h2 class="font-display font-bold text-xl">Kotak Kritik &amp; Saran</h2>
+            <div id="admin-feedback-list" class="space-y-2.5 max-h-80 overflow-y-auto text-xs"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER BERWARNA & GELOMBANG BERLAPIS -->
+  <footer class="mt-12 relative">
+    <div class="w-full overflow-hidden leading-none">
+      <svg viewBox="0 0 1440 120" class="w-full h-16 sm:h-24 block" preserveAspectRatio="none">
+        <path d="M0,32 C320,110 520,0 880,64 C1140,110 1320,30 1440,56 L1440,120 L0,120 Z" fill="#D4A857"></path>
+        <path d="M0,58 C280,10 620,125 980,52 C1200,10 1350,75 1440,68 L1440,120 L0,120 Z" fill="#388E3C"></path>
+        <path d="M0,82 C360,130 740,35 1120,88 C1290,112 1380,75 1440,86 L1440,120 L0,120 Z" fill="#B71C1C"></path>
+        <path d="M0,100 C420,70 920,135 1440,95 L1440,120 L0,120 Z" fill="#2D1E17"></path>
+      </svg>
+    </div>
+
+    <div class="bg-[#2D1E17] text-[#FFF3E0] pt-8 pb-12 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-5 bg-[#FFF3E0] text-[#2D1E17] p-6 rounded-3xl border-2 border-[#D4A857] shadow-[5px_5px_0px_#B71C1C] space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-[#B71C1C] border-2 border-[#2D1E17] flex items-center justify-center shrink-0">
+              <svg viewBox="0 0 64 64" class="w-8 h-8" fill="none">
+                <path d="M32 6L10 15L32 24L54 15L32 6Z" fill="#2D1E17" stroke="#FFF3E0" stroke-width="2"/>
+                <rect x="27" y="29" width="10" height="19" rx="1" fill="#FFF3E0" stroke="#2D1E17" stroke-width="2"/>
+                <rect x="22" y="48" width="20" height="5" rx="1" fill="#D4A857" stroke="#2D1E17" stroke-width="2"/>
+                <rect x="17" y="53" width="30" height="5" rx="1.5" fill="#388E3C" stroke="#2D1E17" stroke-width="2"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display font-extrabold text-xl">KUMY Yogyakarta</h3>
+              <p class="text-xs font-semibold text-[#2D1E17]/75">Kumpulan Usaha Mahasiswa Yogyakarta</p>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm leading-relaxed">
+            Direktori kuliner dan produk wirausaha mahasiswa di Daerah Istimewa Yogyakarta. Menghubungkan lapak mahasiswa terverifikasi KTM dengan pembeli lintas kampus.
+          </p>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 rounded-lg bg-[#B71C1C] text-white text-[11px] font-bold">108–130+ perguruan tinggi di DIY</span>
+            <span class="px-2.5 py-1 rounded-lg bg-[#388E3C] text-white text-[11px] font-bold">439.236 mahasiswa di DIY</span>
+            <span class="px-2.5 py-1 rounded-lg bg-[#D4A857] text-[#2D1E17] border border-[#2D1E17] text-[11px] font-bold">Validasi KTM aktif</span>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 space-y-3">
+          <h4 class="font-display font-bold text-lg text-[#D4A857]">Kawasan Kampus Jogja</h4>
+          <ul class="space-y-2 text-sm">
+            <li><button onclick="jumpZoneFromFooter('bulaksumur')" class="hover:text-[#D4A857] transition text-left">• Bulaksumur &amp; Karangmalang (UGM, UNY)</button></li>
+            <li><button onclick="jumpZoneFromFooter('seturan')" class="hover:text-[#D4A857] transition text-left">• Seturan &amp; Babarsari (UPN, Atma Jaya, Amikom)</button></li>
+            <li><button onclick="jumpZoneFromFooter('gejayan')" class="hover:text-[#D4A857] transition text-left">• Gejayan &amp; Condongcatur (Sanata Dharma, Mercu Buana)</button></li>
+            <li><button onclick="jumpZoneFromFooter('tamansiswa')" class="hover:text-[#D4A857] transition text-left">• Tamansiswa &amp; Umbulharjo (UAD, UST)</button></li>
+            <li><button onclick="jumpZoneFromFooter('kasihan')" class="hover:text-[#D4A857] transition text-left">• Kasihan &amp; Tamantirto (UMY, Alma Ata)</button></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-4">
+          <div class="bg-[#388E3C] text-white p-5 rounded-3xl border-2 border-[#FFF3E0] shadow-[4px_4px_0px_#D4A857] space-y-3">
+            <span class="inline-block px-2.5 py-0.5 rounded bg-[#2D1E17] text-[#D4A857] text-[11px] font-bold">Layanan Admin KUMY</span>
+            <h4 class="font-display font-bold text-lg leading-snug">Butuh Bantuan Pesanan atau Validasi KTM?</h4>
+            <p class="text-xs text-white/90">Hubungi admin langsung untuk konfirmasi lapak baru maupun pesanan kampus.</p>
+            <a href="https://wa.me/6281345991170" target="_blank" class="block text-center bg-[#FFF3E0] text-[#2D1E17] font-extrabold text-sm py-2.5 px-4 rounded-xl border-2 border-[#2D1E17] hover:bg-[#D4A857] transition">
+              WA: 0813-4599-1170
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-[#FFF3E0]/15 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#FFF3E0]/70">
+        <p>© 2026 KUMY — Kumpulan Usaha Mahasiswa Yogyakarta. Data populasi mahasiswa DIY mengacu pada publikasi GoodStats.</p>
+        <div class="flex gap-4">
+          <button onclick="navigateTo('etalase')" class="hover:text-[#D4A857]">Etalase</button>
+          <button onclick="navigateTo('daftar')" class="hover:text-[#D4A857]">Daftar Tenant</button>
+          <button onclick="navigateTo('admin')" class="hover:text-[#D4A857]">Admin</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleCart(false)" class="absolute inset-0 bg-[#2D1E17]/60"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-[#FFF3E0] border-l-2 border-[#2D1E17] flex flex-col shadow-2xl">
+      <div class="p-5 bg-white border-b-2 border-[#2D1E17] flex items-center justify-between">
+        <div>
+          <h2 class="font-display font-extrabold text-xl">Keranjang Multi-Tenant</h2>
+          <p class="text-xs text-[#2D1E17]/70">Gabungkan pesanan dari berbagai lapak mahasiswa</p>
+        </div>
+        <button onclick="toggleCart(false)" class="btn-brutal bg-[#FFF3E0] w-9 h-9 rounded-xl font-bold">✕</button>
+      </div>
+
+      <div id="cart-items-container" class="flex-grow overflow-y-auto p-5 space-y-3"></div>
+
+      <div class="p-5 bg-white border-t-2 border-[#2D1E17] space-y-3">
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[11px] font-bold uppercase mb-1">Metode Ambil/Antar</label>
+            <select id="cart-method" class="w-full px-2.5 py-2 rounded-xl border-2 border-[#2D1E17] text-xs font-bold bg-[#FFF3E0]">
+              <option value="Ambil di Titik Kampus">Ambil di Titik Kampus</option>
+              <option value="Antar Area Kos Terdekat">Antar Area Kos Terdekat</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase mb-1">Nama &amp; Kampus</label>
+            <input id="cart-buyer-name" type="text" placeholder="Dina - UNY" class="w-full px-2.5 py-2 rounded-xl border-2 border-[#2D1E17] text-xs" />
+          </div>
+        </div>
+
+        <input id="cart-buyer-wa" type="tel" placeholder="Nomor WhatsApp Pembeli (08xxxxxxxxxx)" class="w-full px-3 py-2 rounded-xl border-2 border-[#2D1E17] text-xs" />
+
+        <label class="flex items-center gap-2.5 bg-[#FFF3E0] p-2.5 rounded-xl border border-[#2D1E17] cursor-pointer text-xs font-bold">
+          <input id="cart-ktm-discount" type="checkbox" checked onchange="renderCart()" class="w-4 h-4 accent-[#388E3C]" />
+          <span>Pakai Diskon Mahasiswa 10% (Tunjukkan KTM saat ambil)</span>
+        </label>
+
+        <div class="space-y-1 text-xs pt-1">
+          <div class="flex justify-between text-[#2D1E17]/75">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">Rp 0</span>
+          </div>
+          <div class="flex justify-between text-[#388E3C] font-bold">
+            <span>Diskon KTM (10%)</span>
+            <span id="cart-discount-amount">- Rp 0</span>
+          </div>
+          <div class="flex justify-between font-display font-extrabold text-lg pt-1 border-t border-[#2D1E17]/20">
+            <span>Total Bayar</span>
+            <span id="cart-total">Rp 0</span>
+          </div>
+        </div>
+
+        <button onclick="checkoutCart()" class="w-full btn-brutal bg-[#388E3C] text-white py-3 rounded-2xl font-bold text-sm">
+          Checkout &amp; Kirim ke WhatsApp Admin
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KTM -->
+  <div id="ktm-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D1E17]/70">
+    <div class="bg-white border-2 border-[#2D1E17] rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-[6px_6px_0px_#D4A857]">
+      <div class="flex items-center justify-between">
+        <h3 class="font-display font-bold text-xl" id="ktm-modal-title">Validasi Foto KTM</h3>
+        <button onclick="closeKtmModal()" class="btn-brutal bg-[#FFF3E0] w-8 h-8 rounded-lg font-bold">✕</button>
+      </div>
+      <div id="ktm-modal-body" class="bg-[#FFF3E0] p-4 rounded-2xl border-2 border-[#2D1E17] text-center"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast-box" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-[#2D1E17] text-[#FFF3E0] px-5 py-3 rounded-2xl border-2 border-[#D4A857] shadow-xl text-xs sm:text-sm font-bold"></div>
+
+  <script>
+    // TEMPELKAN URL WEB APP (/exec) GOOGLE APPS SCRIPT DI BAWAH INI:
+    const APPS_SCRIPT_URL = "";
+    const ADMIN_WA = "6281345991170";
+
+    const CAMPUS_ZONES = [
+      { id: "bulaksumur", name: "Bulaksumur & Karangmalang", campuses: "UGM • UNY • Poltekkes", meetingPoint: "Gerbang Lembah UGM / Bundaran Teknik & Plaza UNY", mapQuery: "Universitas Gadjah Mada Yogyakarta" },
+      { id: "seturan", name: "Seturan & Babarsari", campuses: "UPN Veteran Yogyakarta • Atma Jaya • Amikom • STIE YKPN", meetingPoint: "Depan Kampus UPN Condongcatur & Taman Kuliner Babarsari", mapQuery: "UPN Veteran Yogyakarta Seturan" },
+      { id: "gejayan", name: "Gejayan & Condongcatur", campuses: "Sanata Dharma • Mercu Buana • UII Ekonomi", meetingPoint: "Gerbang Universitas Sanata Dharma Mrican & Terminal Condongcatur", mapQuery: "Universitas Sanata Dharma Mrican Yogyakarta" },
+      { id: "tamansiswa", name: "Tamansiswa & Umbulharjo", campuses: "UAD (Kampus 1–4) • UST • Janabadra", meetingPoint: "Lobi Kampus 4 UAD Ringroad Selatan & Taman Siswa", mapQuery: "Universitas Ahmad Dahlan Kampus 4 Yogyakarta" },
+      { id: "kasihan", name: "Kasihan & Tamantirto", campuses: "UMY • Universitas Alma Ata • BSI", meetingPoint: "Gerbang Utama UMY Tamantirto & Simpang Ringroad Barat", mapQuery: "Universitas Muhammadiyah Yogyakarta" }
+    ];
+
+    function makeFoodIllustration(emoji, bg, label) {
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360">
+          <rect width="600" height="360" fill="${bg}"/>
+          <circle cx="300" cy="155" r="64" fill="#FFF3E0" stroke="#2D1E17" stroke-width="5"/>
+          <text x="300" y="175" font-size="56" text-anchor="middle">${emoji}</text>
+          <rect x="130" y="245" width="340" height="44" rx="14" fill="#FFF3E0" stroke="#2D1E17" stroke-width="4"/>
+          <text x="300" y="273" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle" fill="#2D1E17">${label}</text>
+        </svg>`
+      );
+    }
+
+    const FALLBACK_IMG = makeFoodIllustration("🍜", "#D4A857", "Menu Mahasiswa KUMY Jogja");
+
+    const DEFAULT_TENANTS = [
+      {
+        id: "TNT-101", nama_usaha: "Nasi Kulit Sambal Korek Mas Bagas", pemilik: "Bagas Prakoso", nim: "22/498120/TK/54321",
+        kampus: "UGM", kawasan: "bulaksumur", wa: "6281227001101", menu_utama: "Nasi Kulit Krispi + Ayam Suwir Sambal Korek",
+        kategori: "Makanan Berat", harga: 15000, deskripsi: "Kulit ayam goreng renyah bebas minyak berlebih, lengkap dengan serundeng dan sambal korek pedas.",
+        foto_ktm: "KTM_TERVERIFIKASI_UGM", img: makeFoodIllustration("🍗", "#B71C1C", "Nasi Kulit Sambal Korek"), status: "approved", aktif: true
+      },
+      {
+        id: "TNT-102", nama_usaha: "Kopi Susu Tugu & Aren Karangmalang", pemilik: "Nadia Putri", nim: "21402241088",
+        kampus: "UNY", kawasan: "bulaksumur", wa: "6281227001102", menu_utama: "Es Kopi Susu Gula Aren Cup 16oz",
+        kategori: "Minuman & Kopi", harga: 12000, deskripsi: "Racikan arabika-robusta dengan gula aren murni Kulon Progo. Teman nugas malam.",
+        foto_ktm: "KTM_TERVERIFIKASI_UNY", img: makeFoodIllustration(" iced_coffee ".trim() ? "🧋" : "☕", "#D4A857", "Es Kopi Susu Gula Aren"), status: "approved", aktif: true
+      },
+      {
+        id: "TNT-103", nama_usaha: "Dimsum Mentai Lumer Babarsari", pemilik: "Rizky Ramadhan", nim: "123210094",
+        kampus: "UPN Veteran Yogyakarta", kawasan: "seturan", wa: "6281227001103", menu_utama: "Dimsum Ayam Udang Saus Mentai Torch (Isi 6)",
+        kategori: "Camilan & Dessert", harga: 18000, deskripsi: "Dimsum padat daging ayam udang disiram saus mentai gurih lalu di-torch hangat saat dipesan.",
+        foto_ktm: "KTM_TERVERIFIKASI_UPN", img: makeFoodIllustration("🥟", "#388E3C", "Dimsum Mentai Torch"), status: "approved", aktif: true
+      },
+      {
+        id: "TNT-104", nama_usaha: "Ayam Geprek Sambal Matah Mrican", pemilik: "Clara Sinta", nim: "221114045",
+        kampus: "Universitas Sanata Dharma", kawasan: "gejayan", wa: "6281227001104", menu_utama: "Paket Geprek Dada/Paha + Sambal Matah",
+        kategori: "Paket Hemat Kos", harga: 13000, deskripsi: "Nasi pulen hangat dengan ayam geprek krispi dan irisan sambal matah segar.",
+        foto_ktm: "KTM_TERVERIFIKASI_USD", img: makeFoodIllustration("🍛", "#B71C1C", "Ayam Geprek Sambal Matah"), status: "approved", aktif: true
+      },
+      {
+        id: "TNT-105", nama_usaha: "Es Coklat Panjang Umur Tamansiswa", pemilik: "Fajar Nugroho", nim: "2100018211",
+        kampus: "UAD", kawasan: "tamansiswa", wa: "6281227001105", menu_utama: "Es Coklat Kental + Roti Sobek Panggang",
+        kategori: "Minuman & Kopi", harga: 10000, deskripsi: "Coklat pekat tidak bikin enek, disajikan dingin lengkap dengan roti lembut untuk cocolan.",
+        foto_ktm: "KTM_TERVERIFIKASI_UAD", img: makeFoodIllustration("🍫", "#2D1E17", "Es Coklat + Roti Sobek"), status: "approved", aktif: true
+      },
+      {
+        id: "TNT-106", nama_usaha: "Mie Nyemek Spesial Tamantirto", pemilik: "Aulia Rahma", nim: "20220510112",
+        kampus: "UMY", kawasan: "kasihan", wa: "6281227001106", menu_utama: "Mie Nyemek Telur Bebek + Sosis Bakar",
+        kategori: "Makanan Berat", harga: 14000, deskripsi: "Bumbu rempah racikan sendiri, kuah kental gurih manis khas Jogja, porsi mengenyangkan.",
+        foto_ktm: "KTM_TERVERIFIKASI_UMY", img: makeFoodIllustration("🍝", "#388E3C", "Mie Nyemek Telur Bebek"), status: "approved", aktif: true
+      }
+    ];
+
+    let state = { tenants: [], orders: [], feedback: [], cart: [], selectedZone: "bulaksumur", isAdminLoggedIn: false, uploadedKtmBase64: "" };
+
+    function formatRupiah(num) { return "Rp " + Number(num || 0).toLocaleString("id-ID"); }
+
+    function showToast(msg) {
+      const box = document.getElementById("toast-box");
+      box.textContent = msg;
+      box.classList.remove("hidden");
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => box.classList.add("hidden"), 3400);
+    }
+
+    function initApp() {
+      const savedTenants = localStorage.getItem("kumy_tenants_v2");
+      const savedOrders = localStorage.getItem("kumy_orders_v2");
+      const savedFeedback = localStorage.getItem("kumy_feedback_v2");
+      const savedCart = localStorage.getItem("kumy_cart_v2");
+
+      state.tenants = savedTenants ? JSON.parse(savedTenants) : [...DEFAULT_TENANTS];
+      state.orders = savedOrders ? JSON.parse(savedOrders) : [];
+      state.feedback = savedFeedback ? JSON.parse(savedFeedback) : [];
+      state.cart = savedCart ? JSON.parse(savedCart) : [];
+
+      populateZoneSelectors();
+      renderHomeZones();
+      renderFeaturedTenants();
+      renderEtalase();
+      renderCart();
+      navigateTo("beranda");
+      if (APPS_SCRIPT_URL) syncFromGoogleSheets();
+    }
+
+    function saveLocalState() {
+      localStorage.setItem("kumy_tenants_v2", JSON.stringify(state.tenants));
+      localStorage.setItem("kumy_orders_v2", JSON.stringify(state.orders));
+      localStorage.setItem("kumy_feedback_v2", JSON.stringify(state.feedback));
+      localStorage.setItem("kumy_cart_v2", JSON.stringify(state.cart));
+    }
+
+    function navigateTo(pageId) {
+      document.querySelectorAll(".page-section").forEach(sec => sec.classList.add("hidden"));
+      const target = document.getElementById("page-" + pageId);
+      if (target) target.classList.remove("hidden");
+      document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.classList.toggle("nav-pill-active", btn.dataset.nav === pageId);
+      });
+      if (pageId === "etalase") renderEtalase();
+      if (pageId === "admin" && state.isAdminLoggedIn) renderAdminDashboard();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleMobileMenu() { document.getElementById("mobile-menu").classList.toggle("hidden"); }
+
+    function populateZoneSelectors() {
+      const filterSelect = document.getElementById("filter-zone");
+      const regSelect = document.getElementById("reg-kawasan");
+      CAMPUS_ZONES.forEach(z => {
+        filterSelect.add(new Option(z.name, z.id));
+        regSelect.add(new Option(z.name, z.id));
+      });
+    }
+
+    function renderHomeZones() {
+      const container = document.getElementById("home-zone-pills");
+      container.innerHTML = CAMPUS_ZONES.map(z => {
+        const active = z.id === state.selectedZone;
+        return `<button onclick="selectHomeZone('${z.id}')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border-2 border-[#2D1E17] transition ${
+          active ? "bg-[#B71C1C] text-white shadow-[2px_2px_0px_#2D1E17]" : "bg-[#FFF3E0] text-[#2D1E17] hover:bg-[#D4A857]"
+        }">${z.name}</button>`;
+      }).join("");
+
+      const current = CAMPUS_ZONES.find(z => z.id === state.selectedZone) || CAMPUS_ZONES[0];
+      document.getElementById("map-zone-title").textContent = current.name;
+      document.getElementById("map-zone-campuses").textContent = current.campuses;
+      document.getElementById("map-zone-point").textContent = current.meetingPoint;
+      document.getElementById("campus-map-iframe").src =
+        `https://maps.google.com/maps?q=${encodeURIComponent(current.mapQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+    }
+
+    function selectHomeZone(zoneId) { state.selectedZone = zoneId; renderHomeZones(); }
+    function goToEtalaseWithZone() { document.getElementById("filter-zone").value = state.selectedZone; navigateTo("etalase"); }
+    function jumpZoneFromFooter(zoneId) { state.selectedZone = zoneId; document.getElementById("filter-zone").value = zoneId; navigateTo("etalase"); }
+
+    function spinGachaMenu() {
+      const activeTenants = state.tenants.filter(t => t.status === "approved" && t.aktif !== false);
+      if (!activeTenants.length) return;
+      const pick = activeTenants[Math.floor(Math.random() * activeTenants.length)];
+      const zoneObj = CAMPUS_ZONES.find(z => z.id === pick.kawasan);
+      document.getElementById("gacha-title").textContent = `${pick.menu_utama} (${formatRupiah(pick.harga)})`;
+      document.getElementById("gacha-meta").textContent = `${pick.nama_usaha} • ${pick.kampus} (${zoneObj ? zoneObj.name : pick.kawasan})`;
+      const act = document.getElementById("gacha-action");
+      act.classList.remove("hidden");
+      act.innerHTML = `<button onclick="addToCart('${pick.id}')" class="btn-brutal bg-[#B71C1C] text-white px-4 py-2 rounded-xl text-xs font-bold">+ Tambah ke Keranjang</button>`;
+    }
+
+    function createTenantCardHTML(t) {
+      const zoneObj = CAMPUS_ZONES.find(z => z.id === t.kawasan);
+      const zoneLabel = zoneObj ? zoneObj.name : t.kawasan;
+      const imgUrl = t.img || FALLBACK_IMG;
+      return `
+        <article class="card-warm rounded-3xl overflow-hidden flex flex-col justify-between bg-white">
+          <div>
+            <div class="relative h-44 bg-[#FFF3E0] border-b-2 border-[#2D1E17] overflow-hidden">
+              <img src="${imgUrl}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'" alt="${t.menu_utama}" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-[#388E3C] text-white text-[11px] font-extrabold border border-[#2D1E17]">✓ KTM Tervalidasi</span>
+              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-[#FFF3E0] text-[#2D1E17] text-[11px] font-bold border border-[#2D1E17]">${t.kategori}</span>
+            </div>
+            <div class="p-5 space-y-2">
+              <div class="flex items-center justify-between gap-2 text-xs font-bold text-[#B71C1C]">
+                <span>${t.kampus}</span>
+                <span class="text-[#2D1E17]/65 truncate max-w-[160px]">${zoneLabel}</span>
+              </div>
+              <h3 class="font-display font-bold text-lg leading-snug">${t.menu_utama}</h3>
+              <p class="text-xs font-bold text-[#2D1E17]/80">Lapak: ${t.nama_usaha} (${t.pemilik})</p>
+              <p class="text-xs text-[#2D1E17]/75">${t.deskripsi}</p>
+            </div>
+          </div>
+          <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-3 border-t border-[#2D1E17]/15">
+            <div>
+              <span class="block text-[10px] uppercase font-bold text-[#2D1E17]/60">Harga Mahasiswa</span>
+              <span class="font-display font-extrabold text-lg text-[#2D1E17]">${formatRupiah(t.harga)}</span>
+            </div>
+            <button onclick="addToCart('${t.id}')" class="btn-brutal bg-[#D4A857] hover:bg-[#B71C1C] hover:text-white text-[#2D1E17] px-4 py-2 rounded-xl font-bold text-xs">+ Keranjang</button>
+          </div>
+        </article>`;
+    }
+
+    function renderFeaturedTenants() {
+      const approved = state.tenants.filter(t => t.status === "approved" && t.aktif !== false).slice(0, 3);
+      document.getElementById("featured-tenants-grid").innerHTML = approved.map(createTenantCardHTML).join("");
+    }
+
+    function renderEtalase() {
+      const q = (document.getElementById("filter-search").value || "").toLowerCase();
+      const zone = document.getElementById("filter-zone").value;
+      const cat = document.getElementById("filter-category").value;
+      const filtered = state.tenants.filter(t => {
+        if (t.status !== "approved" || t.aktif === false) return false;
+        return (zone === "all" || t.kawasan === zone) &&
+               (cat === "all" || t.kategori === cat) &&
+               (!q || t.nama_usaha.toLowerCase().includes(q) || t.menu_utama.toLowerCase().includes(q) || t.kampus.toLowerCase().includes(q));
+      });
+      const grid = document.getElementById("etalase-grid");
+      grid.innerHTML = filtered.length ? filtered.map(createTenantCardHTML).join("") :
+        `<div class="col-span-full bg-white p-8 rounded-3xl border-2 border-[#2D1E17] text-center"><p class="font-display font-bold text-xl">Belum ada tenant yang cocok dengan filter ini</p></div>`;
+    }
+
+    function resetEtalaseFilters() {
+      document.getElementById("filter-search").value = "";
+      document.getElementById("filter-zone").value = "all";
+      document.getElementById("filter-category").value = "all";
+      renderEtalase();
+    }
+
+    function toggleCart(open) { document.getElementById("cart-drawer").classList.toggle("hidden", !open); }
+
+    function addToCart(tenantId) {
+      const tenant = state.tenants.find(t => t.id === tenantId);
+      if (!tenant) return;
+      const existing = state.cart.find(item => item.id === tenantId);
+      if (existing) existing.qty += 1;
+      else state.cart.push({ id: tenant.id, nama_usaha: tenant.nama_usaha, menu_utama: tenant.menu_utama, harga: Number(tenant.harga), kampus: tenant.kampus, qty: 1 });
+      saveLocalState();
+      renderCart();
+      showToast(`"${tenant.menu_utama}" masuk ke keranjang!`);
+    }
+
+    function updateCartQty(tenantId, delta) {
+      const idx = state.cart.findIndex(i => i.id === tenantId);
+      if (idx === -1) return;
+      state.cart[idx].qty += delta;
+      if (state.cart[idx].qty <= 0) state.cart.splice(idx, 1);
+      saveLocalState();
+      renderCart();
+    }
+
+    function renderCart() {
+      document.getElementById("cart-badge").textContent = state.cart.reduce((sum, i) => sum + i.qty, 0);
+      const container = document.getElementById("cart-items-container");
+      container.innerHTML = state.cart.length ? state.cart.map(item => `
+        <div class="bg-white p-3.5 rounded-2xl border-2 border-[#2D1E17] flex items-center justify-between gap-3">
+          <div class="min-w-0">
+            <span class="text-[10px] font-extrabold uppercase text-[#B71C1C]">${item.nama_usaha} (${item.kampus})</span>
+            <p class="font-bold text-sm truncate">${item.menu_utama}</p>
+            <p class="text-xs font-semibold text-[#388E3C]">${formatRupiah(item.harga)} / porsi</p>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] font-bold text-sm">-</button>
+            <span class="w-6 text-center text-xs font-extrabold">${item.qty}</span>
+            <button onclick="updateCartQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-[#D4A857] border border-[#2D1E17] font-bold text-sm">+</button>
+          </div>
+        </div>`).join("") :
+        `<div class="bg-white p-6 rounded-2xl border-2 border-dashed border-[#2D1E17] text-center text-sm"><p class="font-bold">Keranjang masih kosong</p></div>`;
+
+      const subtotal = state.cart.reduce((sum, i) => sum + i.harga * i.qty, 0);
+      const discount = document.getElementById("cart-ktm-discount").checked ? Math.round(subtotal * 0.1) : 0;
+      document.getElementById("cart-subtotal").textContent = formatRupiah(subtotal);
+      document.getElementById("cart-discount-amount").textContent = "- " + formatRupiah(discount);
+      document.getElementById("cart-total").textContent = formatRupiah(subtotal - discount);
+    }
+
+    async function checkoutCart() {
+      if (!state.cart.length) { showToast("Keranjang masih kosong!"); return; }
+      const buyerName = document.getElementById("cart-buyer-name").value.trim() || "Mahasiswa Jogja";
+      const buyerWa = document.getElementById("cart-buyer-wa").value.trim() || "-";
+      const method = document.getElementById("cart-method").value;
+      const useDiscount = document.getElementById("cart-ktm-discount").checked;
+      const subtotal = state.cart.reduce((sum, i) => sum + i.harga * i.qty, 0);
+      const total = subtotal - (useDiscount ? Math.round(subtotal * 0.1) : 0);
+      const itemSummary = state.cart.map(i => `${i.qty}x ${i.menu_utama} (${i.nama_usaha})`).join("; ");
+
+      const orderPayload = {
+        action: "create_order", id_pesanan: "ORD-" + Date.now(), waktu: new Date().toLocaleString("id-ID"),
+        nama_pembeli: buyerName, kampus_pembeli: buyerName, wa_pembeli: buyerWa, metode_ambil: method,
+        diskon_ktm: useDiscount, total_bayar: total, rincian_item: itemSummary, status: "Baru"
+      };
+
+      state.orders.unshift(orderPayload);
+      saveLocalState();
+      if (APPS_SCRIPT_URL) {
+        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(orderPayload) }).catch(() => {});
+      }
+
+      const waText = `Halo Admin KUMY Jogja, saya ingin memesan:
+• ID: ${orderPayload.id_pesanan}
+• Pemesan: ${buyerName} (${buyerWa})
+• Metode: ${method}
+• Rincian:
+${state.cart.map(i => `  - ${i.qty}x ${i.menu_utama} [${i.nama_usaha}]`).join("
+")}
+• Total: ${formatRupiah(total)}`;
+      state.cart = [];
+      saveLocalState();
+      renderCart();
+      toggleCart(false);
+      showToast("Pesanan tercatat! Membuka WhatsApp Admin...");
+      window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(waText)}`, "_blank");
+    }
+
+    function handleKtmPreview(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement("canvas");
+          const scale = Math.min(1, 700 / img.width);
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+          state.uploadedKtmBase64 = canvas.toDataURL("image/jpeg", 0.75);
+          document.getElementById("ktm-preview-img").src = state.uploadedKtmBase64;
+          document.getElementById("ktm-preview-box").classList.remove("hidden");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function submitTenantRegistration(event) {
+      event.preventDefault();
+      if (!state.uploadedKtmBase64) { showToast("Wajib mengunggah foto KTM!"); return; }
+      const newTenant = {
+        action: "register_tenant", id: "TNT-" + Date.now(), waktu_daftar: new Date().toLocaleString("id-ID"),
+        nama_usaha: document.getElementById("reg-usaha").value.trim(), pemilik: document.getElementById("reg-pemilik").value.trim(),
+        nim: document.getElementById("reg-nim").value.trim(), kampus: document.getElementById("reg-kampus").value.trim(),
+        kawasan: document.getElementById("reg-kawasan").value, wa: document.getElementById("reg-wa").value.trim(),
+        menu_utama: document.getElementById("reg-menu").value.trim(), kategori: document.getElementById("reg-kategori").value,
+        harga: Number(document.getElementById("reg-harga").value), deskripsi: document.getElementById("reg-deskripsi").value.trim(),
+        foto_ktm: state.uploadedKtmBase64, img: FALLBACK_IMG, status: "pending", aktif: true
+      };
+      state.tenants.unshift(newTenant);
+      saveLocalState();
+      if (APPS_SCRIPT_URL) {
+        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newTenant) }).catch(() => {});
+      }
+      document.getElementById("tenant-form").reset();
+      document.getElementById("ktm-preview-box").classList.add("hidden");
+      state.uploadedKtmBase64 = "";
+      showToast("Pendaftaran berhasil! Status: Menunggu Validasi KTM Admin.");
+    }
+
+    function checkTenantStatus() {
+      const q = document.getElementById("status-query").value.trim().toLowerCase();
+      const box = document.getElementById("status-result-box");
+      if (!q) return;
+      const found = state.tenants.find(t => t.nim.toLowerCase().includes(q) || t.nama_usaha.toLowerCase().includes(q));
+      box.classList.remove("hidden");
+      if (!found) { box.innerHTML = `<p class="font-bold text-[#B71C1C]">Data tidak ditemukan</p>`; return; }
+      const labels = { approved: "Disetujui & Tayang", pending: "Menunggu Validasi KTM", rejected: "Ditolak" };
+      box.innerHTML = `<p class="font-bold">${found.nama_usaha}</p><p class="text-xs">${found.pemilik} (${found.kampus} • ${found.nim})</p><p class="text-xs font-extrabold text-[#388E3C] pt-1">Status: ${labels[found.status] || found.status}</p>`;
+    }
+
+    async function submitFeedback(event) {
+      event.preventDefault();
+      const payload = {
+        action: "create_feedback", id: "FB-" + Date.now(), waktu: new Date().toLocaleString("id-ID"),
+        nama: document.getElementById("fb-nama").value.trim(), kategori: document.getElementById("fb-kategori").value,
+        pesan: document.getElementById("fb-pesan").value.trim()
+      };
+      state.feedback.unshift(payload);
+      saveLocalState();
+      if (APPS_SCRIPT_URL) {
+        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(() => {});
+      }
+      document.getElementById("feedback-form").reset();
+      showToast("Terima kasih! Kritik & saranmu sudah tersimpan.");
+    }
+
+    function loginAdmin(isDemo = false) {
+      if (isDemo || document.getElementById("admin-pass-input").value === "kumy2026") {
+        state.isAdminLoggedIn = true;
+        document.getElementById("admin-login-box").classList.add("hidden");
+        document.getElementById("admin-panel-box").classList.remove("hidden");
+        renderAdminDashboard();
+      } else showToast("Sandi salah (gunakan kumy2026 atau klik Mode Demo).");
+    }
+
+    function logoutAdmin() {
+      state.isAdminLoggedIn = false;
+      document.getElementById("admin-login-box").classList.remove("hidden");
+      document.getElementById("admin-panel-box").classList.add("hidden");
+    }
+
+    async function syncFromGoogleSheets() {
+      const statusEl = document.getElementById("db-connection-status");
+      if (!APPS_SCRIPT_URL) { if (statusEl) statusEl.textContent = "Mode Lokal Aktif (Tempel URL /exec di index.html untuk sinkron DB_KUMY)"; return; }
+      try {
+        const res = await fetch(`${APPS_SCRIPT_URL}?action=get_all`);
+        const json = await res.json();
+        if (json.status === "ok") {
+          if (Array.isArray(json.tenants) && json.tenants.length) {
+            state.tenants = json.tenants.map(t => ({ ...t, harga: Number(t.harga) || 15000, aktif: String(t.aktif).toUpperCase() !== "FALSE", img: FALLBACK_IMG }));
+          }
+          if (Array.isArray(json.orders)) state.orders = json.orders;
+          if (Array.isArray(json.feedback)) state.feedback = json.feedback;
+          saveLocalState();
+          renderFeaturedTenants();
+          renderEtalase();
+          if (state.isAdminLoggedIn) renderAdminDashboard();
+          if (statusEl) statusEl.textContent = "Terhubung Real-Time ke DB_KUMY ✓";
+        }
+      } catch (e) {}
+    }
+
+    function updateTenantStatus(tenantId, newStatus) {
+      const tenant = state.tenants.find(t => t.id === tenantId);
+      if (!tenant) return;
+      tenant.status = newStatus;
+      saveLocalState();
+      renderAdminDashboard();
+      renderFeaturedTenants();
+      renderEtalase();
+      showToast(`Status "${tenant.nama_usaha}" diubah menjadi ${newStatus.toUpperCase()}.`);
+      if (APPS_SCRIPT_URL) {
+        fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "update_tenant_status", id: tenantId, status: newStatus, aktif: tenant.aktif }) }).catch(() => {});
+      }
+    }
+
+    function openKtmModal(tenantId) {
+      const tenant = state.tenants.find(t => t.id === tenantId);
+      if (!tenant) return;
+      document.getElementById("ktm-modal-title").textContent = `KTM: ${tenant.pemilik} (${tenant.kampus})`;
+      const body = document.getElementById("ktm-modal-body");
+      if (tenant.foto_ktm && tenant.foto_ktm.startsWith("data:image")) {
+        body.innerHTML = `<img src="${tenant.foto_ktm}" alt="Foto KTM" class="max-h-72 mx-auto rounded-xl border-2 border-[#2D1E17]" /><p class="text-xs font-bold mt-3">NIM: ${tenant.nim}</p>`;
+      } else {
+        body.innerHTML = `<p class="font-bold text-[#388E3C]">✓ Arsip KTM Terverifikasi Sistem (${tenant.nim})</p>`;
+      }
+      const modal = document.getElementById("ktm-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeKtmModal() {
+      const modal = document.getElementById("ktm-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function renderAdminDashboard() {
+      document.getElementById("stat-total-tenants").textContent = state.tenants.length;
+      document.getElementById("stat-pending-tenants").textContent = state.tenants.filter(t => t.status === "pending").length;
+      document.getElementById("stat-total-orders").textContent = state.orders.length;
+      document.getElementById("stat-total-feedback").textContent = state.feedback.length;
+
+      document.getElementById("admin-tenants-tbody").innerHTML = state.tenants.map(t => {
+        const badgeColor = t.status === "approved" ? "bg-[#388E3C] text-white" : t.status === "rejected" ? "bg-[#B71C1C] text-white" : "bg-[#D4A857] text-[#2D1E17]";
+        return `<tr class="hover:bg-[#FFF3E0]/50">
+          <td class="p-3"><p class="font-bold">${t.nama_usaha}</p><p class="text-xs">${t.menu_utama} (${formatRupiah(t.harga)})</p></td>
+          <td class="p-3"><p class="font-semibold">${t.pemilik}</p><p class="text-xs">${t.kampus} • ${t.nim}</p></td>
+          <td class="p-3 text-xs font-semibold">${t.kawasan}</td>
+          <td class="p-3"><button onclick="openKtmModal('${t.id}')" class="px-2.5 py-1 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">Lihat KTM</button></td>
+          <td class="p-3"><span class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase ${badgeColor}">${t.status}</span></td>
+          <td class="p-3 flex gap-1.5">
+            <button onclick="updateTenantStatus('${t.id}', 'approved')" class="px-2.5 py-1 rounded-lg bg-[#388E3C] text-white text-xs font-bold">Setujui</button>
+            <button onclick="updateTenantStatus('${t.id}', 'rejected')" class="px-2.5 py-1 rounded-lg bg-[#B71C1C] text-white text-xs font-bold">Tolak</button>
+          </td>
+        </tr>`;
+      }).join("");
+
+      document.getElementById("admin-orders-list").innerHTML = state.orders.length ? state.orders.map(o => `
+        <div class="p-3 rounded-xl bg-[#FFF3E0] border border-[#2D1E17]">
+          <div class="flex justify-between font-bold"><span>${o.id_pesanan} • ${o.nama_pembeli}</span><span class="text-[#388E3C]">${formatRupiah(o.total_bayar)}</span></div>
+          <p>${o.rincian_item}</p>
+        </div>`).join("") : `<p class="text-[#2D1E17]/60">Belum ada pesanan masuk.</p>`;
+
+      document.getElementById("admin-feedback-list").innerHTML = state.feedback.length ? state.feedback.map(f => `
+        <div class="p-3 rounded-xl bg-[#FFF3E0] border border-[#2D1E17]">
+          <div class="flex justify-between font-bold"><span>${f.nama}</span><span class="text-[#B71C1C]">${f.kategori}</span></div>
+          <p>${f.pesan}</p>
+        </div>`).join("") : `<p class="text-[#2D1E17]/60">Belum ada kritik & saran.</p>`;
+    }
+
+    document.addEventListener("DOMContentLoaded", initApp);
+  </script>
+</body>
+</html>
