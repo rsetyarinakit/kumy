@@ -74,7 +74,6 @@
       </div>
       <div class="flex items-center gap-4 text-xs">
         <span class="text-[#D4A857] font-semibold">Diskon 10% Mahasiswa Jogja</span>
-        <a href="https://wa.me/6281345991170" target="_blank" class="underline hover:text-[#D4A857]">WA Admin: 0813-4599-1170</a>
       </div>
     </div>
   </div>
@@ -82,7 +81,7 @@
   <!-- HEADER & NAVBAR -->
   <header class="sticky top-0 z-40 bg-[#FFF3E0]/95 backdrop-blur-md border-b-2 border-[#2D1E17]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
-      <button onclick="navigateTo('beranda')" class="flex items-center gap-3 text-left group focus:outline-none">
+      <button type="button" onclick="navigateTo('beranda')" class="flex items-center gap-3 text-left group focus:outline-none">
         <div class="w-11 h-11 rounded-xl bg-[#B71C1C] border-2 border-[#2D1E17] shadow-[3px_3px_0px_#2D1E17] flex items-center justify-center shrink-0 group-hover:rotate-3 transition-transform">
           <svg viewBox="0 0 64 64" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M32 6L10 15L32 24L54 15L32 6Z" fill="#2D1E17" stroke="#FFF3E0" stroke-width="2" stroke-linejoin="round"/>
@@ -105,32 +104,32 @@
       </button>
 
       <nav class="hidden lg:flex items-center gap-1.5 bg-white/80 p-1.5 rounded-2xl border-2 border-[#2D1E17]">
-        <button data-nav="beranda" onclick="navigateTo('beranda')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Beranda</button>
-        <button data-nav="etalase" onclick="navigateTo('etalase')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Etalase</button>
-        <button data-nav="tutorial" onclick="navigateTo('tutorial')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Tutorial</button>
-        <button data-nav="kritik" onclick="navigateTo('kritik')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Kritik &amp; Saran</button>
-        <button data-nav="daftar" onclick="navigateTo('daftar')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Daftar Tenant</button>
-        <button data-nav="admin" onclick="navigateTo('admin')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Admin</button>
+        <button type="button" data-nav="beranda" onclick="navigateTo('beranda')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Beranda</button>
+        <button type="button" data-nav="etalase" onclick="navigateTo('etalase')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Etalase</button>
+        <button type="button" data-nav="tutorial" onclick="navigateTo('tutorial')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Tutorial</button>
+        <button type="button" data-nav="kritik" onclick="navigateTo('kritik')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Kritik &amp; Saran</button>
+        <button type="button" data-nav="daftar" onclick="navigateTo('daftar')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Daftar Tenant</button>
+        <button type="button" data-nav="admin" onclick="navigateTo('admin')" class="nav-btn px-3.5 py-1.5 rounded-xl text-sm font-bold border border-transparent hover:bg-[#FFF3E0] transition">Admin</button>
       </nav>
 
       <div class="flex items-center gap-2.5">
-        <button onclick="toggleCart(true)" class="btn-brutal bg-[#388E3C] text-white px-3.5 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
+        <button type="button" onclick="toggleCart(true)" class="btn-brutal bg-[#388E3C] text-white px-3.5 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
           <span>🛒</span>
           <span class="hidden sm:inline">Keranjang</span>
           <span id="cart-badge" class="bg-[#D4A857] text-[#2D1E17] text-xs font-extrabold px-2 py-0.5 rounded-full border border-[#2D1E17]">0</span>
         </button>
 
-        <button onclick="toggleMobileMenu()" class="lg:hidden btn-brutal bg-white p-2 rounded-xl font-bold text-sm" aria-label="Menu">☰</button>
+        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden btn-brutal bg-white p-2 rounded-xl font-bold text-sm" aria-label="Menu">☰</button>
       </div>
     </div>
 
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t-2 border-[#2D1E17] px-4 py-3 space-y-1.5">
-      <button data-nav="beranda" onclick="navigateTo('beranda'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Beranda</button>
-      <button data-nav="etalase" onclick="navigateTo('etalase'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Etalase Kuliner</button>
-      <button data-nav="tutorial" onclick="navigateTo('tutorial'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Tutorial</button>
-      <button data-nav="kritik" onclick="navigateTo('kritik'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Kritik &amp; Saran</button>
-      <button data-nav="daftar" onclick="navigateTo('daftar'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Daftar Tenant</button>
-      <button data-nav="admin" onclick="navigateTo('admin'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Dashboard Admin</button>
+      <button type="button" data-nav="beranda" onclick="navigateTo('beranda'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Beranda</button>
+      <button type="button" data-nav="etalase" onclick="navigateTo('etalase'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Etalase Kuliner</button>
+      <button type="button" data-nav="tutorial" onclick="navigateTo('tutorial'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Tutorial</button>
+      <button type="button" data-nav="kritik" onclick="navigateTo('kritik'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Kritik &amp; Saran</button>
+      <button type="button" data-nav="daftar" onclick="navigateTo('daftar'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Daftar Tenant</button>
+      <button type="button" data-nav="admin" onclick="navigateTo('admin'); toggleMobileMenu()" class="nav-btn block w-full text-left px-3.5 py-2 rounded-xl text-sm font-bold">Dashboard Admin</button>
     </div>
   </header>
 
@@ -155,10 +154,10 @@
           </p>
 
           <div class="flex flex-wrap gap-3 pt-1">
-            <button onclick="navigateTo('etalase')" class="btn-brutal bg-[#B71C1C] text-[#FFF3E0] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
+            <button type="button" onclick="navigateTo('etalase')" class="btn-brutal bg-[#B71C1C] text-[#FFF3E0] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
               Jelajahi Etalase →
             </button>
-            <button onclick="navigateTo('daftar')" class="btn-brutal bg-[#D4A857] text-[#2D1E17] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
+            <button type="button" onclick="navigateTo('daftar')" class="btn-brutal bg-[#D4A857] text-[#2D1E17] px-6 py-3 rounded-2xl font-bold text-sm sm:text-base">
               + Daftarkan Usahamu
             </button>
           </div>
@@ -199,7 +198,7 @@
               <div id="gacha-action" class="mt-3 hidden"></div>
             </div>
 
-            <button onclick="spinGachaMenu()" class="w-full btn-brutal bg-[#388E3C] text-white py-3 rounded-2xl font-bold text-sm sm:text-base">
+            <button type="button" onclick="spinGachaMenu()" class="w-full btn-brutal bg-[#388E3C] text-white py-3 rounded-2xl font-bold text-sm sm:text-base">
               🎰 Putar Gacha Menu Sekarang
             </button>
           </div>
@@ -229,7 +228,7 @@
                 <p id="map-zone-point" class="text-[#2D1E17]/80">Gerbang Lembah UGM / Bundaran Teknik &amp; Plaza UNY</p>
               </div>
             </div>
-            <button onclick="goToEtalaseWithZone()" class="btn-brutal bg-[#D4A857] text-[#2D1E17] w-full py-2.5 rounded-xl font-bold text-sm">
+            <button type="button" onclick="goToEtalaseWithZone()" class="btn-brutal bg-[#D4A857] text-[#2D1E17] w-full py-2.5 rounded-xl font-bold text-sm">
               Lihat Tenant di Kawasan Ini →
             </button>
           </div>
@@ -246,7 +245,7 @@
             <span class="text-xs font-extrabold uppercase text-[#388E3C]">Pilihan Favorit Mahasiswa</span>
             <h2 class="font-display font-extrabold text-2xl sm:text-3xl">Tenant Terverifikasi KTM</h2>
           </div>
-          <button onclick="navigateTo('etalase')" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">Lihat Semua →</button>
+          <button type="button" onclick="navigateTo('etalase')" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">Lihat Semua →</button>
         </div>
         <div id="featured-tenants-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       </div>
@@ -277,7 +276,7 @@
           <option value="Camilan & Dessert">Camilan &amp; Dessert</option>
           <option value="Paket Hemat Kos">Paket Hemat Kos</option>
         </select>
-        <button onclick="resetEtalaseFilters()" class="btn-brutal bg-[#FFF3E0] px-4 py-2.5 rounded-xl font-bold text-sm">Reset Filter</button>
+        <button type="button" onclick="resetEtalaseFilters()" class="btn-brutal bg-[#FFF3E0] px-4 py-2.5 rounded-xl font-bold text-sm">Reset Filter</button>
       </div>
 
       <div id="etalase-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -447,7 +446,7 @@
             <p class="text-sm text-[#2D1E17]/75">Masukkan <strong>NIM</strong> atau <strong>Nama Usaha</strong> untuk melihat status kurasi KTM.</p>
             <div class="flex gap-2">
               <input id="status-query" type="text" placeholder="Ketik NIM atau Nama Usaha..." class="flex-grow px-3.5 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
-              <button onclick="checkTenantStatus()" class="btn-brutal bg-[#D4A857] px-4 py-2.5 rounded-xl font-bold text-sm shrink-0">Cek</button>
+              <button type="button" onclick="checkTenantStatus()" class="btn-brutal bg-[#D4A857] px-4 py-2.5 rounded-xl font-bold text-sm shrink-0">Cek</button>
             </div>
             <div id="status-result-box" class="hidden p-4 rounded-2xl border-2 border-[#2D1E17] bg-[#FFF3E0] text-sm space-y-1"></div>
           </div>
@@ -465,8 +464,8 @@
         </div>
         <div class="space-y-3">
           <input id="admin-pass-input" type="password" placeholder="Masukkan sandi admin (kumy2026)" class="w-full px-4 py-2.5 rounded-xl border-2 border-[#2D1E17] text-sm" />
-          <button onclick="loginAdmin()" class="w-full btn-brutal bg-[#B71C1C] text-white py-2.5 rounded-xl font-bold text-sm">Masuk Dashboard</button>
-          <button onclick="loginAdmin(true)" class="w-full btn-brutal bg-[#FFF3E0] text-[#2D1E17] py-2.5 rounded-xl font-bold text-xs">Masuk Mode Demo Sekali Klik</button>
+          <button type="button" onclick="loginAdmin()" class="w-full btn-brutal bg-[#B71C1C] text-white py-2.5 rounded-xl font-bold text-sm">Masuk Dashboard</button>
+          <button type="button" onclick="loginAdmin(true)" class="w-full btn-brutal bg-[#FFF3E0] text-[#2D1E17] py-2.5 rounded-xl font-bold text-xs">Masuk Mode Demo Sekali Klik</button>
         </div>
       </div>
 
@@ -477,8 +476,8 @@
             <p class="text-xs text-[#2D1E17]/75" id="db-connection-status">Mode Penyimpanan Lokal Aktif</p>
           </div>
           <div class="flex flex-wrap gap-2">
-            <button onclick="syncFromGoogleSheets()" class="btn-brutal bg-[#388E3C] text-white px-4 py-2 rounded-xl font-bold text-xs">↻ Sinkron Spreadsheet</button>
-            <button onclick="logoutAdmin()" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs">Keluar</button>
+            <button type="button" onclick="syncFromGoogleSheets()" class="btn-brutal bg-[#388E3C] text-white px-4 py-2 rounded-xl font-bold text-xs">↻ Sinkron Spreadsheet</button>
+            <button type="button" onclick="logoutAdmin()" class="btn-brutal bg-white px-4 py-2 rounded-xl font-bold text-xs">Keluar</button>
           </div>
         </div>
 
@@ -578,11 +577,11 @@
         <div class="md:col-span-4 space-y-3">
           <h4 class="font-display font-bold text-lg text-[#D4A857]">Kawasan Kampus Jogja</h4>
           <ul class="space-y-2 text-sm">
-            <li><button onclick="jumpZoneFromFooter('bulaksumur')" class="hover:text-[#D4A857] transition text-left">• Bulaksumur &amp; Karangmalang (UGM, UNY)</button></li>
-            <li><button onclick="jumpZoneFromFooter('seturan')" class="hover:text-[#D4A857] transition text-left">• Seturan &amp; Babarsari (UPN, Atma Jaya, Amikom)</button></li>
-            <li><button onclick="jumpZoneFromFooter('gejayan')" class="hover:text-[#D4A857] transition text-left">• Gejayan &amp; Condongcatur (Sanata Dharma, Mercu Buana)</button></li>
-            <li><button onclick="jumpZoneFromFooter('tamansiswa')" class="hover:text-[#D4A857] transition text-left">• Tamansiswa &amp; Umbulharjo (UAD, UST)</button></li>
-            <li><button onclick="jumpZoneFromFooter('kasihan')" class="hover:text-[#D4A857] transition text-left">• Kasihan &amp; Tamantirto (UMY, Alma Ata)</button></li>
+            <li><button type="button" onclick="jumpZoneFromFooter('bulaksumur')" class="hover:text-[#D4A857] transition text-left">• Bulaksumur &amp; Karangmalang (UGM, UNY)</button></li>
+            <li><button type="button" onclick="jumpZoneFromFooter('seturan')" class="hover:text-[#D4A857] transition text-left">• Seturan &amp; Babarsari (UPN, Atma Jaya, Amikom)</button></li>
+            <li><button type="button" onclick="jumpZoneFromFooter('gejayan')" class="hover:text-[#D4A857] transition text-left">• Gejayan &amp; Condongcatur (Sanata Dharma, Mercu Buana)</button></li>
+            <li><button type="button" onclick="jumpZoneFromFooter('tamansiswa')" class="hover:text-[#D4A857] transition text-left">• Tamansiswa &amp; Umbulharjo (UAD, UST)</button></li>
+            <li><button type="button" onclick="jumpZoneFromFooter('kasihan')" class="hover:text-[#D4A857] transition text-left">• Kasihan &amp; Tamantirto (UMY, Alma Ata)</button></li>
           </ul>
         </div>
 
@@ -601,9 +600,9 @@
       <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-[#FFF3E0]/15 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#FFF3E0]/70">
         <p>© 2026 KUMY — Kumpulan Usaha Mahasiswa Yogyakarta. Data populasi mahasiswa DIY mengacu pada publikasi GoodStats.</p>
         <div class="flex gap-4">
-          <button onclick="navigateTo('etalase')" class="hover:text-[#D4A857]">Etalase</button>
-          <button onclick="navigateTo('daftar')" class="hover:text-[#D4A857]">Daftar Tenant</button>
-          <button onclick="navigateTo('admin')" class="hover:text-[#D4A857]">Admin</button>
+          <button type="button" onclick="navigateTo('etalase')" class="hover:text-[#D4A857]">Etalase</button>
+          <button type="button" onclick="navigateTo('daftar')" class="hover:text-[#D4A857]">Daftar Tenant</button>
+          <button type="button" onclick="navigateTo('admin')" class="hover:text-[#D4A857]">Admin</button>
         </div>
       </div>
     </div>
@@ -618,7 +617,7 @@
           <h2 class="font-display font-extrabold text-xl">Keranjang Multi-Tenant</h2>
           <p class="text-xs text-[#2D1E17]/70">Gabungkan pesanan dari berbagai lapak mahasiswa</p>
         </div>
-        <button onclick="toggleCart(false)" class="btn-brutal bg-[#FFF3E0] w-9 h-9 rounded-xl font-bold">✕</button>
+        <button type="button" onclick="toggleCart(false)" class="btn-brutal bg-[#FFF3E0] w-9 h-9 rounded-xl font-bold">✕</button>
       </div>
 
       <div id="cart-items-container" class="flex-grow overflow-y-auto p-5 space-y-3"></div>
@@ -660,7 +659,7 @@
           </div>
         </div>
 
-        <button onclick="checkoutCart()" class="w-full btn-brutal bg-[#388E3C] text-white py-3 rounded-2xl font-bold text-sm">
+        <button type="button" onclick="checkoutCart()" class="w-full btn-brutal bg-[#388E3C] text-white py-3 rounded-2xl font-bold text-sm">
           Checkout &amp; Kirim ke WhatsApp Admin
         </button>
       </div>
@@ -672,7 +671,7 @@
     <div class="bg-white border-2 border-[#2D1E17] rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-[6px_6px_0px_#D4A857]">
       <div class="flex items-center justify-between">
         <h3 class="font-display font-bold text-xl" id="ktm-modal-title">Validasi Foto KTM</h3>
-        <button onclick="closeKtmModal()" class="btn-brutal bg-[#FFF3E0] w-8 h-8 rounded-lg font-bold">✕</button>
+        <button type="button" onclick="closeKtmModal()" class="btn-brutal bg-[#FFF3E0] w-8 h-8 rounded-lg font-bold">✕</button>
       </div>
       <div id="ktm-modal-body" class="bg-[#FFF3E0] p-4 rounded-2xl border-2 border-[#2D1E17] text-center"></div>
     </div>
@@ -719,7 +718,7 @@
         id: "TNT-102", nama_usaha: "Kopi Susu Tugu & Aren Karangmalang", pemilik: "Nadia Putri", nim: "21402241088",
         kampus: "UNY", kawasan: "bulaksumur", wa: "6281227001102", menu_utama: "Es Kopi Susu Gula Aren Cup 16oz",
         kategori: "Minuman & Kopi", harga: 12000, deskripsi: "Racikan arabika-robusta dengan gula aren murni Kulon Progo. Teman nugas malam.",
-        foto_ktm: "KTM_TERVERIFIKASI_UNY", img: makeFoodIllustration(" iced_coffee ".trim() ? "🧋" : "☕", "#D4A857", "Es Kopi Susu Gula Aren"), status: "approved", aktif: true
+        foto_ktm: "KTM_TERVERIFIKASI_UNY", img: makeFoodIllustration("🧋", "#D4A857", "Es Kopi Susu Gula Aren"), status: "approved", aktif: true
       },
       {
         id: "TNT-103", nama_usaha: "Dimsum Mentai Lumer Babarsari", pemilik: "Rizky Ramadhan", nim: "123210094",
@@ -775,7 +774,11 @@
       renderFeaturedTenants();
       renderEtalase();
       renderCart();
-      navigateTo("beranda");
+
+      const initialHash = window.location.hash.replace("#", "");
+      const validPages = ["beranda", "etalase", "tutorial", "kritik", "daftar", "admin"];
+      navigateTo(validPages.includes(initialHash) ? initialHash : "beranda", false);
+
       if (APPS_SCRIPT_URL) syncFromGoogleSheets();
     }
 
@@ -786,17 +789,27 @@
       localStorage.setItem("kumy_cart_v2", JSON.stringify(state.cart));
     }
 
-    function navigateTo(pageId) {
+    function navigateTo(pageId, updateHash = true) {
       document.querySelectorAll(".page-section").forEach(sec => sec.classList.add("hidden"));
       const target = document.getElementById("page-" + pageId);
       if (target) target.classList.remove("hidden");
       document.querySelectorAll(".nav-btn").forEach(btn => {
         btn.classList.toggle("nav-pill-active", btn.dataset.nav === pageId);
       });
+      if (updateHash && window.location.hash !== "#" + pageId) {
+        history.replaceState(null, "", "#" + pageId);
+      }
       if (pageId === "etalase") renderEtalase();
       if (pageId === "admin" && state.isAdminLoggedIn) renderAdminDashboard();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+
+    window.addEventListener("hashchange", () => {
+      const hashPage = window.location.hash.replace("#", "");
+      if (document.getElementById("page-" + hashPage)) {
+        navigateTo(hashPage, false);
+      }
+    });
 
     function toggleMobileMenu() { document.getElementById("mobile-menu").classList.toggle("hidden"); }
 
@@ -813,7 +826,7 @@
       const container = document.getElementById("home-zone-pills");
       container.innerHTML = CAMPUS_ZONES.map(z => {
         const active = z.id === state.selectedZone;
-        return `<button onclick="selectHomeZone('${z.id}')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border-2 border-[#2D1E17] transition ${
+        return `<button type="button" onclick="selectHomeZone('${z.id}')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border-2 border-[#2D1E17] transition ${
           active ? "bg-[#B71C1C] text-white shadow-[2px_2px_0px_#2D1E17]" : "bg-[#FFF3E0] text-[#2D1E17] hover:bg-[#D4A857]"
         }">${z.name}</button>`;
       }).join("");
@@ -839,7 +852,7 @@
       document.getElementById("gacha-meta").textContent = `${pick.nama_usaha} • ${pick.kampus} (${zoneObj ? zoneObj.name : pick.kawasan})`;
       const act = document.getElementById("gacha-action");
       act.classList.remove("hidden");
-      act.innerHTML = `<button onclick="addToCart('${pick.id}')" class="btn-brutal bg-[#B71C1C] text-white px-4 py-2 rounded-xl text-xs font-bold">+ Tambah ke Keranjang</button>`;
+      act.innerHTML = `<button type="button" onclick="addToCart('${pick.id}')" class="btn-brutal bg-[#B71C1C] text-white px-4 py-2 rounded-xl text-xs font-bold">+ Tambah ke Keranjang</button>`;
     }
 
     function createTenantCardHTML(t) {
@@ -869,7 +882,7 @@
               <span class="block text-[10px] uppercase font-bold text-[#2D1E17]/60">Harga Mahasiswa</span>
               <span class="font-display font-extrabold text-lg text-[#2D1E17]">${formatRupiah(t.harga)}</span>
             </div>
-            <button onclick="addToCart('${t.id}')" class="btn-brutal bg-[#D4A857] hover:bg-[#B71C1C] hover:text-white text-[#2D1E17] px-4 py-2 rounded-xl font-bold text-xs">+ Keranjang</button>
+            <button type="button" onclick="addToCart('${t.id}')" class="btn-brutal bg-[#D4A857] hover:bg-[#B71C1C] hover:text-white text-[#2D1E17] px-4 py-2 rounded-xl font-bold text-xs">+ Keranjang</button>
           </div>
         </article>`;
     }
@@ -934,9 +947,9 @@
             <p class="text-xs font-semibold text-[#388E3C]">${formatRupiah(item.harga)} / porsi</p>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <button onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] font-bold text-sm">-</button>
+            <button type="button" onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] font-bold text-sm">-</button>
             <span class="w-6 text-center text-xs font-extrabold">${item.qty}</span>
-            <button onclick="updateCartQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-[#D4A857] border border-[#2D1E17] font-bold text-sm">+</button>
+            <button type="button" onclick="updateCartQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-[#D4A857] border border-[#2D1E17] font-bold text-sm">+</button>
           </div>
         </div>`).join("") :
         `<div class="bg-white p-6 rounded-2xl border-2 border-dashed border-[#2D1E17] text-center text-sm"><p class="font-bold">Keranjang masih kosong</p></div>`;
@@ -970,14 +983,9 @@
         fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(orderPayload) }).catch(() => {});
       }
 
-      const waText = `Halo Admin KUMY Jogja, saya ingin memesan:
-• ID: ${orderPayload.id_pesanan}
-• Pemesan: ${buyerName} (${buyerWa})
-• Metode: ${method}
-• Rincian:
-${state.cart.map(i => `  - ${i.qty}x ${i.menu_utama} [${i.nama_usaha}]`).join("
-")}
-• Total: ${formatRupiah(total)}`;
+      const rincianLines = state.cart.map(i => `  - ${i.qty}x ${i.menu_utama} [${i.nama_usaha}]`).join("\n");
+      const waText = `Halo Admin KUMY Jogja, saya ingin memesan:\n• ID: ${orderPayload.id_pesanan}\n• Pemesan: ${buyerName} (${buyerWa})\n• Metode: ${method}\n• Rincian:\n${rincianLines}\n• Total: ${formatRupiah(total)}`;
+
       state.cart = [];
       saveLocalState();
       renderCart();
@@ -1140,11 +1148,11 @@ ${state.cart.map(i => `  - ${i.qty}x ${i.menu_utama} [${i.nama_usaha}]`).join("
           <td class="p-3"><p class="font-bold">${t.nama_usaha}</p><p class="text-xs">${t.menu_utama} (${formatRupiah(t.harga)})</p></td>
           <td class="p-3"><p class="font-semibold">${t.pemilik}</p><p class="text-xs">${t.kampus} • ${t.nim}</p></td>
           <td class="p-3 text-xs font-semibold">${t.kawasan}</td>
-          <td class="p-3"><button onclick="openKtmModal('${t.id}')" class="px-2.5 py-1 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">Lihat KTM</button></td>
+          <td class="p-3"><button type="button" onclick="openKtmModal('${t.id}')" class="px-2.5 py-1 rounded-lg bg-[#FFF3E0] border border-[#2D1E17] text-xs font-bold">Lihat KTM</button></td>
           <td class="p-3"><span class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase ${badgeColor}">${t.status}</span></td>
           <td class="p-3 flex gap-1.5">
-            <button onclick="updateTenantStatus('${t.id}', 'approved')" class="px-2.5 py-1 rounded-lg bg-[#388E3C] text-white text-xs font-bold">Setujui</button>
-            <button onclick="updateTenantStatus('${t.id}', 'rejected')" class="px-2.5 py-1 rounded-lg bg-[#B71C1C] text-white text-xs font-bold">Tolak</button>
+            <button type="button" onclick="updateTenantStatus('${t.id}', 'approved')" class="px-2.5 py-1 rounded-lg bg-[#388E3C] text-white text-xs font-bold">Setujui</button>
+            <button type="button" onclick="updateTenantStatus('${t.id}', 'rejected')" class="px-2.5 py-1 rounded-lg bg-[#B71C1C] text-white text-xs font-bold">Tolak</button>
           </td>
         </tr>`;
       }).join("");
@@ -1162,7 +1170,11 @@ ${state.cart.map(i => `  - ${i.qty}x ${i.menu_utama} [${i.nama_usaha}]`).join("
         </div>`).join("") : `<p class="text-[#2D1E17]/60">Belum ada kritik & saran.</p>`;
     }
 
-    document.addEventListener("DOMContentLoaded", initApp);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initApp);
+    } else {
+      initApp();
+    }
   </script>
 </body>
 </html>
